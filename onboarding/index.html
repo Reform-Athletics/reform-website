@@ -510,7 +510,7 @@ const NUT={none:"This service does not include nutrition coaching.",general:"Thi
 // Where the client-facing copy of this page lives, and the n8n webhook that receives submissions.
 const CONFIG={
   clientBase:"https://reformathletics.net/onboarding/",
-  webhook:""   // e.g. "https://<your-n8n-host>/webhook/client-onboarding"
+  webhook:"https://n8n.crm.reformathletics.net/webhook/client-onboarding"
 };
 const PARAMS=new URLSearchParams(location.search);
 const CLIENT=PARAMS.has("p")||PARAMS.has("intake")||/(^|\.)reformathletics\.net$/.test(location.hostname);
