@@ -488,13 +488,13 @@ const SVC=[
   {id:"hy_prem",l:"Hybrid: Premium + in-person",price:349,unit:"month",nut:"custom",hybrid:1,desc:"Premium online coaching plus a set number of in-person sessions each month at the bundled hybrid rate.",checkins:"Weekly"},
  ]},
  {g:"Concierge (in-home) training",items:[
-  {id:"cc_single",l:"Concierge: Single session",price:150,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private training session at Client's home."},
-  {id:"cc_8",l:"Concierge: 8-session package",price:1080,unit:"package",sessions:8,nut:"general",inhome:1,pkg:1,meal:1,desc:"Eight 60-minute private in-home sessions, typically 2 per week over 4 weeks, with general nutrition guidance."},
-  {id:"cc_12",l:"Concierge: 12-session package",price:1500,unit:"package",sessions:12,nut:"general",inhome:1,pkg:1,meal:1,desc:"Twelve 60-minute private in-home sessions, typically 3 per week over 4 weeks, with general nutrition guidance."},
-  {id:"cc_partner",l:"Concierge: Partner session",price:200,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private in-home session for two people."},
+  {id:"cc_single",l:"Concierge: Single session",price:175,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private training session at Client's home."},
+  {id:"cc_8",l:"Concierge: 8-session package",price:1280,unit:"package",sessions:8,nut:"general",inhome:1,pkg:1,meal:1,desc:"Eight 60-minute private in-home sessions, typically 2 per week over 4 weeks, with general nutrition guidance."},
+  {id:"cc_12",l:"Concierge: 12-session package",price:1800,unit:"package",sessions:12,nut:"general",inhome:1,pkg:1,meal:1,desc:"Twelve 60-minute private in-home sessions, typically 3 per week over 4 weeks, with general nutrition guidance."},
+  {id:"cc_partner",l:"Partner session",price:225,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private session for two people."},
  ]},
  {g:"In-gym and group",items:[
-  {id:"gym_1",l:"In-gym 1:1 personal training",price:125,unit:"session",qty:1,nut:"none",desc:"60-minute private personal training session at the gym."},
+  {id:"gym_1",l:"In-gym 1:1 personal training",price:150,unit:"session",qty:1,nut:"none",desc:"60-minute private personal training session at the gym."},
   {id:"group",l:"Group fitness",price:25,unit:"session",qty:1,nut:"none",desc:"Group fitness class, priced per person per session."},
   {id:"pgroup",l:"Private group experience",price:350,unit:"event",nut:"none",inhome:1,desc:"Private 60-minute group session for up to 6 people. Larger events are quoted separately."},
  ]},
@@ -503,7 +503,7 @@ const SVC=[
   {id:"al_month",l:"Assisted living: Monthly (1x/week)",price:null,unit:"month",nut:"none",desc:"One private training session per week at Client's assisted-living community, billed monthly."},
  ]},
 ];
-const HYRATE={hy_std:{gym:75,home:90},hy_prem:{gym:75,home:90}};
+const HYRATE={hy_std:{gym:120,home:140},hy_prem:{gym:120,home:140}};
 const SVCMAP={};SVC.forEach(g=>g.items.forEach(i=>SVCMAP[i.id]=i));
 const NUT={none:"This service does not include nutrition coaching.",general:"This service includes general nutrition guidance.",custom:"This service includes a fully custom meal and supplement plan."};
 
@@ -516,11 +516,12 @@ const CONFIG={
 };
 const PARAMS=new URLSearchParams(location.search);
 const COACH=PARAMS.get("coach")===CONFIG.coachKey;
-const CLIENT=!COACH&&(PARAMS.has("p")||PARAMS.has("intake")||/(^|\.)reformathletics\.net$/.test(location.hostname));
+const CLIENT=!COACH&&(PARAMS.has("p")||PARAMS.has("intake")||PARAMS.has("waiver")||/(^|\.)reformathletics\.net$/.test(location.hostname));
 const b64e=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const b64d=t=>JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/")))));
 let PLAN=null; try{ if(PARAMS.get("p")) PLAN=b64d(PARAMS.get("p")); }catch{}
 const AO=!!(CLIENT&&PLAN&&PLAN.ao);   // agreement-only link: intake + waiver already on file
+const WO=!!(CLIENT&&!PLAN&&PARAMS.has("waiver"));   // waiver-only link (group fitness): contact details + waiver
 const PLAN_KEYS=["service","price","qty","people","hyType","hyCount","hyBase","checkins","startDate","travelFee","addMeal","mealPrice","founding","cancelHrs","pkgDays","lateMin","cancelDays"];
 
 /* ---------------- STATE ---------------- */
@@ -775,6 +776,7 @@ function missingAgreement(){
   if(!(S.agrName||"").trim()) m.push("Client name"); if(!SIG.clientAgreement) m.push("Client signature"); if(!CLIENT&&!SIG.coach) m.push("Coach signature");
   return m;
 }
+function missingContact(){ const m=[]; [["fullName","Full name"],["email","Email"],["phone","Phone"]].forEach(([k,l])=>{ if(!(S[k]||"").trim()) m.push(l); }); return m; }
 function missingWaiver(){
   const m=[]; if(W_INI.some(k=>!(S["ini_"+k]||"").trim())) m.push("All initials");
   if(!S.media) m.push("Photo and video choice");
@@ -786,8 +788,8 @@ const NEXT=["Continue to agreement","Continue to waiver","Finish","Done"];
 function updateSteps(){
   const done=[!missingIntake().length,!missingAgreement().length,!missingWaiver().length];
   $$(".steps button").forEach((b,i)=>{ b.classList.toggle("done",!!done[i]); b.toggleAttribute("aria-current",i===step); if(i===step) b.setAttribute("aria-current","step"); });
-  $("#prevBtn").style.visibility=(step===0||(AO&&step===1))?"hidden":"visible";
-  $("#nextBtn").textContent=AO&&step===1?"Finish":NEXT[step]; $("#nextBtn").hidden=step===3;
+  $("#prevBtn").style.visibility=(step===0||(AO&&step===1)||(WO&&step===2))?"hidden":"visible";
+  $("#nextBtn").textContent=(AO&&step===1)||(WO&&step===2)?"Finish":NEXT[step]; $("#nextBtn").hidden=step===3;
   if(step===3) renderStatus();
 }
 function go(i){
@@ -796,14 +798,14 @@ function go(i){
   if(i===3) loadSaved();
 }
 $$(".steps button").forEach(b=>b.addEventListener("click",()=>go(+b.dataset.go)));
-$("#prevBtn").addEventListener("click",()=>go(AO?1:Math.max(0,step-1)));
+$("#prevBtn").addEventListener("click",()=>go(AO?1:WO?2:Math.max(0,step-1)));
 $("#nextBtn").addEventListener("click",()=>{
-  const miss=step===0?missingIntake():step===1?missingAgreement():step===2?missingWaiver():[];
+  const miss=step===0?missingIntake():step===1?missingAgreement():step===2?[...(WO?missingContact():[]),...missingWaiver()]:[];
   if(miss.length) toast("Still needed: "+miss.join(", "));
   go(AO&&step===1?3:Math.min(3,step+1));
 });
 function renderStatus(){
-  const rows=[["Intake",missingIntake()],["Service agreement",missingAgreement()],["Liability waiver",missingWaiver()]].filter(r=>!(CLIENT&&!PLAN&&r[0]==="Service agreement")&&!(AO&&r[0]!=="Service agreement"));
+  const rows=WO?[["Your details",missingContact()],["Liability waiver",missingWaiver()]]:[["Intake",missingIntake()],["Service agreement",missingAgreement()],["Liability waiver",missingWaiver()]].filter(r=>!(CLIENT&&!PLAN&&r[0]==="Service agreement")&&!(AO&&r[0]!=="Service agreement"));
   $("#status").innerHTML=rows.map(([l,m])=>`<li><span>${l}${m.length?`<br><small style="color:var(--muted)">Needs: ${esc(m.join(", "))}</small>`:""}</span><span class="${m.length?"s-no":"s-ok"}">${m.length?"Incomplete":"Complete"}</span></li>`).join("");
 }
 
@@ -968,7 +970,7 @@ $("#sendAgr").addEventListener("click",async()=>{
 /* ---------------- CLIENT SUBMIT ---------------- */
 function finMsg(html){ let n=$("#finMsg"); if(!n){ n=document.createElement("div"); n.id="finMsg"; n.className="note"; $(".actions").after(n); } n.innerHTML=html; }
 $("#submitBtn").addEventListener("click",async()=>{
-  const miss=AO?missingAgreement():[...missingIntake(),...(PLAN?missingAgreement():[]),...missingWaiver()];
+  const miss=AO?missingAgreement():WO?[...missingContact(),...missingWaiver()]:[...missingIntake(),...(PLAN?missingAgreement():[]),...missingWaiver()];
   if(miss.length){ toast("Still needed: "+[...new Set(miss)].join(", ")); return; }
   const fallback=`Please tap <b>Download your signed copy</b> below and email it to <a href="mailto:priscilla@reformathletics.net">priscilla@reformathletics.net</a>.`;
   if(!CONFIG.webhook){ finMsg(fallback); return; }
@@ -976,12 +978,12 @@ $("#submitBtn").addEventListener("click",async()=>{
   try{
     const state={...S}; Object.keys(state).forEach(k=>{ if(k.startsWith("_")) delete state[k]; });
     const res=await fetch(CONFIG.webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      kind:AO?"agreement":(PLAN?"full":"intake"),planId:PLAN&&PLAN.id||null,
+      kind:AO?"agreement":WO?"waiver":(PLAN?"full":"intake"),planId:PLAN&&PLAN.id||null,
       submittedAt:new Date().toISOString(),name:S.fullName,email:S.email,phone:S.phone,
-      service:r?r.sv.l:"Intake and waiver only",total:r&&r.total!=null?r.total:null,
+      service:WO?"Group fitness (waiver only)":r?r.sv.l:"Intake and waiver only",total:r&&r.total!=null?r.total:null,
       clientFile:clientFile(),signedHtml:signedHTML(),state})});
     if(!res.ok) throw new Error(res.status);
-    btn.textContent="Submitted"; finMsg("Thank you! Your forms are in. Priscilla will be in touch shortly with your next steps. You can download a copy for your records below.");
+    btn.textContent="Submitted"; finMsg(WO?"Thank you! Your waiver is in and you're all set for class. You can download a copy for your records below.":"Thank you! Your forms are in. Priscilla will be in touch shortly with your next steps. You can download a copy for your records below.");
   }catch{ btn.disabled=false; btn.textContent="Submit to Reform Athletics"; finMsg("Your forms couldn't be sent. "+fallback); }
 });
 
@@ -996,6 +998,15 @@ function applyClientMode(){
   else $("section[data-step='1'] .lede").textContent="Review your plan, initial each section, and sign.";
   if(AO){ $$('.steps button[data-go="0"], .steps button[data-go="2"]').forEach(b=>b.hidden=true);
     $("section[data-step='1'] .lede").textContent="Your intake and waiver are already on file. Review your plan, initial each section, and sign."; }
+  if(WO){ $$('.steps button[data-go="0"], .steps button[data-go="1"]').forEach(b=>b.hidden=true);
+    const want=["fullName","email","phone","emName","emPhone"], fl=[];
+    (function walk(a){ (a||[]).forEach(f=>{ if(f&&want.includes(f.n)) fl.push(f); if(f&&f.fields) walk(f.fields); }); })(INTAKE.flatMap(sec=>sec.fields||[]));
+    fl.sort((x,y)=>want.indexOf(x.n)-want.indexOf(y.n));
+    const box=document.createElement("div"); box.className="sec"; box.id="woContact";
+    box.innerHTML=`<h2>Your details</h2><p class="hint">For class check-in and in case of emergency.</p>${fl.map(fieldHTML).join("").replace(/(id|for)="f_/g,'$1="wo_')}`;
+    const ws=$("section[data-step='2']"); ws.querySelector(".lede").after(box);
+    ws.querySelector(".lede").textContent="Group fitness requires a signed waiver. Add your details, read carefully, initial each section and sign. This document affects your legal rights.";
+    writeFields(); }
   ["#saveBtn","#dlClaude","#copyClaude","#resetWrap","#savedWrap"].forEach(x=>$(x).hidden=true);
   $("#submitBtn").hidden=false; $("#dlSigned").textContent="Download your signed copy";
   $("#finLede").textContent="Check that everything is complete, then submit. You can also download a copy for your records.";
@@ -1007,7 +1018,7 @@ let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add
 
 captureAll(); applyClientMode();
 if(COACH&&PARAMS.get("email")){ clearForm(); S.fullName=PARAMS.get("name")||""; S.email=PARAMS.get("email"); writeFields(); }
-render(); go(AO||(COACH&&PARAMS.get("email"))?1:0);
+render(); go(WO?2:AO||(COACH&&PARAMS.get("email"))?1:0);
 })();
 </script>
 </body>
