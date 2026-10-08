@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a Free Consultation · Reform Athletics</title>
+<meta name="description" content="Book a free consultation with Priscilla Claude, CPT, CN for private, online or hybrid coaching.">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0b0b0c;--panel:#1a1a1c;--panel2:#141416;--rose:#c08a78;--rose-deep:#9c7463;--ivory:#f3f2f0;--muted:#b3aca6;--hair:rgba(243,242,240,.12);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Poppins',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--ivory);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:40px 16px 64px}
+.brand{display:block;text-align:center;font-family:var(--serif);font-size:1.6rem;letter-spacing:.14em;color:var(--ivory);text-decoration:none;margin-bottom:36px}
+.brand span{color:var(--rose)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,6vw,2.7rem);line-height:1.1;margin:0 0 12px;text-align:center}
+.lede{color:var(--muted);text-align:center;margin:0 auto 32px;max-width:520px}
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:14px;padding:28px 24px}
+.eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.q{font-weight:600;font-size:1.05rem;margin:0 0 4px}
+.opt{color:var(--muted);font-size:.88rem;margin:0 0 26px}
+.amount{text-align:center;margin:0 0 18px;min-height:76px}
+.amount b{display:block;font-family:var(--serif);font-weight:500;font-size:3rem;line-height:1.05;color:var(--ivory)}
+.amount small{color:var(--muted)}
+.amount.empty b{font-size:1.25rem;font-family:var(--sans);font-weight:500;color:var(--muted);padding-top:18px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:6px;background:linear-gradient(90deg,var(--rose) var(--fill,0%),#2a2a2d var(--fill,0%))}
+input[type=range]::-moz-range-track{height:10px;border-radius:6px;background:#2a2a2d}
+input[type=range]::-moz-range-progress{height:10px;border-radius:6px;background:var(--rose)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--ivory);margin-top:-8px;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:var(--ivory)}
+.untouched input[type=range]::-webkit-slider-thumb{background:var(--muted)}
+.ends{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;margin-top:6px}
+.clear{background:none;border:0;color:var(--muted);font:inherit;font-size:.85rem;text-decoration:underline;cursor:pointer;padding:0;margin-top:14px}
+.clear[hidden]{display:none}
+.btn{display:block;width:100%;text-align:center;background:var(--rose);color:var(--black);border:0;border-radius:8px;font:600 1rem var(--sans);padding:15px 20px;margin-top:26px;cursor:pointer;text-decoration:none}
+.btn:hover{background:#cf9b89}
+.btn.ghost{background:transparent;color:var(--ivory);border:1px solid var(--hair)}
+.btn.ghost:hover{border-color:var(--rose);color:var(--rose)}
+.fine{color:var(--muted);font-size:.8rem;text-align:center;margin:14px 0 0}
+.msg p{margin:0 0 14px}
+.msg h2{font-family:var(--serif);font-weight:500;font-size:1.8rem;line-height:1.15;margin:0 0 16px}
+label{display:block;font-size:.88rem;margin:16px 0 6px}
+input[type=text],input[type=email]{width:100%;background:var(--panel2);border:1px solid var(--hair);border-radius:8px;color:var(--ivory);font:inherit;padding:12px 14px}
+input:focus,.btn:focus-visible,.clear:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.ok{color:#9fcf9f}
+.err{color:#e0937f}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="brand" href="/">REFORM <span>ATHLETICS</span></a>
+
+  <!-- Step 1: optional budget -->
+  <section id="step1">
+    <h1>Book your free consultation</h1>
+    <p class="lede">A relaxed conversation about your goals and the coaching style that fits you: online, in person or a mix of both.</p>
+    <div class="card untouched" id="sliderCard">
+      <p class="eyebrow">One quick question</p>
+      <p class="q" id="qLabel">What monthly investment are you comfortable making toward your health, fitness and coaching goals?</p>
+      <p class="opt">Optional. It just helps me prepare for our call.</p>
+      <div class="amount empty" id="amount" aria-live="polite"><b>Slide to choose</b></div>
+      <input type="range" id="budget" min="0" max="23" step="1" value="6" aria-labelledby="qLabel" aria-valuetext="Not selected">
+      <div class="ends"><span>$25</span><span>$5,000+</span></div>
+      <button type="button" class="clear" id="clear" hidden>Clear my answer</button>
+      <button type="button" class="btn" id="go">Continue to booking</button>
+      <p class="fine">Prefer not to say? Just tap continue.</p>
+    </div>
+  </section>
+
+  <!-- Step 2: below current coaching range -->
+  <section id="step2" hidden>
+    <div class="card msg">
+      <h2>Thank you for your interest in Reform Athletics!</h2>
+      <p>Based on the investment range you've selected, our upcoming digital training experience may be a great fit for you.</p>
+      <p>Our private coaching services are designed for individuals seeking a more personalized, hands-on level of support. We're also developing accessible training options through the Reform Athletics app.</p>
+      <p>We'd love to keep you informed as those options become available. You can join our early-access list below.</p>
+      <form id="wl" novalidate>
+        <label for="wlName">First name</label>
+        <input type="text" id="wlName" autocomplete="given-name" required>
+        <label for="wlEmail">Email</label>
+        <input type="email" id="wlEmail" autocomplete="email" required>
+        <button type="submit" class="btn" id="wlBtn">Join the Reform Athletics waitlist</button>
+        <p class="fine">You'll also get The Edit, my every-other-Sunday newsletter with early access, tips and app updates. Unsubscribe anytime.</p>
+        <p class="fine" id="wlMsg" aria-live="polite"></p>
+      </form>
+      <a class="btn ghost" id="anyway" href="#">I'd still like to talk about private coaching</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var CAL = "https://book.reformathletics.net/priss/free-consultation";
+  var WAITLIST = "https://n8n.crm.reformathletics.net/webhook/waitlist-signup";
+  var MIN_COACHING = 179;
+  var STEPS = [25,50,75,100,125,150,179,200,250,300,350,400,500,600,750,1000,1250,1500,1800,2000,2500,3000,4000,5000];
+  var r = document.getElementById("budget"), amt = document.getElementById("amount"),
+      card = document.getElementById("sliderCard"), clear = document.getElementById("clear");
+  var chosen = null;
+  // keep any tracking params (?code=, ?utm_…) and pass them on to the booking page
+  var pass = new URLSearchParams(location.search);
+
+  function money(v){ return "$" + v.toLocaleString("en-US") + (v >= 5000 ? "+" : ""); }
+  function paint(){
+    r.style.setProperty("--fill", (r.value / r.max * 100) + "%");
+    if (chosen === null) {
+      amt.className = "amount empty"; amt.innerHTML = "<b>Slide to choose</b>";
+      card.classList.add("untouched"); clear.hidden = true; r.setAttribute("aria-valuetext","Not selected");
+    } else {
+      amt.className = "amount"; amt.innerHTML = "<b>" + money(chosen) + "</b><small>/ month</small>";
+      card.classList.remove("untouched"); clear.hidden = false; r.setAttribute("aria-valuetext", money(chosen) + " per month");
+    }
+  }
+  r.addEventListener("input", function(){ chosen = STEPS[+r.value]; paint(); });
+  clear.addEventListener("click", function(){ chosen = null; r.value = 6; paint(); });
+
+  function calUrl(){
+    var q = new URLSearchParams(pass);
+    if (chosen !== null) q.set("budget", String(chosen));
+    var s = q.toString(); return CAL + (s ? "?" + s : "");
+  }
+  document.getElementById("go").addEventListener("click", function(){
+    if (chosen !== null && chosen < MIN_COACHING) {
+      document.getElementById("step1").hidden = true;
+      document.getElementById("step2").hidden = false;
+      window.scrollTo({top:0});
+      document.getElementById("wlName").focus();
+    } else location.href = calUrl();
+  });
+  document.getElementById("anyway").addEventListener("click", function(e){ e.preventDefault(); location.href = calUrl(); });
+
+  document.getElementById("wl").addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("wlName").value.trim(), email = document.getElementById("wlEmail").value.trim(),
+        msg = document.getElementById("wlMsg"), btn = document.getElementById("wlBtn");
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.className = "fine err"; msg.textContent = "Please add your first name and a valid email."; return; }
+    btn.disabled = true; btn.textContent = "Adding you…";
+    fetch(WAITLIST, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: name, email: email, budget: chosen, source: "budget", code: pass.get("code") || "" }) })
+      .then(function(res){ if (!res.ok) throw 0;
+        btn.textContent = "You're on the list"; msg.className = "fine ok";
+        msg.textContent = "You're in! Watch your inbox for early access and The Edit."; })
+      .catch(function(){ btn.disabled = false; btn.textContent = "Join the Reform Athletics waitlist"; msg.className = "fine err";
+        msg.textContent = "That didn't go through. Please try again, or email priscilla@reformathletics.net."; });
+  });
+  paint();
+})();
+</script>
+</body>
+</html>
