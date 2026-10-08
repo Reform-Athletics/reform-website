@@ -1,1014 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reform Athletics — Client Onboarding</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Priscilla Claude, CPT, CN — Reform Athletics</title>
+<meta name="description" content="Meet Priscilla Claude — Certified Personal Trainer, Certified Nutritionist, Army officer, mom, and founder of Reform Athletics.">
+<meta property="og:title" content="About Priscilla Claude, CPT, CN — Reform Athletics">
+<meta property="og:description" content="Meet Priscilla Claude — Certified Personal Trainer, Certified Nutritionist, Army officer, mom, and founder of Reform Athletics.">
+<meta property="og:image" content="https://reformathletics.net/assets/logo-tagline.png">
+<link rel="canonical" href="https://reformathletics.net/about.html">
+<meta property="og:url" content="https://reformathletics.net/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reform Athletics">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#f3f2f0; --surface:#ffffff; --field:#fbfaf9; --ink:#1a1a1c; --muted:#66605c;
-  --line:#ddd5cf; --accent:#9c7463; --accent-2:#c08a78; --accent-ink:#ffffff;
-  --warn-bg:#f7ece7; --ok:#5d7a5f;
-  --display:"Marcellus", "Cormorant Garamond", Georgia, serif;
-  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0b0b0c; --surface:#1a1a1c; --field:#121213; --ink:#f3f2f0; --muted:#a8a09b;
-    --line:#2f2c2b; --accent:#c08a78; --accent-2:#9c7463; --accent-ink:#0b0b0c;
-    --warn-bg:#2a201d; --ok:#8fae90;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0b0b0c; --surface:#1a1a1c; --field:#121213; --ink:#f3f2f0; --muted:#a8a09b;
-  --line:#2f2c2b; --accent:#c08a78; --accent-2:#9c7463; --accent-ink:#0b0b0c;
-  --warn-bg:#2a201d; --ok:#8fae90;
-}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px 120px}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
 
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
-.top-inner{max-width:760px;margin:0 auto;padding:14px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.mono{width:34px;height:34px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;font:15px var(--display);color:var(--accent);letter-spacing:.04em}
-.mark span{font:17px var(--display);letter-spacing:.14em}
-.who{font-size:14px;color:var(--muted);text-align:right}
-.who b{color:var(--ink);font-weight:600}
-.steps{max-width:760px;margin:0 auto;padding:10px 20px 0;display:flex;gap:4px;overflow-x:auto}
-.steps button{flex:1;min-width:0;background:none;border:0;border-bottom:2px solid transparent;padding:8px 4px 10px;font:500 14px var(--body);color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:8px;justify-content:center;white-space:nowrap}
-.steps button .n{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:12px}
-.steps button[aria-current="step"]{color:var(--ink);border-bottom-color:var(--accent)}
-.steps button[aria-current="step"] .n{border-color:var(--accent);color:var(--accent)}
-.steps button.done .n{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-
-/* type */
-h1{font:400 clamp(30px,6vw,44px)/1.1 var(--display);margin:40px 0 8px;letter-spacing:.01em}
-.lede{color:var(--muted);margin:0 0 28px;max-width:60ch}
-h2{font:400 24px/1.2 var(--display);margin:0 0 4px}
-.sec{border-top:1px solid var(--line);padding:28px 0 8px}
-.sec>p.hint{color:var(--muted);margin:0 0 18px;font-size:15px}
-
-/* fields */
-.q{margin:0 0 20px}
-.q>label,.q>.lab{display:block;font-weight:500;margin-bottom:6px}
-.q .sub{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
-.req::after{content:" *";color:var(--accent)}
-input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],select,textarea{
-  width:100%;font:16px var(--body);color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none}
-textarea{min-height:88px;resize:vertical}
-input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-@media (max-width:560px){.grid2{grid-template-columns:1fr}}
-.opts{display:flex;flex-wrap:wrap;gap:8px}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.opt span{display:inline-block;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:15px;background:var(--field);cursor:pointer;user-select:none}
-.opt input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.opt input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
-.scale{display:flex;align-items:center;gap:12px}
-.scale input{flex:1;accent-color:var(--accent)}
-.scale output{min-width:2ch;font:20px var(--display);color:var(--accent)}
-.yn{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
-.yn p{margin:0;font-size:15px}
-.yn .opts{flex-shrink:0}
-.note{background:var(--warn-bg);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 8px 8px 0;font-size:15px;margin:12px 0 20px}
-[hidden]{display:none!important}
-
-/* plan builder */
-.panel-coach{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px 6px;margin-bottom:28px}
-.panel-coach h2{margin-bottom:2px}
-.panel-coach .hint{color:var(--muted);font-size:14px;margin:0 0 18px}
-.check{display:flex;gap:10px;align-items:flex-start;margin:0 0 16px;cursor:pointer}
-.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent);flex-shrink:0}
-.money{position:relative}
-.money::before{content:"$";position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
-.money input{padding-left:24px}
-
-/* the summary: the one memorable piece */
-.ticket{border:1px solid var(--accent);border-radius:16px;overflow:hidden;margin:0 0 32px;background:var(--surface)}
-.ticket-head{padding:18px 20px;border-bottom:1px dashed var(--accent)}
-.ticket-head .svc{font:400 24px/1.2 var(--display)}
-.ticket-head .for{color:var(--muted);font-size:14px;margin-top:4px}
-.ticket dl{margin:0;padding:8px 20px}
-.ticket dl div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
-.ticket dl div:last-child{border-bottom:0}
-.ticket dt{color:var(--muted)}
-.ticket dd{margin:0;text-align:right;font-weight:500}
-.ticket-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 20px;background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
-.ticket-total .amt{font:400 34px/1 var(--display);color:var(--accent)}
-.ticket-total .per{color:var(--muted);font-size:14px}
-.ticket .lock{padding:10px 20px;font-size:14px;color:var(--accent);border-top:1px solid var(--line)}
-
-/* legal text */
-.doc{font-size:15.5px;line-height:1.65}
-.doc h3{font:400 19px/1.3 var(--display);margin:26px 0 6px}
-.doc p{margin:0 0 10px;max-width:68ch}
-.doc .fill{font-weight:600;color:var(--accent)}
-.ini{display:flex;align-items:center;gap:10px;margin:8px 0 6px;font-size:14px;color:var(--muted)}
-.ini input{width:76px;text-align:center;text-transform:uppercase;font-weight:600;letter-spacing:.08em;padding:8px}
-.ini input.ok{border-color:var(--ok)}
-
-/* signatures */
-.sign{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin:28px 0}
-.sign h2{font-size:21px;margin-bottom:12px}
-.pad{position:relative;border:1px dashed var(--accent);border-radius:10px;background:#fbfaf9;height:150px;touch-action:none}
-.pad canvas{width:100%;height:100%;display:block;cursor:crosshair}
-.pad .ph{position:absolute;left:14px;bottom:12px;color:#8a837e;font-size:13px;pointer-events:none}
-.pad-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
-.linkbtn{background:none;border:0;color:var(--accent);font:500 14px var(--body);cursor:pointer;padding:4px 0;text-decoration:underline;text-underline-offset:3px}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--body);padding:13px 20px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
-.btn:focus-visible,.linkbtn:focus-visible,.steps button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px))}
-.bar-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;gap:12px}
-
-/* finish */
-.status{list-style:none;padding:0;margin:0 0 28px}
-.status li{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
-.status .s-ok{color:var(--ok);font-weight:600}
-.status .s-no{color:var(--accent);font-weight:600}
-.actions{display:grid;gap:12px;margin:0 0 32px}
-.actions .btn{width:100%}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
-.toast.show{opacity:1}
-.saved{list-style:none;padding:0;margin:0}
-.saved li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.saved small{display:block;color:var(--muted)}
-@media (max-width:480px){.steps{gap:0;padding:8px 8px 0}.steps button{font-size:13px;gap:5px}.steps button .n{width:20px;height:20px;font-size:11px}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
 </head>
 <body>
-
-<header class="top">
-  <div class="top-inner">
-    <div class="mark" aria-label="Reform Athletics"><div class="mono">RA</div><span>REFORM ATHLETICS</span></div>
-    <div class="who" id="who">New client</div>
+<div class="banner">Now booking in-person, concierge, online &amp; hybrid coaching. <a href="https://book.reformathletics.net/priss">Book a free consult</a></div>
+<header class="site">
+  <div class="nav">
+    <a class="logo" href="/" aria-label="Reform Athletics home"><img src="assets/ra-logo.png" alt="Reform Athletics"></a>
+    <input type="checkbox" id="menu-check" aria-hidden="true">
+    <label class="menu-toggle" for="menu-check" aria-label="Open menu">&#9776;</label>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/">Home</a>
+      <div class="dd">
+        <a href="/training.html">Training</a>
+        <div class="dd-menu">
+          <a href="/private-training.html">Private Training</a>
+          <a href="/concierge-training.html">Concierge Training</a>
+          <a href="/small-group.html">Small Group Fitness</a>
+          <a href="/online-coaching.html">Online Coaching</a>
+          <a href="/hybrid-coaching.html">Hybrid Coaching</a>
+        </div>
+      </div>
+      <a href="/app.html">App</a>
+      <a href="/about.html" class="active">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://book.reformathletics.net/priss" class="btn-nav">Book Now</a>
+    </nav>
   </div>
-  <nav class="steps" aria-label="Onboarding steps">
-    <button type="button" data-go="0" aria-current="step"><span class="n">1</span>Intake</button>
-    <button type="button" data-go="1"><span class="n">2</span>Agreement</button>
-    <button type="button" data-go="2"><span class="n">3</span>Waiver</button>
-    <button type="button" data-go="3"><span class="n">4</span>Finish</button>
-  </nav>
 </header>
-
-<main class="wrap" id="form">
-
-<!-- STEP 1: INTAKE -->
-<section data-step="0">
-  <h1>Welcome to Reform Athletics</h1>
-  <p class="lede">Every plan here is built from scratch, so the more you share, the better it fits. This takes about 15 minutes. Everything stays between you and your coach.</p>
-  <div id="intake"></div>
-</section>
-
-<!-- STEP 2: AGREEMENT -->
-<section data-step="1" hidden>
-  <h1>Client Service Agreement</h1>
-  <p class="lede">Your coach will set up your plan below. Review the details, initial each section, and sign.</p>
-
-  <div class="panel-coach" id="coachPanel">
-    <h2>Your plan</h2>
-    <p class="hint">Completed together with your coach.</p>
-    <div class="q">
-      <label for="service" class="req">Service</label>
-      <select id="service" name="service"></select>
+<main>
+<section class="page-hero">
+  <div class="wrap coach">
+    <div class="coach-photo reveal"><img src="assets/priscilla.webp" alt="Priscilla Claude, CPT, CN"></div>
+    <div class="reveal">
+      <div class="eyebrow">Meet Your Coach</div>
+      <h1 style="font-size:clamp(2.4rem,4.6vw,3.6rem)">Priscilla Claude, CPT, CN</h1>
+      <div class="role">Certified Personal Trainer · Certified Nutritionist · Army Officer · Mom · Founder of Reform Athletics</div>
+      <p>Priscilla Claude is a Certified Personal Trainer and Certified Nutritionist, an Army officer, and a mom — and the founder of Reform Athletics.</p>
+      <p>She believes coaching should be individualized, intentional, challenging, and sustainable — built around the person in front of her, not a generic system. Reform Athletics exists to bring that standard to private training, concierge training, small group fitness, and, soon, a digital training platform.</p>
+      <blockquote>Results don't come from random workouts. They come from intentional programming, accountability, and a system designed to evolve with you.</blockquote>
     </div>
-    <div id="svcFields"></div>
-    <div class="grid2">
-      <div class="q"><label for="startDate" class="req">Start date</label><input type="date" id="startDate" name="startDate"></div>
-      <div class="q" id="travelQ"><label for="travelFee">Travel fee per visit</label><span class="sub">Outside the core service area</span><div class="money"><input type="number" min="0" step="1" id="travelFee" name="travelFee" value="0"></div></div>
-    </div>
-    <div id="addonWrap">
-      <label class="check"><input type="checkbox" id="addMeal" name="addMeal"><span>Add a custom meal and supplement plan</span></label>
-      <div class="q" id="mealPriceQ" hidden><label for="mealPrice">Meal and supplement plan price</label><div class="money"><input type="number" min="0" step="1" id="mealPrice" name="mealPrice" placeholder="0"></div></div>
-    </div>
-    <label class="check"><input type="checkbox" id="founding" name="founding"><span>Founding client: rate locked while membership stays continuous</span></label>
-    <div id="sendBox" style="border-top:1px solid var(--line);padding:16px 0 14px;margin-top:4px">
-      <span class="lab" style="font-weight:500;display:block">Virtual consult? Send this plan to the client</span>
-      <span class="sub" style="color:var(--muted);font-size:14px;display:block;margin:2px 0 10px">They complete the intake, review this exact plan, sign, and submit from their own phone.</span>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button type="button" class="btn" id="sendAgr">Send agreement to client</button>
-        <button type="button" class="btn ghost" id="copyLink">Copy full onboarding link</button>
-        <button type="button" class="btn ghost" id="emailLink">Email link</button>
-        <button type="button" class="btn ghost" id="copyIntake">Copy intake-only link</button>
-      </div>
-    </div>
-    <details>
-      <summary class="linkbtn" style="display:inline-block;margin-bottom:12px">Policy settings</summary>
-      <div class="grid2">
-        <div class="q"><label for="cancelHrs">Cancellation notice (hours)</label><input type="number" min="0" id="cancelHrs" name="cancelHrs" value="24"></div>
-        <div class="q"><label for="pkgDays">Package sessions expire after (days)</label><input type="number" min="1" id="pkgDays" name="pkgDays" value="45"></div>
-        <div class="q"><label for="lateMin">Late arrival grace (minutes)</label><input type="number" min="0" id="lateMin" name="lateMin" value="15"></div>
-        <div class="q"><label for="cancelDays">Monthly plan cancellation notice (days)</label><input type="number" min="0" id="cancelDays" name="cancelDays" value="7"></div>
-      </div>
-    </details>
-  </div>
-
-  <div class="note" id="noPlan" hidden>Your coach will send you a personalized link with your plan after your consultation. You can finish your intake and waiver now.</div>
-  <div class="ticket" aria-live="polite" id="ticket">
-    <div class="ticket-head"><div class="svc" id="tSvc">Choose a service</div><div class="for" id="tFor"></div></div>
-    <dl id="tRows"></dl>
-    <div class="ticket-total"><span class="per" id="tPer">Investment</span><span class="amt" id="tAmt">—</span></div>
-    <div class="lock" id="tLock" hidden>Founding client rate, locked for as long as your membership stays continuous.</div>
-  </div>
-
-  <div class="doc" id="agreementDoc">
-    <p>This Client Service Agreement ("Agreement") is between <b>Reform Athletics LLC</b> ("Reform Athletics," "Coach") and <span class="fill" data-fill="name">the client</span> ("Client"), effective <span class="fill" data-fill="startDate">the start date below</span>.</p>
-
-    <h3>1. Services</h3>
-    <p>Reform Athletics will provide <span class="fill" data-fill="service">the selected service</span> as described in the plan summary above. <span data-fill="svcDesc"></span> All programming is custom-built for Client; no templates are used.</p>
-
-    <h3>2. Investment and payment</h3>
-    <p><span data-fill="payClause"></span> Payments are processed securely through Stripe. Services begin once payment is received.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="pay" aria-label="Initials for payment terms"> Client initials</div>
-
-    <h3>3. Scheduling, cancellations and late arrivals</h3>
-    <p>Sessions must be cancelled or rescheduled at least <span class="fill" data-fill="cancelHrs">24</span> hours in advance. Sessions cancelled with less notice, or missed without notice, are counted as completed and are not refunded or credited. If Client arrives late, the session still ends at its scheduled time; after <span class="fill" data-fill="lateMin">15</span> minutes without contact, the session is treated as a no-show. If Coach must cancel, the session will be rescheduled at no cost.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="cancel" aria-label="Initials for cancellation policy"> Client initials</div>
-
-    <p data-show="package"><b>Packages.</b> Package sessions must be used within <span class="fill" data-fill="pkgDays">45</span> days of the first session. Unused sessions expire and are non-refundable and non-transferable unless Coach agrees in writing.</p>
-    <p data-show="monthly"><b>Monthly plans.</b> Monthly plans renew automatically each month on the billing date. Client may cancel at any time with at least <span class="fill" data-fill="cancelDays">7</span> days' notice before the next billing date; service continues through the end of the paid month. Partial months are not refunded.</p>
-
-    <h3>4. Nutrition guidance</h3>
-    <p><span data-fill="nutritionClause"></span> Nutrition guidance from Reform Athletics is general wellness coaching. It is not medical nutrition therapy and is not a substitute for advice from a physician or registered dietitian. Client is responsible for disclosing all food allergies, intolerances and medical conditions, and for consulting a physician before making significant dietary or supplement changes.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="nutrition" aria-label="Initials for nutrition terms"> Client initials</div>
-
-    <h3>5. Client responsibilities</h3>
-    <p>Client agrees to provide complete and accurate health information, to update Coach promptly about any change in health, injury, medication or pregnancy status, and to stop exercising and tell Coach immediately if they feel pain, dizziness, shortness of breath or discomfort. For in-home sessions, Client agrees to provide a safe, clear training space, to secure pets during sessions, and confirms that any equipment Client owns is in safe working condition.</p>
-
-    <h3>6. Results</h3>
-    <p>Results depend on many factors, including consistency, nutrition, sleep, stress, genetics and health history. Reform Athletics does not guarantee any specific result, including weight loss or body composition change.</p>
-
-    <h3>7. Privacy</h3>
-    <p>Reform Athletics keeps Client's personal and health information confidential and uses it only to design and deliver Client's program. It will not be sold or shared without Client's permission, except where required by law or in an emergency.</p>
-
-    <h3>8. Ending this agreement</h3>
-    <p>Either party may end this Agreement with written notice (email or text). Payments for sessions already delivered, expired package sessions, and the current paid month are non-refundable. Coach may end services immediately if Client's health or conduct makes training unsafe, in which case unused prepaid package sessions will be refunded on a pro-rated basis.</p>
-
-    <p data-show="founding"><b>Founding client rate.</b> As a founding client, Client's rate for this service is locked at <span class="fill" data-fill="lockedRate"></span> for as long as Client's membership or package remains continuous. If Client's membership or package ends, Client may restart at this founding rate within 30 days of the end date. After 30 days, Reform Athletics' then-current rates apply.</p>
-
-    <h3>9. General</h3>
-    <p>This Agreement, together with the Liability Waiver and Release, is the entire agreement between the parties and may be changed only in writing. It is governed by the laws of the State of Tennessee. If any part is found unenforceable, the rest remains in effect. Both parties agree that electronic signatures on this Agreement are legally binding.</p>
-  </div>
-
-  <div class="sign">
-    <h2>Client signature</h2>
-    <div class="q"><label for="agrName" class="req">Full legal name</label><input type="text" id="agrName" name="agrName" autocomplete="name"></div>
-    <div class="pad" data-pad="clientAgreement"><canvas></canvas><span class="ph">Sign here</span></div>
-    <div class="pad-row"><span data-stamp="clientAgreement">Not signed</span><button type="button" class="linkbtn" data-clear="clientAgreement">Clear</button></div>
-  </div>
-  <div class="sign">
-    <h2>Coach signature</h2>
-    <p id="coachAuto" hidden style="margin:0;color:var(--muted)">Signed electronically by Priscilla Claude, CPT, CN, for Reform Athletics LLC when you submit.</p>
-    <div class="q" id="coachNameQ"><label for="coachName">Coach</label><input type="text" id="coachName" name="coachName" value="Priscilla Claude, CPT, CN, for Reform Athletics LLC"></div>
-    <div class="pad" data-pad="coach" id="coachPad"><canvas></canvas><span class="ph">Sign here</span></div>
-    <div class="pad-row" id="coachPadRow"><span data-stamp="coach">Not signed</span><button type="button" class="linkbtn" data-clear="coach">Clear</button></div>
   </div>
 </section>
-
-<!-- STEP 3: WAIVER -->
-<section data-step="2" hidden>
-  <h1>Liability Waiver and Release</h1>
-  <p class="lede">Please read carefully. This document affects your legal rights.</p>
-  <div class="doc" id="waiverDoc">
-    <p>I, <span class="fill" data-fill="name">the participant</span>, want to take part in fitness training, coaching, nutrition guidance and related activities ("Activities") provided by Reform Athletics LLC, its owner Priscilla Claude, and its trainers, contractors and agents (together, "Reform Athletics"). Activities may take place in a gym, in my home, outdoors, at an assisted-living or group facility, or online.</p>
-
-    <h3>1. Risks I understand and accept</h3>
-    <p>I understand that exercise involves inherent risks, including but not limited to muscle strains and sprains, joint, bone and back injuries, falls, injuries from equipment, heat illness, fainting, abnormal blood pressure or heart rhythm, heart attack, stroke, and in rare cases death. I understand that these risks exist even when Activities are properly supervised. I knowingly and voluntarily accept all of these risks.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="risk" aria-label="Initials for assumption of risk"> Initials</div>
-
-    <h3>2. My health</h3>
-    <p>I confirm that the health information I provided is complete and true. I have been advised to get clearance from my physician before beginning any exercise or nutrition program, and if I answered yes to any health screening question, I agree to obtain that clearance. I will tell my coach right away about any change in my health, and I will stop and speak up if I feel pain, dizziness, shortness of breath or any unusual symptom.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="health" aria-label="Initials for health statement"> Initials</div>
-
-    <h3>3. Release of liability</h3>
-    <p>To the fullest extent allowed by Tennessee law, I release and agree not to sue Reform Athletics for any injury, illness, loss or damage to me or my property that arises from my participation in Activities, including claims arising from the ordinary negligence of Reform Athletics. This release does not apply to gross negligence or intentional misconduct. I agree to indemnify Reform Athletics for claims brought by others that arise from my own actions. This release binds me, my heirs, my estate and anyone acting on my behalf.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="release" aria-label="Initials for release of liability"> Initials</div>
-
-    <h3>4. Training location and equipment</h3>
-    <p>For sessions in my home or another location I choose, I am responsible for providing a safe space and for the condition of any equipment I own. Reform Athletics is not responsible for damage to my property that occurs during normal training activity.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="location" aria-label="Initials for location and equipment"> Initials</div>
-
-    <h3>5. Nutrition and supplements</h3>
-    <p>I understand that nutrition and supplement guidance is general wellness coaching, not medical advice, diagnosis or treatment. I will consult my physician before changing my diet or taking supplements if I have a medical condition, take medication, or am pregnant or breastfeeding.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="nutritionW" aria-label="Initials for nutrition statement"> Initials</div>
-
-    <h3>6. Emergencies</h3>
-    <p>If I need emergency care, I authorize Reform Athletics to call emergency services and to contact my emergency contact, <span class="fill" data-fill="emergency">listed on my intake</span>. I am responsible for any resulting medical costs.</p>
-    <div class="ini"><input type="text" maxlength="4" data-ini="emergencyI" aria-label="Initials for emergency authorization"> Initials</div>
-
-    <h3>7. Photos and video</h3>
-    <p>Reform Athletics will never share my progress photos, measurements or likeness without my choice below.</p>
-    <div class="q"><div class="opts" role="radiogroup" aria-label="Media consent">
-      <label class="opt"><input type="radio" name="media" value="yes"><span>Yes, you may use photos or video of me for Reform Athletics marketing</span></label>
-      <label class="opt"><input type="radio" name="media" value="ask"><span>Ask me each time</span></label>
-      <label class="opt"><input type="radio" name="media" value="no"><span>No, keep everything private</span></label>
-    </div></div>
-
-    <h3>8. Agreement</h3>
-    <p>I have read this waiver, I understand it, and I am signing it voluntarily. I agree that my electronic signature is legally binding. This waiver is governed by the laws of the State of Tennessee and applies to all Activities, now and in the future, unless I revoke it in writing.</p>
-    <label class="check"><input type="checkbox" id="minor" name="minor"><span>The participant is under 18 (a parent or guardian must sign)</span></label>
-    <div class="q" id="guardianQ" hidden><label for="guardianName" class="req">Parent or guardian full name</label><input type="text" id="guardianName" name="guardianName"></div>
-  </div>
-  <div class="sign">
-    <h2 id="wSignTitle">Participant signature</h2>
-    <div class="q"><label for="waiverName" class="req">Full legal name</label><input type="text" id="waiverName" name="waiverName"></div>
-    <div class="pad" data-pad="clientWaiver"><canvas></canvas><span class="ph">Sign here</span></div>
-    <div class="pad-row"><span data-stamp="clientWaiver">Not signed</span><button type="button" class="linkbtn" data-clear="clientWaiver">Clear</button></div>
-  </div>
-</section>
-
-<!-- STEP 4: FINISH -->
-<section data-step="3" hidden>
-  <h1>All set</h1>
-  <p class="lede" id="finLede">Check that everything is complete, then save the record and download copies.</p>
-  <ul class="status" id="status"></ul>
-  <div class="actions">
-    <button type="button" class="btn" id="submitBtn" hidden>Submit to Reform Athletics</button>
-    <button type="button" class="btn" id="saveBtn">Save to client records</button>
-    <button type="button" class="btn ghost" id="dlSigned">Download signed agreement and waiver</button>
-    <button type="button" class="btn ghost" id="dlClaude">Download client file for programming</button>
-    <button type="button" class="btn ghost" id="copyClaude">Copy client file</button>
-  </div>
-  <div id="savedWrap" hidden>
-    <h2>Saved clients</h2>
-    <p class="hint" style="color:var(--muted);font-size:14px">Visible only to you.</p>
-    <ul class="saved" id="savedList"></ul>
-  </div>
-  <p style="margin-top:32px" id="resetWrap"><button type="button" class="linkbtn" id="resetBtn">Start a new client</button></p>
+<section class="center" style="padding:70px 0">
+  <div class="wrap"><img class="reveal" src="assets/logo-tagline.png" alt="Reform Athletics — Every Rep. Every Choice. Reformed." style="width:min(520px,86vw);margin:0 auto"></div>
 </section>
 </main>
-
-<div class="bar"><div class="bar-inner">
-  <button type="button" class="btn ghost" id="prevBtn">Back</button>
-  <button type="button" class="btn" id="nextBtn">Continue to agreement</button>
-</div></div>
-<div class="toast" id="toast" role="status"></div>
-
-<script>
-(function(){
-"use strict";
-const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
-const money=n=>isFinite(n)&&n!==null?("$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:Number(n)%1?2:0,maximumFractionDigits:2})):"—";
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-/* ---------------- INTAKE SCHEMA ---------------- */
-const YN=["No","Yes"];
-const INTAKE=[
- {title:"About you",fields:[
-  {t:"grid",fields:[
-   {t:"text",n:"fullName",l:"Full name",req:1,ac:"name"},
-   {t:"text",n:"preferredName",l:"What should I call you?"},
-   {t:"date",n:"dob",l:"Date of birth"},
-   {t:"tel",n:"phone",l:"Phone",req:1,ac:"tel"},
-  ]},
-  {t:"email",n:"email",l:"Email",req:1,ac:"email"},
-  {t:"textarea",n:"address",l:"Home address",sub:"Needed for in-home sessions",ac:"street-address"},
-  {t:"grid",fields:[
-   {t:"text",n:"emName",l:"Emergency contact name",req:1},
-   {t:"text",n:"emRel",l:"Relationship"},
-  ]},
-  {t:"tel",n:"emPhone",l:"Emergency contact phone",req:1},
-  {t:"radio",n:"contactPref",l:"Best way to reach you",o:["Text","Call","Email"]},
-  {t:"select",n:"referral",l:"How did you hear about Reform Athletics?",o:["Instagram","Facebook","TikTok","YouTube","Mailer or postcard","Friend or client referral","Google search","Other"]},
-  {t:"text",n:"mailerCode",l:"Code on your mailer",when:s=>s.referral==="Mailer or postcard"},
-  {t:"text",n:"referredBy",l:"Who referred you?",when:s=>s.referral==="Friend or client referral"},
- ]},
- {title:"Your goals",fields:[
-  {t:"chips",n:"goals",l:"What are you working toward?",sub:"Choose all that apply",o:["Lose body fat","Build muscle","Get stronger","More energy","Move without pain","Mobility and flexibility","Athletic performance","Postpartum return to training","Military or PT test prep","Build consistency","Improve health markers","Other"]},
-  {t:"textarea",n:"goalDetail",l:"In your own words, what do you want to change?",req:1},
-  {t:"textarea",n:"whyNow",l:"Why now?"},
-  {t:"textarea",n:"win90",l:"What would make the next 90 days a win?"},
-  {t:"text",n:"targetDate",l:"Any date you're working toward?",sub:"A wedding, PT test, trip, event"},
-  {t:"textarea",n:"obstacles",l:"What has gotten in the way before?"},
-  {t:"scale",n:"commitment",l:"How ready are you to commit right now?",sub:"1 = curious, 10 = all in"},
- ]},
- {title:"Training background",fields:[
-  {t:"radio",n:"experience",l:"Training experience",o:["New to training","Some experience","Consistent for 1+ years","Advanced or competitive"]},
-  {t:"select",n:"activeDays",l:"Days per week you exercise now",o:["0","1","2","3","4","5","6","7"]},
-  {t:"textarea",n:"currentActivity",l:"What does your current activity look like?"},
-  {t:"radio",n:"pastCoach",l:"Have you worked with a trainer or coach before?",o:YN},
-  {t:"textarea",n:"enjoy",l:"Exercise you enjoy"},
-  {t:"textarea",n:"dislike",l:"Exercise you dislike or want to avoid"},
-  {t:"chips",n:"trainWhere",l:"Where will you train?",o:["Gym","At home","In-home with my coach","Outdoors","While traveling"]},
-  {t:"text",n:"gymName",l:"Which gym?",when:s=>(s.trainWhere||[]).includes("Gym")},
-  {t:"chips",n:"equipment",l:"Equipment you have access to",o:["Dumbbells","Kettlebells","Resistance bands","Barbell and rack","Bench","Cable machine","Treadmill, bike or rower","Pull-up bar","Bodyweight only"]},
-  {t:"chips",n:"days",l:"Days you're available",o:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},
-  {t:"chips",n:"times",l:"Times that work",o:["Early morning","Morning","Midday","Afternoon","Evening"]},
-  {t:"radio",n:"sessionLen",l:"Preferred workout length",o:["30 min","45 min","60 min"]},
- ]},
- {title:"Health",hint:"This helps me keep you safe. If you answer yes to any question below, I may ask for clearance from your doctor before we start.",fields:[
-  {t:"yn",n:"parq1",l:"Has a doctor ever said you have a heart condition or high blood pressure?"},
-  {t:"yn",n:"parq2",l:"Do you feel pain in your chest at rest, during daily activities, or when you exercise?"},
-  {t:"yn",n:"parq3",l:"In the past 12 months, have you lost balance from dizziness or lost consciousness?"},
-  {t:"yn",n:"parq4",l:"Have you been diagnosed with another chronic medical condition?"},
-  {t:"yn",n:"parq5",l:"Do you currently take prescription medication for a chronic condition?"},
-  {t:"yn",n:"parq6",l:"Do you have a bone, joint or soft tissue problem that could get worse with exercise?"},
-  {t:"yn",n:"parq7",l:"Has a doctor said you should only do medically supervised exercise?"},
-  {t:"note",id:"parqNote",text:"Thank you for sharing. Your coach will talk with you about getting clearance from your doctor before training begins.",when:s=>[1,2,3,4,5,6,7].some(i=>s["parq"+i]==="Yes")},
-  {t:"textarea",n:"conditions",l:"Medical conditions",sub:"Including diabetes, asthma, thyroid, autoimmune, heart or blood pressure"},
-  {t:"textarea",n:"injuries",l:"Current or past injuries, pain, or surgeries"},
-  {t:"chips",n:"painAreas",l:"Any areas that bother you?",o:["Neck","Shoulders","Upper back","Lower back","Hips","Knees","Ankles or feet","Wrists or elbows","None"]},
-  {t:"textarea",n:"meds",l:"Medications and dosages"},
-  {t:"radio",n:"pregnancy",l:"Pregnancy",o:["Not applicable","Currently pregnant","Postpartum (within 12 months)"]},
-  {t:"text",n:"physician",l:"Doctor's name and phone",sub:"Optional"},
-  {t:"grid",fields:[
-   {t:"text",n:"height",l:"Height",sub:"Optional"},
-   {t:"text",n:"weight",l:"Current weight",sub:"Optional"},
-  ]},
- ]},
- {title:"Lifestyle",fields:[
-  {t:"text",n:"occupation",l:"Occupation"},
-  {t:"radio",n:"workActivity",l:"Your workday is mostly",o:["Seated","On my feet","Physically demanding"]},
-  {t:"grid",fields:[
-   {t:"select",n:"sleepHrs",l:"Sleep per night",o:["Under 5 hours","5–6 hours","6–7 hours","7–8 hours","8+ hours"]},
-   {t:"select",n:"steps",l:"Daily steps",o:["Under 4,000","4,000–7,000","7,000–10,000","10,000+","Not sure"]},
-  ]},
-  {t:"radio",n:"sleepQ",l:"Sleep quality",o:["Poor","Fair","Good","Great"]},
-  {t:"scale",n:"stress",l:"Stress level lately",sub:"1 = calm, 10 = maxed out"},
-  {t:"radio",n:"alcohol",l:"Alcohol per week",o:["None","1–3 drinks","4–7 drinks","8+ drinks"]},
-  {t:"radio",n:"tobacco",l:"Tobacco or nicotine use",o:YN},
-  {t:"textarea",n:"schedule",l:"Anything I should plan around?",sub:"Work schedule, shift work, kids, travel, deployments"},
- ]},
- {title:"Nutrition",id:"nutritionSec",fields:[
-  {t:"radio",n:"includeNutrition",l:"Will your plan include nutrition coaching?",o:["Yes","No","Not sure yet"],req:1},
-  {t:"group",when:s=>s.includeNutrition==="Yes"||s.includeNutrition==="Not sure yet",fields:[
-   {t:"chips",n:"eatingStyle",l:"How do you eat?",o:["No specific style","Vegetarian","Vegan","Pescatarian","Gluten-free","Dairy-free","Low-carb or keto","Halal","Kosher","Other"]},
-   {t:"textarea",n:"allergies",l:"Food allergies or intolerances",req:1,sub:"Write \u201cnone\u201d if none"},
-   {t:"select",n:"meals",l:"Meals per day",o:["1","2","3","4","5+"]},
-   {t:"textarea",n:"typicalDay",l:"Walk me through a typical day of eating"},
-   {t:"textarea",n:"foodsLove",l:"Foods you love"},
-   {t:"textarea",n:"foodsAvoid",l:"Foods you won't eat"},
-   {t:"radio",n:"cooking",l:"Cooking",o:["I love to cook","I can get by","Keep it simple","I don't cook"]},
-   {t:"radio",n:"mealPrep",l:"Open to meal prep?",o:["Yes","Sometimes","No"]},
-   {t:"grid",fields:[
-    {t:"select",n:"eatOut",l:"Eating out",o:["Rarely","1–2 times a week","3–5 times a week","Most meals"]},
-    {t:"select",n:"water",l:"Water per day",o:["Under 32 oz","32–64 oz","64–100 oz","100+ oz"]},
-   ]},
-   {t:"text",n:"caffeine",l:"Caffeine",sub:"What and how much"},
-   {t:"textarea",n:"supplements",l:"Supplements you take now"},
-   {t:"textarea",n:"pastDiets",l:"Diets or programs you've tried",sub:"What worked and what didn't"},
-   {t:"radio",n:"tracking",l:"Food tracking",o:["Never tried","Tried it","Track now"]},
-   {t:"textarea",n:"digestion",l:"Any digestion issues?",sub:"Bloating, reflux, irregularity"},
-   {t:"text",n:"household",l:"Who else are you cooking for?"},
-   {t:"textarea",n:"foodRelationship",l:"Anything about your relationship with food you'd like me to know?",sub:"Optional"},
-  ]},
- ]},
- {title:"How you like to be coached",fields:[
-  {t:"radio",n:"accountability",l:"Accountability style",o:["Gentle nudges","Steady check-ins","Hold me to it"]},
-  {t:"radio",n:"feedback",l:"Feedback style",o:["Straight to the point","Encouraging","A mix"]},
-  {t:"chips",n:"motivators",l:"What keeps you going?",o:["Seeing numbers improve","How I feel","Progress photos","Performance","Someone checking in"]},
-  {t:"textarea",n:"anythingElse",l:"Anything else I should know?"},
- ]},
-];
-
-/* ---------------- SERVICES ---------------- */
-const SVC=[
- {g:"Online coaching",items:[
-  {id:"on_basic",l:"Online Coaching: Basic",price:179,unit:"month",nut:"none",desc:"Custom online programming with new programming about every 4 weeks.",checkins:""},
-  {id:"on_std",l:"Online Coaching: Standard",price:249,unit:"month",nut:"general",desc:"Custom online programming with new programming about every 4 weeks, general nutrition guidance, and 2 check-ins per month.",checkins:"2 per month"},
-  {id:"on_prem",l:"Online Coaching: Premium",price:349,unit:"month",nut:"custom",desc:"Custom online programming with new programming about every 4 weeks, a fully custom meal and supplement plan, and weekly check-ins.",checkins:"Weekly"},
- ]},
- {g:"Hybrid coaching",items:[
-  {id:"hy_std",l:"Hybrid: Standard + in-person",price:249,unit:"month",nut:"general",hybrid:1,desc:"Standard online coaching plus a set number of in-person sessions each month at the bundled hybrid rate.",checkins:"2 per month"},
-  {id:"hy_prem",l:"Hybrid: Premium + in-person",price:349,unit:"month",nut:"custom",hybrid:1,desc:"Premium online coaching plus a set number of in-person sessions each month at the bundled hybrid rate.",checkins:"Weekly"},
- ]},
- {g:"Concierge (in-home) training",items:[
-  {id:"cc_single",l:"Concierge: Single session",price:175,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private training session at Client's home."},
-  {id:"cc_8",l:"Concierge: 8-session package",price:1280,unit:"package",sessions:8,nut:"general",inhome:1,pkg:1,meal:1,desc:"Eight 60-minute private in-home sessions, typically 2 per week over 4 weeks, with general nutrition guidance."},
-  {id:"cc_12",l:"Concierge: 12-session package",price:1800,unit:"package",sessions:12,nut:"general",inhome:1,pkg:1,meal:1,desc:"Twelve 60-minute private in-home sessions, typically 3 per week over 4 weeks, with general nutrition guidance."},
-  {id:"cc_partner",l:"Partner session",price:225,unit:"session",qty:1,nut:"none",inhome:1,desc:"60-minute private session for two people."},
- ]},
- {g:"In-gym and group",items:[
-  {id:"gym_1",l:"In-gym 1:1 personal training",price:150,unit:"session",qty:1,nut:"none",desc:"60-minute private personal training session at the gym."},
-  {id:"group",l:"Group fitness",price:25,unit:"session",qty:1,nut:"none",desc:"Group fitness class, priced per person per session."},
-  {id:"pgroup",l:"Private group experience",price:350,unit:"event",nut:"none",inhome:1,desc:"Private 60-minute group session for up to 6 people. Larger events are quoted separately."},
- ]},
- {g:"Assisted living",items:[
-  {id:"al_single",l:"Assisted living: Single session",price:null,unit:"session",qty:1,nut:"none",desc:"Private training session at Client's assisted-living community."},
-  {id:"al_month",l:"Assisted living: Monthly (1x/week)",price:null,unit:"month",nut:"none",desc:"One private training session per week at Client's assisted-living community, billed monthly."},
- ]},
-];
-const HYRATE={hy_std:{gym:120,home:140},hy_prem:{gym:120,home:140}};
-const SVCMAP={};SVC.forEach(g=>g.items.forEach(i=>SVCMAP[i.id]=i));
-const NUT={none:"This service does not include nutrition coaching.",general:"This service includes general nutrition guidance.",custom:"This service includes a fully custom meal and supplement plan."};
-
-/* ---------------- MODE ---------------- */
-// Where the client-facing copy of this page lives, and the n8n webhook that receives submissions.
-const CONFIG={
-  clientBase:"https://reformathletics.net/onboarding/",
-  webhook:"https://n8n.crm.reformathletics.net/webhook/client-onboarding",
-  coachKey:"ws6gx2bGOoWODj1B"   // opens the plan builder on the live site: /onboarding/?coach=KEY
-};
-const PARAMS=new URLSearchParams(location.search);
-const COACH=PARAMS.get("coach")===CONFIG.coachKey;
-const CLIENT=!COACH&&(PARAMS.has("p")||PARAMS.has("intake")||/(^|\.)reformathletics\.net$/.test(location.hostname));
-const b64e=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
-const b64d=t=>JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/")))));
-let PLAN=null; try{ if(PARAMS.get("p")) PLAN=b64d(PARAMS.get("p")); }catch{}
-const AO=!!(CLIENT&&PLAN&&PLAN.ao);   // agreement-only link: intake + waiver already on file
-const PLAN_KEYS=["service","price","qty","people","hyType","hyCount","hyBase","checkins","startDate","travelFee","addMeal","mealPrice","founding","cancelHrs","pkgDays","lateMin","cancelDays"];
-
-/* ---------------- STATE ---------------- */
-let S={};            // all field values
-let SIG={};          // signature data URLs
-let STAMP={};        // signature timestamps
-let step=0;
-
-/* ---------------- RENDER INTAKE ---------------- */
-function fieldHTML(f){
-  if(f.t==="grid") return `<div class="grid2">${f.fields.map(fieldHTML).join("")}</div>`;
-  if(f.t==="group") return `<div data-when="${GROUPS.push(f)-1}">${f.fields.map(fieldHTML).join("")}</div>`;
-  if(f.t==="note") return `<div class="note" data-when="${GROUPS.push(f)-1}">${esc(f.text)}</div>`;
-  const id="f_"+f.n, req=f.req?" req":"", sub=f.sub?`<span class="sub">${esc(f.sub)}</span>`:"";
-  const w=f.when?` data-when="${GROUPS.push(f)-1}"`:"";
-  let inner="";
-  switch(f.t){
-   case"text":case"email":case"tel":case"date":
-    inner=`<label for="${id}" class="${req}">${esc(f.l)}${sub}</label><input type="${f.t}" id="${id}" name="${f.n}"${f.ac?` autocomplete="${f.ac}"`:""}>`;break;
-   case"textarea":
-    inner=`<label for="${id}" class="${req}">${esc(f.l)}${sub}</label><textarea id="${id}" name="${f.n}"${f.ac?` autocomplete="${f.ac}"`:""}></textarea>`;break;
-   case"select":
-    inner=`<label for="${id}" class="${req}">${esc(f.l)}${sub}</label><select id="${id}" name="${f.n}"><option value="">Select</option>${f.o.map(o=>`<option>${esc(o)}</option>`).join("")}</select>`;break;
-   case"radio":case"chips":{
-    const type=f.t==="radio"?"radio":"checkbox";
-    inner=`<span class="lab${req}" id="${id}">${esc(f.l)}${sub}</span><div class="opts" role="${type==="radio"?"radiogroup":"group"}" aria-labelledby="${id}">${f.o.map(o=>`<label class="opt"><input type="${type}" name="${f.n}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("")}</div>`;break;}
-   case"scale":
-    inner=`<label for="${id}">${esc(f.l)}${sub}</label><div class="scale"><input type="range" min="1" max="10" step="1" id="${id}" name="${f.n}" value="5"><output for="${id}">5</output></div>`;break;
-   case"yn":
-    return `<div class="yn"${w}><p>${esc(f.l)}</p><div class="opts" role="radiogroup" aria-label="${esc(f.l)}">${YN.map(o=>`<label class="opt"><input type="radio" name="${f.n}" value="${o}"><span>${o}</span></label>`).join("")}</div></div>`;
-  }
-  return `<div class="q"${w}>${inner}</div>`;
-}
-const GROUPS=[];
-$("#intake").innerHTML=INTAKE.map(sec=>`<div class="sec"${sec.id?` id="${sec.id}"`:""}><h2>${esc(sec.title)}</h2>${sec.hint?`<p class="hint">${esc(sec.hint)}</p>`:'<p class="hint"></p>'}${sec.fields.map(fieldHTML).join("")}</div>`).join("");
-
-/* service select */
-$("#service").innerHTML=`<option value="">Select a service</option>`+SVC.map(g=>`<optgroup label="${esc(g.g)}">${g.items.map(i=>`<option value="${i.id}">${esc(i.l)}</option>`).join("")}</optgroup>`).join("");
-
-function svcFieldsHTML(sv){
-  if(!sv) return "";
-  let h=`<div class="grid2">`;
-  h+=`<div class="q"><label for="price">${sv.hybrid?"Online plan rate (per month)":"Rate per "+sv.unit}</label><div class="money"><input type="number" min="0" step="1" id="price" name="price"></div></div>`;
-  if(sv.qty) h+=`<div class="q"><label for="qty">Number of ${sv.id==="group"?"sessions":"sessions"}</label><input type="number" min="1" step="1" id="qty" name="qty" value="1"></div>`;
-  if(sv.id==="group") h+=`<div class="q"><label for="people">People</label><input type="number" min="1" step="1" id="people" name="people" value="1"></div>`;
-  h+=`</div>`;
-  if(sv.hybrid){
-    h+=`<div class="grid2">
-      <div class="q"><label for="hyType">In-person session type</label><select id="hyType" name="hyType"><option value="gym">In-gym</option><option value="home">Concierge (in-home)</option></select></div>
-      <div class="q"><label for="hyCount">In-person sessions per month</label><input type="number" min="1" max="20" step="1" id="hyCount" name="hyCount" value="4"><span class="sub">Up to 20</span></div>
-      <div class="q"><label for="hyBase">Hybrid rate per session</label><div class="money"><input type="number" min="0" step="1" id="hyBase" name="hyBase"></div><span class="sub" id="hyNote"></span></div>
-    </div>`;
-  }
-  if(sv.checkins!==undefined) h+=`<div class="q"><label for="checkins">Check-ins</label><input type="text" id="checkins" name="checkins" placeholder="e.g. Monthly"></div>`;
-  return h;
-}
-
-/* ---------------- STATE SYNC ---------------- */
-function readField(el){
-  const n=el.name; if(!n) return;
-  if(el.type==="checkbox"){
-    const group=$$(`input[type=checkbox][name="${n}"]`);
-    if(group.length>1) S[n]=group.filter(x=>x.checked).map(x=>x.value);
-    else S[n]=el.checked;
-  } else if(el.type==="radio"){ if(el.checked) S[n]=el.value; }
-  else S[n]=el.value;
-}
-function writeFields(){
-  $$("#form input[name], #form select[name], #form textarea[name]").forEach(el=>{
-    const v=S[el.name];
-    if(el.type==="checkbox"){
-      const group=$$(`input[type=checkbox][name="${el.name}"]`);
-      el.checked=group.length>1?(Array.isArray(v)&&v.includes(el.value)):!!v;
-    } else if(el.type==="radio") el.checked=(v===el.value);
-    else if(v!==undefined) el.value=v;
-    if(el.type==="range"){ const o=el.parentElement.querySelector("output"); if(o) o.textContent=el.value; }
-  });
-}
-function captureAll(){ $$("#form input[name], #form select[name], #form textarea[name]").forEach(el=>{ if(el.type==="radio"&&!el.checked) return; readField(el); }); }
-
-/* ---------------- CONDITIONALS + LIVE FILLS ---------------- */
-function applyWhen(){
-  $$("[data-when]").forEach(el=>{ const f=GROUPS[+el.dataset.when]; el.hidden=!f.when(S); });
-}
-function calc(){
-  const sv=SVCMAP[S.service]; if(!sv) return null;
-  const price=S.price===""||S.price==null?null:Number(S.price);
-  const r={sv,rows:[],total:null,per:"",recurring:sv.unit==="month",lockedRate:""};
-  const travel=Number(S.travelFee)||0;
-  if(sv.hybrid){
-    const n=Math.min(20,Math.max(1,parseInt(S.hyCount)||0));
-    const disc=S.hyBase===""||S.hyBase==null?null:Number(S.hyBase);
-    r.rows.push(["Online plan",price!=null?money(price)+" / month":"—"]);
-    r.rows.push(["In-person sessions",disc!=null?`${n} × ${money(disc)} (${S.hyType==="home"?"in-home":"in-gym"} hybrid rate)`:`${n} (rate to be set)`]);
-    if(S.hyType==="home"&&travel) r.rows.push(["Travel fee",`${n} × ${money(travel)}`]);
-    r.total=price!=null&&disc!=null?price+n*disc+(S.hyType==="home"?n*travel:0):null;
-    r.per="Per month"; r.lockedRate=r.total!=null?money(r.total)+" per month":"";
-  } else if(sv.qty){
-    const q=Math.max(1,parseInt(S.qty)||1), ppl=sv.id==="group"?Math.max(1,parseInt(S.people)||1):1;
-    r.rows.push(["Rate",price!=null?money(price)+(sv.id==="group"?" per person per session":" per session"):"To be set"]);
-    r.rows.push(["Sessions",String(q)+(ppl>1?` × ${ppl} people`:"")]);
-    if(sv.inhome&&travel) r.rows.push(["Travel fee",`${q} × ${money(travel)}`]);
-    r.total=price!=null?price*q*ppl+(sv.inhome?travel*q:0):null;
-    r.per="Total due"; r.lockedRate=price!=null?money(price)+" per session":"";
-  } else {
-    if(sv.sessions){ r.rows.push(["Sessions",`${sv.sessions} × 60 minutes`]); if(price!=null) r.rows.push(["Works out to",money(Math.round(price/sv.sessions*100)/100)+" per session"]); }
-    if(sv.inhome&&travel) r.rows.push(["Travel fee",sv.sessions?`${sv.sessions} × ${money(travel)}`:money(travel)]);
-    const tv=sv.inhome?travel*(sv.sessions||1):0;
-    r.total=price!=null?price+tv:null;
-    r.per=sv.unit==="month"?"Per month":"Total due";
-    r.lockedRate=price!=null?money(price)+(sv.unit==="month"?" per month":" per "+sv.unit):"";
-  }
-  if(S.checkins) r.rows.push(["Check-ins",S.checkins]);
-  r.rows.push(["Nutrition",sv.nut==="none"&&!S.addMeal?"Not included":sv.nut==="custom"?"Custom meal and supplement plan":S.addMeal?"Custom meal and supplement plan (add-on)":"General guidance"]);
-  if(sv.meal&&S.addMeal){ const mp=Number(S.mealPrice)||0; r.rows.push(["Meal and supplement plan",mp?money(mp):"Price to be set"]); if(r.total!=null) r.total+=mp; }
-  if(S.startDate) r.rows.push(["Start date",fmtDate(S.startDate)]);
-  return r;
-}
-function fmtDate(d){ if(!d) return ""; const [y,m,dd]=d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}); }
-
-function payClause(r){
-  if(!r) return "Fees are as shown in the plan summary.";
-  const sv=r.sv, t=r.total!=null?money(r.total):"the amount shown above";
-  if(r.recurring) return `Client agrees to pay ${t} per month, billed automatically each month beginning on the start date.`;
-  if(sv.pkg) return `Client agrees to pay ${t} in full before the first session.`;
-  if(sv.unit==="event") return `Client agrees to pay ${t}, due in full before the event. Groups larger than 6 people are quoted separately.`;
-  return `Client agrees to pay ${t}, due before each session or package of sessions is scheduled.`;
-}
-function nutritionClause(r){
-  if(!r) return "";
-  let s=NUT[r.sv.nut];
-  if(r.sv.meal&&S.addMeal) s="This service includes general nutrition guidance plus a custom meal and supplement plan as an add-on.";
-  return s;
-}
-
-function render(){
-  // header
-  const nm=(S.fullName||"").trim();
-  $("#who").innerHTML=nm?(CLIENT?`Welcome, <b>${esc((S.preferredName||nm).split(" ")[0])}</b>`:`Onboarding <b>${esc(nm)}</b>`):(CLIENT?"Client onboarding":"New client");
-  // nutrition sync
-  applyWhen();
-  $("#guardianQ").hidden=!S.minor;
-  $("#wSignTitle").textContent=S.minor?"Parent or guardian signature":"Participant signature";
-  $("#mealPriceQ").hidden=!S.addMeal;
-  // plan
-  const r=calc(), sv=r&&r.sv;
-  $("#addonWrap").hidden=!(sv&&sv.meal);
-  $("#travelQ").hidden=!(sv&&(sv.inhome||(sv.hybrid&&S.hyType==="home")));
-  $("#tSvc").textContent=sv?sv.l:"Choose a service";
-  $("#tFor").textContent=nm?"Prepared for "+nm:"";
-  $("#tRows").innerHTML=r?r.rows.map(([a,b])=>`<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join(""):"";
-  $("#tAmt").textContent=r&&r.total!=null?money(r.total):"—";
-  $("#tPer").textContent=r?r.per:"Investment";
-  $("#tLock").hidden=!S.founding;
-  const hn=$("#hyNote"); if(sv&&sv.hybrid&&hn){ hn.textContent=""; }
-  // fills
-  const em=[S.emName,S.emRel&&`(${S.emRel})`,S.emPhone].filter(Boolean).join(" ");
-  const F={
-    name:nm||null, startDate:S.startDate?fmtDate(S.startDate):null, service:sv?sv.l:null,
-    svcDesc:sv?sv.desc:"", payClause:payClause(r), nutritionClause:nutritionClause(r),
-    cancelHrs:S.cancelHrs||"24", lateMin:S.lateMin||"15", pkgDays:S.pkgDays||"45", cancelDays:S.cancelDays||"7",
-    emergency:em||null, lockedRate:r?r.lockedRate:""
-  };
-  $$("[data-fill]").forEach(el=>{ const v=F[el.dataset.fill]; if(v!=null&&v!=="") el.textContent=v; else if(el.dataset.orig!==undefined) el.textContent=el.dataset.orig; });
-  $$("[data-show]").forEach(el=>{
-    const k=el.dataset.show;
-    el.hidden=!(k==="package"?sv&&sv.pkg:k==="monthly"?r&&r.recurring:k==="founding"?S.founding&&sv:false);
-  });
-  $$("[data-ini]").forEach(i=>i.classList.toggle("ok",i.value.trim().length>=2));
-  updateSteps();
-}
-$$("[data-fill]").forEach(el=>el.dataset.orig=el.textContent);
-
-/* ---------------- EVENTS ---------------- */
-document.addEventListener("input",e=>{
-  const el=e.target;
-  if(el.dataset&&el.dataset.ini!==undefined){ S["ini_"+el.dataset.ini]=el.value.toUpperCase(); el.value=el.value.toUpperCase(); render(); persist(); return; }
-  if(!el.name) return;
-  readField(el);
-  if(el.type==="range"){ const o=el.parentElement.querySelector("output"); if(o) o.textContent=el.value; }
-  if(el.name==="fullName"){ if(!S._agrTouched){ S.agrName=el.value; $("#agrName").value=el.value; } if(!S._wTouched){ S.waiverName=el.value; $("#waiverName").value=el.value; } }
-  if(el.name==="agrName") S._agrTouched=true;
-  if(el.name==="waiverName") S._wTouched=true;
-  if(el.name==="hyType"){ const hr=HYRATE[S.service]||{}; S.hyBase=hr[el.value]??""; $("#hyBase").value=S.hyBase; }
-  render(); persist();
-});
-document.addEventListener("change",e=>{ if(e.target.name){ readField(e.target); render(); persist(); }});
-
-$("#service").addEventListener("change",()=>{
-  const sv=SVCMAP[S.service];
-  $("#svcFields").innerHTML=svcFieldsHTML(sv);
-  if(sv){
-    S.price=sv.price??""; S.qty=sv.qty?1:undefined; S.people=1;
-    if(sv.hybrid){ S.hyType="gym"; S.hyCount=4; S.hyBase=HYRATE[sv.id].gym; }
-    if(sv.checkins!==undefined) S.checkins=sv.checkins;
-    if(!sv.meal) S.addMeal=false;
-    // nutrition auto-sync to intake
-    S.includeNutrition=sv.nut!=="none"?"Yes":"No";
-    writeFields();
-  }
-  render(); persist();
-});
-$("#addMeal").addEventListener("change",()=>{ if(S.addMeal) { S.includeNutrition="Yes"; writeFields(); } render(); });
-
-/* ---------------- SIGNATURE PADS ---------------- */
-const PADS={};
-$$("[data-pad]").forEach(wrap=>{
-  const key=wrap.dataset.pad, c=wrap.querySelector("canvas"), ctx=c.getContext("2d");
-  let drawing=false, last=null, dirty=false;
-  function size(){
-    const r=c.getBoundingClientRect(); if(!r.width) return;
-    const keep=SIG[key];
-    c.width=r.width*devicePixelRatio; c.height=r.height*devicePixelRatio;
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    ctx.lineWidth=2.2; ctx.lineCap="round"; ctx.lineJoin="round";
-    if(keep) drawImg(keep);
-  }
-  function drawImg(src){ const im=new Image(); im.onload=()=>{ const r=c.getBoundingClientRect(); ctx.clearRect(0,0,r.width,r.height); ctx.drawImage(im,0,0,r.width,r.height); }; im.src=src; wrap.querySelector(".ph").hidden=true; }
-  function pos(e){ const r=c.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; }
-  c.addEventListener("pointerdown",e=>{ e.preventDefault(); c.setPointerCapture(e.pointerId); drawing=true; last=pos(e); ctx.strokeStyle="#1a1a1c"; ctx.beginPath(); ctx.arc(last.x,last.y,1.1,0,Math.PI*2); ctx.fillStyle="#1a1a1c"; ctx.fill(); wrap.querySelector(".ph").hidden=true; });
-  c.addEventListener("pointermove",e=>{ if(!drawing) return; const p=pos(e); ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke(); last=p; dirty=true; });
-  const end=()=>{ if(!drawing) return; drawing=false; save(); };
-  c.addEventListener("pointerup",end); c.addEventListener("pointercancel",end); c.addEventListener("pointerleave",end);
-  function save(){
-    // export onto a white background at modest size for storage and printing
-    const r=c.getBoundingClientRect(), w=480, h=Math.round(480*r.height/r.width);
-    const o=document.createElement("canvas"); o.width=w; o.height=h; const ox=o.getContext("2d");
-    ox.drawImage(c,0,0,w,h);
-    SIG[key]=o.toDataURL("image/png"); STAMP[key]=new Date().toISOString();
-    $(`[data-stamp="${key}"]`).textContent="Signed "+new Date(STAMP[key]).toLocaleString("en-US",{dateStyle:"medium",timeStyle:"short"});
-    updateSteps(); persist();
-  }
-  PADS[key]={size,clear(){ const r=c.getBoundingClientRect(); ctx.clearRect(0,0,r.width,r.height); delete SIG[key]; delete STAMP[key]; wrap.querySelector(".ph").hidden=false; $(`[data-stamp="${key}"]`).textContent="Not signed"; updateSteps(); persist(); },
-    load(){ if(SIG[key]){ drawImg(SIG[key]); $(`[data-stamp="${key}"]`).textContent=STAMP[key]?"Signed "+new Date(STAMP[key]).toLocaleString("en-US",{dateStyle:"medium",timeStyle:"short"}):"Signed"; } else this.clear(); }};
-  new ResizeObserver(size).observe(c);
-});
-$$("[data-clear]").forEach(b=>b.addEventListener("click",()=>PADS[b.dataset.clear].clear()));
-
-/* ---------------- STEPS + VALIDATION ---------------- */
-function missingIntake(){
-  const m=[]; const need=(k,l)=>{ if(!S[k]||!String(S[k]).trim()) m.push(l); };
-  need("fullName","Full name"); need("phone","Phone"); need("email","Email"); need("emName","Emergency contact"); need("emPhone","Emergency contact phone"); need("goalDetail","Goals");
-  for(let i=1;i<=7;i++) if(!S["parq"+i]){ m.push("Health screening questions"); break; }
-  need("includeNutrition","Nutrition choice");
-  if(S.includeNutrition==="Yes"||S.includeNutrition==="Not sure yet") need("allergies","Food allergies");
-  return m;
-}
-const AGR_INI=["pay","cancel","nutrition"], W_INI=["risk","health","release","location","nutritionW","emergencyI"];
-function missingAgreement(){
-  const m=[]; if(!S.service) m.push("Service"); if(!S.startDate) m.push("Start date");
-  if(AGR_INI.some(k=>!(S["ini_"+k]||"").trim())) m.push("All initials");
-  if(!(S.agrName||"").trim()) m.push("Client name"); if(!SIG.clientAgreement) m.push("Client signature"); if(!CLIENT&&!SIG.coach) m.push("Coach signature");
-  return m;
-}
-function missingWaiver(){
-  const m=[]; if(W_INI.some(k=>!(S["ini_"+k]||"").trim())) m.push("All initials");
-  if(!S.media) m.push("Photo and video choice");
-  if(S.minor&&!(S.guardianName||"").trim()) m.push("Guardian name");
-  if(!(S.waiverName||"").trim()) m.push("Name"); if(!SIG.clientWaiver) m.push("Signature");
-  return m;
-}
-const NEXT=["Continue to agreement","Continue to waiver","Finish","Done"];
-function updateSteps(){
-  const done=[!missingIntake().length,!missingAgreement().length,!missingWaiver().length];
-  $$(".steps button").forEach((b,i)=>{ b.classList.toggle("done",!!done[i]); b.toggleAttribute("aria-current",i===step); if(i===step) b.setAttribute("aria-current","step"); });
-  $("#prevBtn").style.visibility=(step===0||(AO&&step===1))?"hidden":"visible";
-  $("#nextBtn").textContent=AO&&step===1?"Finish":NEXT[step]; $("#nextBtn").hidden=step===3;
-  if(step===3) renderStatus();
-}
-function go(i){
-  step=i; $$("section[data-step]").forEach(s=>s.hidden=+s.dataset.step!==i);
-  window.scrollTo({top:0}); updateSteps(); Object.values(PADS).forEach(p=>p.size());
-  if(i===3) loadSaved();
-}
-$$(".steps button").forEach(b=>b.addEventListener("click",()=>go(+b.dataset.go)));
-$("#prevBtn").addEventListener("click",()=>go(AO?1:Math.max(0,step-1)));
-$("#nextBtn").addEventListener("click",()=>{
-  const miss=step===0?missingIntake():step===1?missingAgreement():step===2?missingWaiver():[];
-  if(miss.length) toast("Still needed: "+miss.join(", "));
-  go(AO&&step===1?3:Math.min(3,step+1));
-});
-function renderStatus(){
-  const rows=[["Intake",missingIntake()],["Service agreement",missingAgreement()],["Liability waiver",missingWaiver()]].filter(r=>!(CLIENT&&!PLAN&&r[0]==="Service agreement")&&!(AO&&r[0]!=="Service agreement"));
-  $("#status").innerHTML=rows.map(([l,m])=>`<li><span>${l}${m.length?`<br><small style="color:var(--muted)">Needs: ${esc(m.join(", "))}</small>`:""}</span><span class="${m.length?"s-no":"s-ok"}">${m.length?"Incomplete":"Complete"}</span></li>`).join("");
-}
-
-/* ---------------- EXPORTS ---------------- */
-function val(v){ return Array.isArray(v)?v.join(", "):(v===true?"Yes":v===false?"No":v); }
-function intakeMarkdown(){
-  let md="";
-  const walk=(fields)=>fields.forEach(f=>{
-    if(f.t==="grid"||f.t==="group"){ if(f.when&&!f.when(S)) return; walk(f.fields); return; }
-    if(f.t==="note"||(f.when&&!f.when(S))) return;
-    const v=val(S[f.n]); if(v===undefined||v===""||(Array.isArray(S[f.n])&&!S[f.n].length)) return;
-    md+=`- **${f.l}:** ${String(v).replace(/\n+/g," / ")}\n`;
-  });
-  INTAKE.forEach(sec=>{ const before=md.length; md+=`\n### ${sec.title}\n`; const h=md.length; walk(sec.fields); if(md.length===h) md=md.slice(0,before); });
-  return md;
-}
-function planMarkdown(){
-  const r=calc(); if(!r) return "_No service selected._\n";
-  let md=`- **Service:** ${r.sv.l}\n- **Description:** ${r.sv.desc}\n`;
-  r.rows.forEach(([a,b])=>md+=`- **${a}:** ${b}\n`);
-  md+=`- **${r.per}:** ${r.total!=null?money(r.total):"TBD"}\n`;
-  if(S.founding) md+=`- **Founding client:** rate locked while membership is continuous, 30-day grace to restart (${r.lockedRate})\n`;
-  return md;
-}
-function clientFile(){
-  const nm=S.fullName||"Client";
-  return `# Client file: ${nm}\n\nReform Athletics onboarding, completed ${new Date().toLocaleDateString("en-US",{dateStyle:"long"})}.\n\n## Plan purchased\n${planMarkdown()}\n## Nutrition\n- **Nutrition coaching in plan:** ${S.includeNutrition||"Not answered"}\n\n## Intake${intakeMarkdown()}\n\n## Consents\n- **Photo/video:** ${({yes:"Yes, may use for marketing",ask:"Ask each time",no:"No, keep private"})[S.media]||"Not answered"}\n- **Agreement signed:** ${STAMP.clientAgreement?new Date(STAMP.clientAgreement).toLocaleString():"No"}\n- **Waiver signed:** ${STAMP.clientWaiver?new Date(STAMP.clientWaiver).toLocaleString():"No"}\n`;
-}
-function docClone(id){
-  const n=$(id).cloneNode(true);
-  n.querySelectorAll("[hidden]").forEach(x=>x.remove());
-  n.querySelectorAll(".ini").forEach(x=>{ const i=x.querySelector("input"); x.innerHTML=`Initials: <b>${esc(S["ini_"+i.dataset.ini]||"____")}</b>`; });
-  n.querySelectorAll(".q").forEach(x=>x.remove());
-  n.querySelectorAll("label.check").forEach(x=>x.remove());
-  return n.innerHTML;
-}
-function sigBlock(key,label,name){
-  if(key==="coach"&&!SIG.coach&&CLIENT) return `<div class="sigb"><div class="l">${esc(label)}</div><p style="font:italic 22px Georgia,serif;margin:28px 0 20px">/s/ Priscilla Claude</p><div>${esc(name||"")}</div><div class="l">Signed electronically ${STAMP.clientAgreement?new Date(STAMP.clientAgreement).toLocaleString("en-US",{dateStyle:"long",timeStyle:"short"}):""}</div></div>`;
-  return `<div class="sigb"><div class="l">${esc(label)}</div>${SIG[key]?`<img src="${SIG[key]}" alt="Signature">`:"<p><i>Not signed</i></p>"}<div>${esc(name||"")}</div><div class="l">${STAMP[key]?new Date(STAMP[key]).toLocaleString("en-US",{dateStyle:"long",timeStyle:"short"}):""}</div></div>`;
-}
-function signedHTML(){
-  const r=calc(), nm=esc(S.fullName||"Client");
-  const media=({yes:"Yes, photos or video may be used for Reform Athletics marketing",ask:"Ask each time",no:"No, keep everything private"})[S.media]||"Not answered";
-  const plan=r?`<table>${r.rows.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join("")}<tr><th>${esc(r.per)}</th><th>${r.total!=null?money(r.total):"TBD"}</th></tr></table>`:"";
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Reform Athletics: ${nm}</title>
-<style>body{font:15px/1.6 Georgia,serif;color:#1a1a1c;max-width:720px;margin:40px auto;padding:0 20px}h1{font-weight:400;letter-spacing:.06em;margin-bottom:0}h2{font-weight:400;border-top:2px solid #9c7463;padding-top:16px;margin-top:40px}h3{font-size:16px;margin:20px 0 4px}.sub{color:#66605c;margin-top:4px}.fill{font-weight:700}table{width:100%;border-collapse:collapse;margin:12px 0 20px}td,th{text-align:left;padding:6px 0;border-bottom:1px solid #ddd5cf}td:last-child,th:last-child{text-align:right}.sigs{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px}.sigb{flex:1;min-width:240px;border-top:1px solid #1a1a1c;padding-top:8px}.sigb img{max-width:100%;height:90px;object-fit:contain;display:block}.l{color:#66605c;font-size:13px}@media print{h2{break-before:page}}</style></head><body>
-<h1>REFORM ATHLETICS</h1><p class="sub">Reform Athletics LLC · 6688 Nolensville Rd, Ste 108 #2214, Brentwood, TN 37027 · priscilla@reformathletics.net</p>
-${CLIENT&&!PLAN?"":`<h2>Client Service Agreement</h2>`}${CLIENT&&!PLAN?"":""}${r?`<p><b>${esc(r.sv.l)}</b>${S.founding?" (founding client rate)":""}</p>`:""}${CLIENT&&!PLAN?"":plan+docClone("#agreementDoc")+`<div class="sigs">${sigBlock("clientAgreement","Client",S.agrName)}${sigBlock("coach","Coach",S.coachName)}</div>`}
-${AO?"":`<h2>Liability Waiver and Release</h2>${docClone("#waiverDoc")}<p><b>Photo and video consent:</b> ${esc(media)}</p>
-${S.minor?`<p><b>Participant is a minor.</b> Signed by parent or guardian: ${esc(S.guardianName||"")}</p>`:""}
-<div class="sigs">${sigBlock("clientWaiver",S.minor?"Parent or guardian":"Participant",S.waiverName)}</div>`}
-</body></html>`;
-}
-const slug=s=>(s||"client").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-async function offer(filename,data,mime){
-  const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
-  if(dl){
-    try{ await dl.save({filename,data}); toast("Saved "+filename); }
-    catch(e){ if(e&&e.code!=="declined") toast("Download isn't available here. Use Copy instead."); }
-    return;
-  }
-  try{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:mime})); a.download=filename; document.body.appendChild(a); a.click(); a.remove(); }
-  catch{ toast("Download isn't available here. Use Copy instead."); }
-}
-$("#dlSigned").addEventListener("click",()=>offer(`${slug(S.fullName)}-signed-agreement-and-waiver.html`,signedHTML(),"text/html"));
-$("#dlClaude").addEventListener("click",()=>offer(`${slug(S.fullName)}-client-file.md`,clientFile(),"text/markdown"));
-$("#copyClaude").addEventListener("click",async()=>{
-  try{ await navigator.clipboard.writeText(clientFile()); toast("Client file copied"); }
-  catch{ const t=document.createElement("textarea"); t.value=clientFile(); document.body.appendChild(t); t.select(); try{document.execCommand("copy"); toast("Client file copied");}catch{toast("Copy isn't available here");} t.remove(); }
-});
-
-/* ---------------- DRAFT (this device) ---------------- */
-function persist(){ try{ localStorage.setItem("ra_onboard_draft",JSON.stringify({S,SIG,STAMP})); }catch{} }
-function restore(d){ S=d.S||{}; SIG=d.SIG||{}; STAMP=d.STAMP||{};
-  const sv=SVCMAP[S.service]; $("#service").value=S.service||""; $("#svcFields").innerHTML=svcFieldsHTML(sv);
-  writeFields(); $$("[data-ini]").forEach(i=>i.value=S["ini_"+i.dataset.ini]||""); Object.values(PADS).forEach(p=>p.load()); render(); }
-try{ const d=JSON.parse(localStorage.getItem("ra_onboard_draft")||"null"); if(d) restore(d); }catch{}
-function clearForm(){
-  try{ localStorage.removeItem("ra_onboard_draft"); }catch{}
-  S={}; SIG={}; STAMP={}; $("#service").value=""; $("#svcFields").innerHTML="";
-  $$("#form input, #form textarea, #form select").forEach(el=>{ if(el.type==="checkbox"||el.type==="radio") el.checked=false; else if(el.type==="range") el.value=5; else if(!["cancelHrs","pkgDays","lateMin","cancelDays","coachName","travelFee"].includes(el.name)) el.value=""; });
-  captureAll(); Object.values(PADS).forEach(p=>p.clear()); render(); go(0);
-}
-$("#resetBtn").addEventListener("click",()=>{
-  if(!confirm("Clear this form and start a new client? Save first if you haven't.")) return;
-  clearForm();
-});
-
-/* ---------------- CLIENT RECORDS (db) ---------------- */
-let DB=null, UID=null;
-(async()=>{
-  try{
-    if(!window.claude||!window.claude.use) throw 0;
-    const [db,user]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
-    if(db&&user){ UID=await user.id(); if(UID) DB=db; }
-  }catch{}
-  if(!DB||CLIENT){ $("#saveBtn").hidden=true; }
-})();
-async function loadSaved(){
-  if(!DB) return;
-  try{
-    const snap=await DB.collection(`data/users/${UID}`).orderBy("savedAt","desc").limit(50).get();
-    $("#savedWrap").hidden=snap.empty;
-    $("#savedList").innerHTML=snap.docs.map(d=>{ const x=d.data(); return `<li><span>${esc(x.name)}<small>${esc(x.service||"")} · saved ${new Date(x.savedAt).toLocaleDateString("en-US",{dateStyle:"medium"})}</small></span><button type="button" class="linkbtn" data-open="${esc(d.id)}">Open</button></li>`; }).join("");
-  }catch{}
-}
-$("#savedList").addEventListener("click",async e=>{
-  const id=e.target.dataset&&e.target.dataset.open; if(!id||!DB) return;
-  if(!confirm("Open this saved client? Unsaved changes on screen will be replaced.")) return;
-  try{ const d=await DB.doc(`data/users/${UID}/${id}`).get(); if(d.exists){ const x=d.data(); restore({S:JSON.parse(JSON.stringify(x.state)),SIG:{...x.sig},STAMP:{...x.stamp}}); S._docId=id; toast("Opened "+x.name); go(3);} }
-  catch{ toast("Couldn't open that record. Try again."); }
-});
-$("#saveBtn").addEventListener("click",async()=>{
-  if(!DB) return;
-  if(!S.fullName){ toast("Add the client's name on the intake first"); return; }
-  const id=S._docId||(slug(S.fullName)+"-"+Date.now().toString(36));
-  const r=calc();
-  const body={name:S.fullName,service:r?r.sv.l:"",savedAt:new Date().toISOString(),state:{...S,_docId:id},sig:SIG,stamp:STAMP,clientFile:clientFile()};
-  $("#saveBtn").disabled=true;
-  try{ await DB.doc(`data/users/${UID}/${id}`).set(body); S._docId=id; persist(); toast("Saved to client records"); loadSaved(); }
-  catch(e){ toast(e&&e.code==="invalid_argument"?"This record is too large to save. Clear and redo a signature, then try again.":"Couldn't save. Check your connection and try again."); }
-  finally{ $("#saveBtn").disabled=false; }
-});
-
-/* ---------------- SEND TO CLIENT (coach) ---------------- */
-function clientLink(){
-  if(!S.service){ toast("Choose a service first"); return null; }
-  const o={}; PLAN_KEYS.forEach(k=>{ if(S[k]!==undefined&&S[k]!=="") o[k]=S[k]; });
-  if(S.fullName) o.fullName=S.fullName; if(S.email) o.email=S.email;
-  return CONFIG.clientBase+"?p="+b64e(o);
-}
-async function copyText(t,msg){
-  try{ await navigator.clipboard.writeText(t); toast(msg); }
-  catch{ const a=document.createElement("textarea"); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand("copy"); toast(msg);}catch{ prompt("Copy this link:",t); } a.remove(); }
-}
-$("#copyLink").addEventListener("click",()=>{ const l=clientLink(); if(l) copyText(l,"Client link copied"); });
-$("#copyIntake").addEventListener("click",()=>copyText(CONFIG.clientBase+"?intake=1","Intake-only link copied"));
-$("#emailLink").addEventListener("click",()=>{
-  const l=clientLink(); if(!l) return;
-  const first=(S.preferredName||S.fullName||"").split(" ")[0];
-  const body=`Hi${first?" "+first:""},\n\nIt was great talking with you. Here's your personalized onboarding link. It walks you through your intake, your plan and service agreement, and the liability waiver. It takes about 15 minutes and you can sign right on your phone:\n\n${l}\n\nOnce you submit, I'll send your payment link and we'll get you scheduled.\n\nPriscilla\nReform Athletics`;
-  location.href=`mailto:${encodeURIComponent(S.email||"")}?subject=${encodeURIComponent("Your Reform Athletics onboarding")}&body=${encodeURIComponent(body)}`;
-});
-
-$("#sendAgr").addEventListener("click",async()=>{
-  if(!S.service){ toast("Choose a service first"); return; }
-  if(!S.startDate){ toast("Add a start date first"); return; }
-  if(!S.email){ toast("Add the client's email on the intake step first"); return; }
-  const o={ao:1,id:Date.now().toString(36)+Math.random().toString(36).slice(2,7)};
-  PLAN_KEYS.forEach(k=>{ if(S[k]!==undefined&&S[k]!=="") o[k]=S[k]; }); o.fullName=S.fullName; o.email=S.email;
-  const link=CONFIG.clientBase+"?p="+b64e(o), r=calc(), btn=$("#sendAgr");
-  btn.disabled=true; btn.textContent="Sending…";
-  try{
-    const res=await fetch(CONFIG.webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      kind:"issue",key:CONFIG.coachKey,planId:o.id,plan:o,link,name:S.fullName,email:S.email,
-      service:r?r.sv.l:"",total:r&&r.total!=null?r.total:null,per:r?r.per:"",planMd:planMarkdown()})});
-    if(!res.ok) throw new Error(res.status);
-    btn.textContent="Sent ✓"; toast("Agreement sent to "+S.email);
-  }catch{ btn.disabled=false; btn.textContent="Send agreement to client"; copyText(link,"Couldn't send. Link copied instead, paste it to the client."); }
-});
-
-/* ---------------- CLIENT SUBMIT ---------------- */
-function finMsg(html){ let n=$("#finMsg"); if(!n){ n=document.createElement("div"); n.id="finMsg"; n.className="note"; $(".actions").after(n); } n.innerHTML=html; }
-$("#submitBtn").addEventListener("click",async()=>{
-  const miss=AO?missingAgreement():[...missingIntake(),...(PLAN?missingAgreement():[]),...missingWaiver()];
-  if(miss.length){ toast("Still needed: "+[...new Set(miss)].join(", ")); return; }
-  const fallback=`Please tap <b>Download your signed copy</b> below and email it to <a href="mailto:priscilla@reformathletics.net">priscilla@reformathletics.net</a>.`;
-  if(!CONFIG.webhook){ finMsg(fallback); return; }
-  const r=calc(); const btn=$("#submitBtn"); btn.disabled=true; btn.textContent="Submitting…";
-  try{
-    const state={...S}; Object.keys(state).forEach(k=>{ if(k.startsWith("_")) delete state[k]; });
-    const res=await fetch(CONFIG.webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-      kind:AO?"agreement":(PLAN?"full":"intake"),planId:PLAN&&PLAN.id||null,
-      submittedAt:new Date().toISOString(),name:S.fullName,email:S.email,phone:S.phone,
-      service:r?r.sv.l:"Intake and waiver only",total:r&&r.total!=null?r.total:null,
-      clientFile:clientFile(),signedHtml:signedHTML(),state})});
-    if(!res.ok) throw new Error(res.status);
-    btn.textContent="Submitted"; finMsg("Thank you! Your forms are in. Priscilla will be in touch shortly with your next steps. You can download a copy for your records below.");
-  }catch{ btn.disabled=false; btn.textContent="Submit to Reform Athletics"; finMsg("Your forms couldn't be sent. "+fallback); }
-});
-
-function applyClientMode(){
-  if(!CLIENT) return;
-  if(PLAN){ PLAN_KEYS.forEach(k=>{ if(PLAN[k]!==undefined) S[k]=PLAN[k]; }); ["fullName","email"].forEach(k=>{ if(PLAN[k]&&!S[k]) S[k]=PLAN[k]; });
-    const sv=SVCMAP[S.service]; if(sv&&sv.nut!=="none") S.includeNutrition="Yes";
-    $("#service").value=S.service||""; $("#svcFields").innerHTML=svcFieldsHTML(SVCMAP[S.service]); writeFields(); }
-  $("#coachPanel").hidden=true;
-  ["#coachPad","#coachPadRow","#coachNameQ"].forEach(x=>$(x).hidden=true); $("#coachAuto").hidden=false;
-  if(!PLAN){ $("#noPlan").hidden=false; $("#ticket").hidden=true; $("#agreementDoc").hidden=true; $$('section[data-step="1"] .sign').forEach(x=>x.hidden=true); $("section[data-step='1'] .lede").hidden=true; }
-  else $("section[data-step='1'] .lede").textContent="Review your plan, initial each section, and sign.";
-  if(AO){ $$('.steps button[data-go="0"], .steps button[data-go="2"]').forEach(b=>b.hidden=true);
-    $("section[data-step='1'] .lede").textContent="Your intake and waiver are already on file. Review your plan, initial each section, and sign."; }
-  ["#saveBtn","#dlClaude","#copyClaude","#resetWrap","#savedWrap"].forEach(x=>$(x).hidden=true);
-  $("#submitBtn").hidden=false; $("#dlSigned").textContent="Download your signed copy";
-  $("#finLede").textContent="Check that everything is complete, then submit. You can also download a copy for your records.";
-  render();
-}
-
-/* ---------------- TOAST ---------------- */
-let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),3200); }
-
-captureAll(); applyClientMode();
-if(COACH&&PARAMS.get("email")){ clearForm(); S.fullName=PARAMS.get("name")||""; S.email=PARAMS.get("email"); writeFields(); }
-render(); go(AO||(COACH&&PARAMS.get("email"))?1:0);
-})();
-</script>
+<section class="cta-band"><div class="wrap"><h2 class="reveal">Ready to work together?</h2><a class="btn reveal" href="https://book.reformathletics.net/priss">Book a Session</a></div></section>
+<section class="edit-band" id="the-edit" aria-label="Newsletter">
+  <div class="wrap edit-inner">
+    <div class="reveal">
+      <div class="eyebrow">The Edit</div>
+      <h2>Training insight, delivered with intention.</h2>
+      <p>Coaching tips, nutrition guidance, and first access to new training openings — never in excess.</p>
+    </div>
+    <form class="edit-form reveal" method="post" action="https://n8n.crm.reformathletics.net/webhook/edit-signup">
+      <input type="text" name="name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+      <input type="email" name="email" required placeholder="Email address" autocomplete="email" aria-label="Email address">
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="t" class="form-ts" value="">
+      <button type="submit">Join The Edit</button>
+      <div class="fine-print">You'll confirm by email first. Unsubscribe anytime. <a href="/privacy.html">Privacy Policy</a></div>
+    </form>
+  </div>
+</section>
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="assets/ra-logo.png" alt="Reform Athletics">
+        <div>Priscilla Claude, CPT, CN</div>
+        <div>Spring Hill &amp; Middle Tennessee</div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/training.html">Training</a></li>
+          <li><a href="/app.html">App</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:priscilla@reformathletics.net">priscilla@reformathletics.net</a></li>
+          <li><a href="tel:+16159056358">615-905-6358</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Reform Athletics. All rights reserved.</span>
+      <span><a href="/privacy.html">Privacy Policy</a> &middot; <a href="/terms.html">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
