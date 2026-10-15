@@ -213,3 +213,16 @@ footer.site{padding:64px 0 40px;border-top:1px solid var(--hairline);font-size:.
 .no-js .reveal{opacity:1;transform:none}
 @media (max-width:900px){.feature-grid[style]{grid-template-columns:1fr 1fr!important}}
 @media (max-width:560px){.feature-grid[style]{grid-template-columns:1fr!important}}
+
+/* Home additions */
+.trust{margin:30px 0 0;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.steps.five{grid-template-columns:repeat(5,1fr);gap:26px}
+@media (max-width:1000px){.steps.five{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps.five{grid-template-columns:1fr}}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:48px}
+.proof{margin:0;padding:28px;background:var(--panel);border-top:2px solid var(--rose);text-align:left}
+.proof blockquote{margin:0 0 14px;font-family:var(--serif);font-size:1.3rem;line-height:1.45}
+.proof figcaption{color:var(--muted);font-size:.88rem}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:620px;margin:56px auto 0;align-items:start}
+.shots img{width:100%;height:auto;border-radius:22px;border:1px solid var(--hairline)}
+@media (max-width:700px){.shots{grid-template-columns:1fr;max-width:300px}}
