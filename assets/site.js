@@ -46,3 +46,10 @@
 
 // Newsletter forms: record when the form was shown (simple bot check)
 document.querySelectorAll('.form-ts').forEach(function (el) { el.value = String(Date.now()); });
+
+// Intro sequence: tap or click anywhere to skip
+(function () {
+  var intro = document.querySelector('.intro');
+  if (!intro) return;
+  intro.addEventListener('click', function () { intro.classList.add('done'); });
+})();
