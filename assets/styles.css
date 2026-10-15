@@ -545,3 +545,17 @@ header.site{position:sticky;top:0;z-index:60}
 .contact-card .form input:focus,.contact-card .form select:focus,.contact-card .form textarea:focus{box-shadow:0 0 0 3px rgba(192,138,120,.16)}
 @media (max-width:560px){.contact-card{padding:28px 20px}}
 @media (prefers-reduced-motion:reduce){.feature,.persona{transition:none}.feature:hover,.persona:hover{transform:none}}
+
+/* ---------- Ladder v2: true staircase + gradual brightening ---------- */
+.ladder{align-items:end}
+.rung:nth-child(1){min-height:340px}.rung:nth-child(2){min-height:400px}.rung:nth-child(3){min-height:460px}.rung:nth-child(4){min-height:520px}
+.rung:nth-child(1){background:linear-gradient(165deg,rgba(32,30,31,.9),rgba(16,15,16,.96));border-color:rgba(255,255,255,.07)}
+.rung:nth-child(2){background:linear-gradient(165deg,rgba(40,34,33,.92),rgba(17,16,16,.96));border-color:rgba(192,138,120,.2)}
+.rung:nth-child(3){background:linear-gradient(165deg,rgba(52,40,37,.94),rgba(18,16,17,.97));border-color:rgba(192,138,120,.38);box-shadow:0 30px 60px -36px rgba(192,138,120,.28)}
+.rung:nth-child(1) .step-no{opacity:.6}.rung:nth-child(2) .step-no{opacity:.78}
+.rung:nth-child(1) h3{opacity:.78}.rung:nth-child(2) h3{opacity:.9}
+.rung:nth-child(1) li{opacity:.75}.rung:nth-child(2) li{opacity:.88}
+.rung.top{background:linear-gradient(165deg,rgba(86,60,52,.98),rgba(24,19,20,.98));box-shadow:0 0 0 1px rgba(227,179,163,.5),0 0 60px -10px rgba(192,138,120,.45),0 60px 100px -34px rgba(192,138,120,.6)}
+.rung.top h3{color:#fff}.rung.top .step-no{background:var(--rose);color:#fff;border-color:var(--rose-light)}
+.rung.top li{color:var(--text,#f3f2f0)}
+@media (max-width:1000px){.rung:nth-child(n){min-height:0}}
