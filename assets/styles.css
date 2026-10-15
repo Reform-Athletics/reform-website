@@ -223,3 +223,6 @@ footer.site{padding:64px 0 40px;border-top:1px solid var(--hairline);font-size:.
 .proof{margin:0;padding:28px;background:var(--panel);border-top:2px solid var(--rose);text-align:left}
 .proof blockquote{margin:0 0 14px;font-family:var(--serif);font-size:1.3rem;line-height:1.45}
 .proof figcaption{color:var(--muted);font-size:.88rem}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:620px;margin:56px auto 0;align-items:start}
+.shots img{width:100%;height:auto;border-radius:22px;border:1px solid var(--hairline)}
+@media (max-width:700px){.shots{grid-template-columns:1fr;max-width:300px}}
