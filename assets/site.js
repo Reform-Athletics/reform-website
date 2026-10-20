@@ -53,3 +53,15 @@ document.querySelectorAll('.form-ts').forEach(function (el) { el.value = String(
   if (!intro) return;
   intro.addEventListener('click', function () { intro.classList.add('done'); });
 })();
+// Chatwoot chat widget
+window.chatwootSettings = { position: 'right', type: 'standard', launcherTitle: 'Chat with Priscilla' };
+(function(d,t) {
+  var BASE_URL = "https://inbox.crm.reformathletics.net";
+  var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  g.src = BASE_URL + "/packs/js/sdk.js";
+  g.async = true;
+  s.parentNode.insertBefore(g, s);
+  g.onload = function() {
+    window.chatwootSDK.run({ websiteToken: 'Egfzn3NvW29C4rVHodsqrH6T', baseUrl: BASE_URL });
+  };
+})(document, "script");
