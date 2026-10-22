@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Stories | Reform Athletics</title>
+<meta name="description" content="Real results from Reform Athletics clients: the goal, the custom plan, and what changed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #0b0b0c;
+    --charcoal: #1a1a1c;
+    --rose: #c08a78;
+    --rose-deep: #9c7463;
+    --rose-text: #7d5a4b;
+    --ivory: #f3f2f0;
+    --line: #d9c3b9;
+    --muted: #5c5653;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family: 'Jost', system-ui, sans-serif;
+    line-height: 1.65;
+  }
+  a { color: var(--rose-text); }
+  a:hover { color: var(--ink); }
+
+  .top { padding: 22px 24px; border-bottom: 1px solid var(--line); text-align: center; }
+  .top a { font-weight: 600; letter-spacing: 0.2em; font-size: 15px; color: var(--ink); text-decoration: none; }
+
+  .intro { max-width: 760px; margin: 0 auto; padding: 64px 24px 40px; text-align: center; }
+  .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--rose-text); margin: 0 0 16px; }
+  h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(40px, 6vw, 60px); line-height: 1.05; color: var(--ink); margin: 0 0 18px; }
+  h1 em { color: var(--rose-deep); }
+  .intro p { font-size: 18px; font-weight: 300; margin: 0; }
+
+  .story {
+    max-width: 1080px;
+    margin: 0 auto 72px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  @media (min-width: 880px) { .story { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; } }
+
+  figure { margin: 0; }
+  figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  .story h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 38px; line-height: 1.1; color: var(--ink); margin: 0 0 20px; }
+
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 0 0 28px; }
+  .facts div { background: #fff; padding: 16px 14px; }
+  .facts dt { font-size: 11.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-text); margin: 0 0 4px; }
+  .facts dd { margin: 0; font-size: 16px; font-weight: 500; color: var(--ink); }
+
+  .story h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin: 26px 0 8px; }
+  .story p { margin: 0 0 12px; }
+  .story ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+  blockquote {
+    margin: 28px 0 0;
+    padding: 24px 28px;
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.35;
+  }
+  blockquote cite { display: block; margin-top: 12px; font-family: 'Jost', sans-serif; font-style: normal; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); }
+
+  .cta { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 24px; text-align: center; }
+  .cta h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 36px; color: var(--ink); margin: 0 0 10px; }
+  .cta p { margin: 0 0 24px; font-weight: 300; }
+  .button {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 54px; padding: 0 32px;
+    background: var(--ink); color: var(--ivory);
+    font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; font-size: 14px;
+    text-decoration: none;
+  }
+  .button:hover { background: var(--charcoal); color: var(--ivory); }
+  .button:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 3px; }
+
+  .disclaimer { max-width: 760px; margin: 0 auto; padding: 36px 24px 8px; font-size: 13px; color: var(--muted); text-align: center; }
+
+  footer { padding: 28px 24px 40px; text-align: center; font-size: 14px; color: var(--muted); }
+  footer .tag { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 20px; color: var(--charcoal); margin: 0 0 6px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="https://reformathletics.net">REFORM ATHLETICS</a>
+</header>
+
+<section class="intro">
+  <p class="eyebrow">Client Stories</p>
+  <h1>Real women. <em>Real plans.</em></h1>
+  <p>Every result here came from a plan built for one person: her body, her schedule and the food she actually enjoys.</p>
+</section>
+
+<article class="story" aria-labelledby="story-1">
+  <figure>
+    <img src="transformation-6-weeks.jpg" alt="Side-by-side photos of a Reform Athletics client at week 1 and week 6, showing a visibly leaner midsection." width="1080" height="1080">
+    <figcaption>Week 1 and week 6. Shared with her permission.</figcaption>
+  </figure>
+
+  <div>
+    <h2 id="story-1">Six weeks, no foods off-limits</h2>
+
+    <dl class="facts">
+      <div><dt>Coaching</dt><dd>Hybrid</dd></div>
+      <div><dt>Timeframe</dt><dd>6 weeks</dd></div>
+      <div><dt>Result</dt><dd>About 15 lbs</dd></div>
+    </dl>
+
+    <h3>The goal</h3>
+    <p>Lose weight, but more than that, change her body composition: less fat, more strength, and a body she felt good in.</p>
+
+    <h3>The plan</h3>
+    <ul>
+      <li><strong>Strength training</strong>, coached in person and supported virtually between sessions.</li>
+      <li><strong>Practical nutrition</strong> built around her real life. Her Starbucks breakfast and coffee stayed in, a couple of times a week.</li>
+    </ul>
+
+    <h3>What we adjusted</h3>
+    <p>We raised her daily steps gradually, and swapped in healthier versions of her everyday foods one at a time, so nothing felt like a diet.</p>
+
+    <h3>The result</h3>
+    <p>About 15 pounds lost in six weeks. More importantly, she's stayed active and walks into the gym with a confidence she didn't have before.</p>
+
+    <blockquote>
+      [Her quote goes here.]
+      <cite>[First name or initial], Reform Athletics client</cite>
+    </blockquote>
+  </div>
+</article>
+
+<section class="cta">
+  <h2>Your plan will look different. That's the point.</h2>
+  <p>It starts with a conversation about your goals, your schedule and your starting point.</p>
+  <a class="button" href="https://reformathletics.net/#consult">Book a complimentary consultation</a>
+</section>
+
+<p class="disclaimer">Results shown are from a real client who followed a custom plan consistently. Individual results depend on your starting point, consistency, nutrition, sleep, stress and health history. Your results will be different, and no specific outcome is guaranteed. Consult your physician before starting any new exercise or nutrition program.</p>
+
+<footer>
+  <p class="tag">Every Rep. Every Choice. Reformed.</p>
+  <p>Reform Athletics LLC · Middle Tennessee and online</p>
+</footer>
+
+</body>
+</html>
