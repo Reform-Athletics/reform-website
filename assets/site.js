@@ -53,6 +53,7 @@ document.querySelectorAll('.form-ts').forEach(function (el) { el.value = String(
   if (!intro) return;
   intro.addEventListener('click', function () { intro.classList.add('done'); });
 })();
+
 // Chatwoot chat widget
 window.chatwootSettings = { position: 'right', type: 'standard', launcherTitle: 'Chat with Priscilla' };
 (function(d,t) {
