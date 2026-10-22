@@ -157,6 +157,24 @@
   .hidden { display: none !important; }
   .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
+
+  .loading p { margin: 0 0 14px; }
+  .bar { height: 6px; background: #ece4df; overflow: hidden; position: relative; }
+  .bar span { position: absolute; left: -40%; width: 40%; height: 100%; background: var(--rose-deep); animation: slide 1.1s ease-in-out infinite; }
+  @keyframes slide { to { left: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .bar span { animation: none; left: 0; width: 100%; opacity: .5; } }
+  .code-box { border: 1px solid var(--line); background: var(--ivory); padding: 22px 20px; margin: 6px 0 18px; text-align: center; }
+  .code-box small { display: block; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--rose-text); margin-bottom: 8px; }
+  .code-box strong { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: clamp(34px, 7vw, 44px); letter-spacing: .06em; color: var(--ink); word-break: break-all; }
+  .share-label { font-size: 14px; font-weight: 500; color: var(--ink); margin: 0 0 6px; }
+  .btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0 6px; }
+  .btn2 { font: inherit; font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; min-height: 48px; padding: 0 12px;
+          background: #fff; color: var(--ink); border: 1px solid var(--ink); cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .btn2:hover { background: var(--ivory); color: var(--ink); }
+  .btn2.dark { background: var(--ink); color: var(--ivory); }
+  .btn2.dark:hover { background: var(--charcoal); color: var(--ivory); }
+  .note-edit { background: #f7efe9; border-left: 3px solid var(--rose); padding: 12px 14px; font-size: 14px; margin: 16px 0 0; }
+  .copied { font-size: 13px; color: var(--rose-text); min-height: 20px; margin: 0; }
   .thanks h2 { margin-bottom: 12px; }
   .thanks p { margin: 0 0 12px; }
   .thanks:focus { outline: none; }
@@ -185,7 +203,7 @@
     <p class="lead">If you know a woman who's ready to invest in her strength, her health and her confidence, request your personal code. When she joins, you're thanked.</p>
 
     <ol class="steps">
-      <li><span class="num">01</span><div><strong>Request your code</strong><span>Fill out the form. Priscilla emails your personal code within one business day.</span></div></li>
+      <li><span class="num">01</span><div><strong>Request your code</strong><span>Fill out the form and your personal code appears instantly, ready to share.</span></div></li>
       <li><span class="num">02</span><div><strong>Share it</strong><span>She uses your code when she books her complimentary consultation and gets $25 off her first month.</span></div></li>
       <li><span class="num">03</span><div><strong>Choose your thank-you</strong><span>Once she's been training with us for 30 days, your reward is yours.</span></div></li>
     </ol>
@@ -204,7 +222,7 @@
   <section class="card" aria-labelledby="form-title">
     <div id="form-wrap">
       <h2 id="form-title">Request your code</h2>
-      <p class="sub">It takes less than a minute.</p>
+      <p class="sub">It takes less than a minute, and your code appears right away.</p>
 
       <!-- Sends to n8n. The action below is only a fallback if JavaScript is off. -->
       <form id="referral-form" method="POST" action="https://n8n.crm.reformathletics.net/webhook/referral-code-request" novalidate>
@@ -257,18 +275,44 @@
           <label for="edit"><b>Also send me The Edit</b>, the Reform Athletics newsletter with training, nutrition and lifestyle notes for women who hold a higher standard. You'll get one email to confirm, and you can unsubscribe anytime.</label>
         </div>
 
-        <p class="error hidden" id="form-error" role="alert"></p>
+        <p class="error hidden" id="form-error" role="alert" tabindex="-1"></p>
 
         <button type="submit" id="submit">Request my code</button>
-        <p class="fine">Your code is sent by email. Share it with as many people as you like; each person can use a referral code only once. Rewards are earned once the person you refer has been an active client for 30 days, can be stacked, and expire 6 months after they're earned. Credits have no cash value. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+        <p class="fine">Share it with as many people as you like; each person can use a referral code only once. Rewards are earned once the person you refer has been an active client for 30 days, can be stacked, and expire 6 months after they're earned. Credits have no cash value. See our <a href="/privacy.html">Privacy Policy</a>.</p>
       </form>
     </div>
 
-    <div class="thanks hidden" id="thanks" tabindex="-1">
-      <h2>Thank you.</h2>
-      <p>Your request is in. Priscilla will email your personal referral code within one business day.</p>
-      <p id="edit-note" class="hidden">You also asked for The Edit. Check your inbox for one quick email to confirm.</p>
-      <p>In the meantime, you're welcome to share <a href="https://reformathletics.net">reformathletics.net</a> with anyone who comes to mind.</p>
+    <div class="thanks hidden" id="thanks" tabindex="-1" aria-live="polite">
+      <h2 id="thanks-title">Thank you for requesting your referral code.</h2>
+
+      <div class="loading" id="loading">
+        <p>Generating your referral code&hellip;</p>
+        <div class="bar" role="progressbar" aria-label="Generating your referral code"><span></span></div>
+      </div>
+
+      <div class="hidden" id="result">
+        <div class="code-box">
+          <small>Your Reform Athletics referral code</small>
+          <strong id="code-text"></strong>
+        </div>
+
+        <p class="share-label">Share it now</p>
+        <label for="share-msg" class="hidden">Message to share</label>
+        <textarea id="share-msg" rows="6"></textarea>
+        <div class="btns">
+          <button type="button" class="btn2 dark" id="btn-share">Share</button>
+          <button type="button" class="btn2" id="btn-copy-msg">Copy message</button>
+          <a class="btn2" id="btn-text" href="#">Text it</a>
+          <a class="btn2" id="btn-email" href="#">Email it</a>
+        </div>
+        <button type="button" class="btn2" id="btn-copy-code" style="width:100%">Copy code only</button>
+        <p class="copied" id="copied" role="status"></p>
+
+        <p class="note-edit hidden" id="edit-note">You asked to join The Edit. Check your email and click the confirmation link to finish signing up.</p>
+        <p class="note-edit hidden" id="edit-already">You're already on The Edit, so you're all set there.</p>
+
+        <p class="fine" style="margin-top:16px">Save your code. You can share it with as many people as you like. Each person can use a referral code once, and your rewards are good for 6 months from the day they're earned.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -281,21 +325,59 @@
 
 <script>
 (function () {
-  // n8n webhook that receives the request (Production URL of the "Referral code request" workflow)
+  // n8n webhook that receives the request (Production URL of the "Referral code requests" workflow)
   var WEBHOOK_URL = 'https://n8n.crm.reformathletics.net/webhook/referral-code-request';
+  var BOOKING_URL = 'https://book.reformathletics.net/priss/free-consultation';
 
-  var form = document.getElementById('referral-form');
-  var wrap = document.getElementById('form-wrap');
-  var thanks = document.getElementById('thanks');
-  var errorEl = document.getElementById('form-error');
-  var button = document.getElementById('submit');
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('referral-form'), wrap = $('form-wrap'), thanks = $('thanks'), errorEl = $('form-error'), button = $('submit');
 
-  function showThanks(editOptIn) {
-    wrap.classList.add('hidden');
-    if (editOptIn) document.getElementById('edit-note').classList.remove('hidden');
-    thanks.classList.remove('hidden');
+  function fail() {
+    thanks.classList.add('hidden');
+    wrap.classList.remove('hidden');
+    button.disabled = false;
+    button.textContent = 'Request my code';
+    errorEl.textContent = 'Something went wrong. Please try again, or email support@reformathletics.net.';
+    errorEl.classList.remove('hidden');
+    errorEl.focus && errorEl.focus();
+  }
+
+  function showCode(res) {
+    var code = res.code;
+    var link = BOOKING_URL + '?code=' + encodeURIComponent(code);
+    var msg = 'I want to share Reform Athletics with you. It’s private, custom coaching with Priscilla Claude, in your home, in the gym or online. ' +
+              'Book a complimentary consultation and enter my code ' + code + ' to get $25 off your first month: ' + link;
+    $('code-text').textContent = code;
+    $('share-msg').value = msg;
+    $('loading').classList.add('hidden');
+    $('result').classList.remove('hidden');
+    $('thanks-title').textContent = 'Your code is ready' + (res.first ? ', ' + res.first : '') + '.';
+    if (res.editOptIn) $(res.editAlready ? 'edit-already' : 'edit-note').classList.remove('hidden');
     thanks.focus();
   }
+
+  function copy(text, label) {
+    var done = function () { $('copied').textContent = label + ' copied.'; setTimeout(function () { $('copied').textContent = ''; }, 2500); };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); }); }
+    else { fallbackCopy(text); done(); }
+  }
+  function fallbackCopy(text) {
+    var t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly', ''); t.style.position = 'absolute'; t.style.left = '-9999px';
+    document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(t);
+  }
+  var currentMsg = function () { return $('share-msg').value; };
+
+  $('btn-copy-msg').addEventListener('click', function () { copy(currentMsg(), 'Message'); });
+  $('btn-copy-code').addEventListener('click', function () { copy($('code-text').textContent, 'Code'); });
+  $('btn-text').addEventListener('click', function (e) { e.preventDefault(); location.href = 'sms:?&body=' + encodeURIComponent(currentMsg()); });
+  $('btn-email').addEventListener('click', function (e) {
+    e.preventDefault();
+    location.href = 'mailto:?subject=' + encodeURIComponent('Thought of you: Reform Athletics') + '&body=' + encodeURIComponent(currentMsg());
+  });
+  $('btn-share').addEventListener('click', function () {
+    if (navigator.share) { navigator.share({ title: 'Reform Athletics', text: currentMsg() }).catch(function () {}); }
+    else { copy(currentMsg(), 'Message'); }
+  });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -323,21 +405,29 @@
 
     button.disabled = true;
     button.textContent = 'Sending…';
+    // Switch to the thank-you panel with the "generating" bar right away
+    wrap.classList.add('hidden');
+    thanks.classList.remove('hidden');
+    $('loading').classList.remove('hidden');
+    $('result').classList.add('hidden');
+    thanks.focus();
 
-    fetch(WEBHOOK_URL, {
+    var minWait = new Promise(function (r) { setTimeout(r, 1600); });   // let the bar show for a moment
+    var request = fetch(WEBHOOK_URL, {
       method: 'POST',
       // Sent as a simple form post so the browser doesn't need an extra CORS check
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(data).toString()
     }).then(function (res) {
       if (!res.ok) throw new Error('Request failed');
-      showThanks(data.the_edit_opt_in === 'yes');
-    }).catch(function () {
-      button.disabled = false;
-      button.textContent = 'Request my code';
-      errorEl.textContent = 'Something went wrong. Please try again, or email support@reformathletics.net.';
-      errorEl.classList.remove('hidden');
+      return res.json();
     });
+
+    Promise.all([request, minWait]).then(function (out) {
+      var res = out[0] || {};
+      if (!res.ok || !res.code) throw new Error('No code');
+      showCode(res);
+    }).catch(fail);
   });
 })();
 </script>
