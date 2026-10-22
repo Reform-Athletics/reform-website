@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request Your Referral Code | Reform Athletics</title>
+<meta name="description" content="Not a Reform Athletics client? Request a personal referral code and earn a reward when someone you refer joins.">
+<link rel="canonical" href="https://reformathletics.net/referral">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #0b0b0c;
+    --charcoal: #1a1a1c;
+    --rose: #c08a78;
+    --rose-deep: #9c7463;
+    --rose-text: #7d5a4b;
+    --ivory: #f3f2f0;
+    --line: #d9c3b9;
+    --muted: #5c5653;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  a { color: var(--rose-text); }
+  a:hover { color: var(--ink); }
+
+  .top {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .top a {
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    font-size: 15px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+  @media (min-width: 880px) {
+    main { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 72px; padding-top: 88px; }
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: var(--rose-text);
+    text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.04;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+  h1 em { color: var(--rose-deep); }
+  .lead { font-size: 18px; font-weight: 300; margin: 0 0 36px; max-width: 520px; }
+
+  .steps { list-style: none; padding: 0; margin: 0 0 36px; display: grid; gap: 18px; }
+  .steps li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .steps .num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px; line-height: 1; color: var(--rose-deep);
+  }
+  .steps strong { display: block; font-weight: 500; color: var(--ink); }
+  .steps span { font-size: 15px; color: var(--muted); }
+
+  .reward {
+    background: var(--ink);
+    color: var(--ivory);
+    padding: 28px 28px 26px;
+  }
+  .reward h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500; font-size: 28px; margin: 0 0 14px; color: var(--ivory);
+  }
+  .reward ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; font-weight: 300; }
+  .reward b { color: var(--rose); font-weight: 500; }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    padding: 36px 28px;
+    align-self: start;
+  }
+  @media (min-width: 880px) { .card { padding: 44px 40px; position: sticky; top: 32px; } }
+  .card h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500; font-size: 32px; color: var(--ink); margin: 0 0 6px;
+  }
+  .card .sub { margin: 0 0 26px; font-size: 15px; color: var(--muted); }
+
+  form { display: grid; gap: 18px; }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  @media (min-width: 480px) { .row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  label { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  label .opt { font-weight: 300; color: var(--muted); }
+  input[type=text], input[type=email], input[type=tel], select, textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--ivory);
+    border: 1px solid #cfc5c0;
+    border-radius: 0;
+    padding: 12px 14px;
+    min-height: 48px;
+  }
+  textarea { min-height: 88px; resize: vertical; }
+  input:focus, select:focus, textarea:focus, button:focus-visible {
+    outline: 2px solid var(--rose-deep);
+    outline-offset: 2px;
+  }
+  .check { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--rose-deep); }
+  .check label { font-weight: 300; font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+  .check label b { font-weight: 500; color: var(--ink); }
+
+  button {
+    font: inherit;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 14px;
+    background: var(--ink);
+    color: var(--ivory);
+    border: 0;
+    min-height: 54px;
+    padding: 0 28px;
+    cursor: pointer;
+  }
+  button:hover { background: var(--charcoal); }
+  button[disabled] { opacity: 0.6; cursor: default; }
+  .fine { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+  .error { color: #9b2c1f; font-size: 14px; margin: 0; }
+  .hidden { display: none !important; }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+  .thanks h2 { margin-bottom: 12px; }
+  .thanks p { margin: 0 0 12px; }
+  .thanks:focus { outline: none; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 24px 40px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  footer .tag { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 20px; color: var(--charcoal); margin: 0 0 6px; }
+  footer p { margin: 0 0 6px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="https://reformathletics.net">REFORM ATHLETICS</a>
+</header>
+
+<main>
+  <section>
+    <p class="eyebrow">The Referral Collective</p>
+    <h1>Not a client? <em>You can still refer.</em></h1>
+    <p class="lead">If you know a woman who's ready to invest in her strength, her health and her confidence, request your personal code. When she joins, you're thanked.</p>
+
+    <ol class="steps">
+      <li><span class="num">01</span><div><strong>Request your code</strong><span>Fill out the form. Priscilla emails your personal code within one business day.</span></div></li>
+      <li><span class="num">02</span><div><strong>Share it</strong><span>She uses your code when she books her complimentary consultation and gets $25 off her first month.</span></div></li>
+      <li><span class="num">03</span><div><strong>Choose your thank-you</strong><span>Once she's been training with us for 30 days, your reward is yours.</span></div></li>
+    </ol>
+
+    <div class="reward">
+      <h2>Your reward, your choice</h2>
+      <ul>
+        <li>A <b>$50 gift card</b>, or</li>
+        <li>A <b>complimentary 45-minute session</b> with Priscilla, in person if you're local or virtual if you're not</li>
+        <li>Plus a handwritten thank-you, and a $25 credit if you ever join yourself</li>
+        <li>Refer as many people as you like: rewards stack and are good for 6 months</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="form-title">
+    <div id="form-wrap">
+      <h2 id="form-title">Request your code</h2>
+      <p class="sub">It takes less than a minute.</p>
+
+      <!-- Sends to n8n. The action below is only a fallback if JavaScript is off. -->
+      <form id="referral-form" method="POST" action="https://n8n.crm.reformathletics.net/webhook/referral-code-request" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="company">Leave this empty</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="first">First name</label>
+            <input id="first" name="first_name" type="text" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="last">Last name</label>
+            <input id="last" name="last_name" type="text" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="phone">Phone <span class="opt">(optional)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+
+        <div>
+          <label for="location">Where are you based?</label>
+          <select id="location" name="location" required>
+            <option value="">Select one</option>
+            <option>Spring Hill</option>
+            <option>Thompson's Station</option>
+            <option>Franklin</option>
+            <option>Brentwood</option>
+            <option>Elsewhere in Middle Tennessee</option>
+            <option>Outside Tennessee</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="who">Who do you have in mind? <span class="opt">(optional)</span></label>
+          <textarea id="who" name="note" placeholder="A first name or a few words, like &quot;my sister&quot; or &quot;a coworker&quot;"></textarea>
+        </div>
+
+        <div class="check">
+          <input id="edit" name="the_edit_opt_in" type="checkbox" value="yes">
+          <label for="edit"><b>Also send me The Edit</b>, the Reform Athletics newsletter with training, nutrition and lifestyle notes for women who hold a higher standard. You'll get one email to confirm, and you can unsubscribe anytime.</label>
+        </div>
+
+        <p class="error hidden" id="form-error" role="alert"></p>
+
+        <button type="submit" id="submit">Request my code</button>
+        <p class="fine">Your code is sent by email. Share it with as many people as you like; each person can use a referral code only once. Rewards are earned once the person you refer has been an active client for 30 days, can be stacked, and expire 6 months after they're earned. Credits have no cash value. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+      </form>
+    </div>
+
+    <div class="thanks hidden" id="thanks" tabindex="-1">
+      <h2>Thank you.</h2>
+      <p>Your request is in. Priscilla will email your personal referral code within one business day.</p>
+      <p id="edit-note" class="hidden">You also asked for The Edit. Check your inbox for one quick email to confirm.</p>
+      <p>In the meantime, you're welcome to share <a href="https://reformathletics.net">reformathletics.net</a> with anyone who comes to mind.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="tag">Every Rep. Every Choice. Reformed.</p>
+  <p>Reform Athletics LLC · Middle Tennessee and online · <a href="mailto:support@reformathletics.net">support@reformathletics.net</a></p>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</footer>
+
+<script>
+(function () {
+  // n8n webhook that receives the request (Production URL of the "Referral code request" workflow)
+  var WEBHOOK_URL = 'https://n8n.crm.reformathletics.net/webhook/referral-code-request';
+
+  var form = document.getElementById('referral-form');
+  var wrap = document.getElementById('form-wrap');
+  var thanks = document.getElementById('thanks');
+  var errorEl = document.getElementById('form-error');
+  var button = document.getElementById('submit');
+
+  function showThanks(editOptIn) {
+    wrap.classList.add('hidden');
+    if (editOptIn) document.getElementById('edit-note').classList.remove('hidden');
+    thanks.classList.remove('hidden');
+    thanks.focus();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+
+    if (!form.checkValidity()) {
+      var firstBad = form.querySelector(':invalid');
+      errorEl.textContent = 'Please fill in your name, a valid email and where you’re based.';
+      errorEl.classList.remove('hidden');
+      if (firstBad) firstBad.focus();
+      return;
+    }
+
+    var data = {
+      first_name: form.first_name.value.trim(),
+      last_name: form.last_name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      location: form.location.value,
+      note: form.note.value.trim(),
+      the_edit_opt_in: form.the_edit_opt_in.checked ? 'yes' : 'no',
+      company: form.company.value,          // spam trap, should be empty
+      page: location.href
+    };
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      // Sent as a simple form post so the browser doesn't need an extra CORS check
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Request failed');
+      showThanks(data.the_edit_opt_in === 'yes');
+    }).catch(function () {
+      button.disabled = false;
+      button.textContent = 'Request my code';
+      errorEl.textContent = 'Something went wrong. Please try again, or email support@reformathletics.net.';
+      errorEl.classList.remove('hidden');
+    });
+  });
+})();
+</script>
+</body>
+</html>
