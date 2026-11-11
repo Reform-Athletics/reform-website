@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Care Team Release</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f2f0; --surface:#ffffff; --field:#fbfaf9; --ink:#1a1a1c; --muted:#66605c;
+  --line:#ddd5cf; --accent:#9c7463; --accent-ink:#ffffff; --warn-bg:#f7ece7; --ok:#5d7a5f;
+  --display:"Marcellus", Georgia, serif; --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0b0c; --surface:#1a1a1c; --field:#121213; --ink:#f3f2f0; --muted:#a8a09b;
+    --line:#2f2c2b; --accent:#c08a78; --accent-ink:#0b0b0c; --warn-bg:#2a201d; --ok:#8fae90;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b0b0c; --surface:#1a1a1c; --field:#121213; --ink:#f3f2f0; --muted:#a8a09b;
+  --line:#2f2c2b; --accent:#c08a78; --accent-ink:#0b0b0c; --warn-bg:#2a201d; --ok:#8fae90;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 80px}
+.top{border-bottom:1px solid var(--line)}
+.top-inner{max-width:760px;margin:0 auto;padding:16px;display:flex;align-items:center;gap:10px}
+.mono{width:34px;height:34px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;font:15px var(--display);color:var(--accent)}
+.top span{font:17px var(--display);letter-spacing:.14em}
+h1{font:400 clamp(30px,6vw,42px)/1.1 var(--display);margin:36px 0 8px}
+.lede{color:var(--muted);margin:0 0 24px;max-width:62ch}
+h2{font:400 24px/1.2 var(--display);margin:0 0 4px}
+.sec{border-top:1px solid var(--line);padding:26px 0 8px}
+.hint{color:var(--muted);margin:0 0 18px;font-size:15px}
+.q{margin:0 0 18px}
+.q>label,.lab{display:block;font-weight:500;margin-bottom:6px}
+.sub{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+.req::after{content:" *";color:var(--accent)}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{
+  width:100%;font:16px var(--body);color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none}
+textarea{min-height:76px;resize:vertical}
+input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:flex-start;margin:0 0 12px;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent);flex-shrink:0}
+.check small{display:block;color:var(--muted);font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px 4px;margin:0 0 14px}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card-head b{font:400 19px var(--display)}
+.sens{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 16px 6px;margin:8px 0 20px}
+.sens .row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.sens .row:last-child{border-bottom:0}
+.sens .row p{margin:0;font-size:15px}
+.ini{width:76px!important;text-align:center;text-transform:uppercase;font-weight:600;letter-spacing:.08em;padding:8px!important;flex-shrink:0}
+.ini.ok{border-color:var(--ok)}
+.note{background:var(--warn-bg);border-left:3px solid var(--accent);padding:12px 14px;border-radius:0 8px 8px 0;font-size:15px;margin:12px 0 20px}
+.doc{font-size:15.5px;line-height:1.65}
+.doc h3{font:400 19px/1.3 var(--display);margin:22px 0 6px}
+.doc p,.doc li{max-width:68ch}
+.doc p{margin:0 0 10px}
+.fill{font-weight:600;color:var(--accent)}
+.sign{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 16px;margin:24px 0}
+.pad{position:relative;border:1px dashed var(--accent);border-radius:10px;background:#fbfaf9;height:150px;touch-action:none}
+.pad canvas{width:100%;height:100%;display:block;cursor:crosshair}
+.pad .ph{position:absolute;left:14px;bottom:12px;color:#8a837e;font-size:13px;pointer-events:none}
+.pad-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
+.linkbtn{background:none;border:0;color:var(--accent);font:500 14px var(--body);cursor:pointer;padding:4px 0;text-decoration:underline;text-underline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--body);padding:13px 20px;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible,.linkbtn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.actions{display:grid;gap:12px;margin:16px 0 8px}
+.actions .btn{width:100%}
+.coachbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin:0 0 8px}
+.coachbox .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.missing{color:var(--accent);font-size:14px;margin:8px 0 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><div class="mono">RA</div><span>REFORM ATHLETICS</span></div></header>
+
+<main class="wrap" id="form">
+  <h1>Authorization to Share Health Information</h1>
+  <p class="lede">This lets your doctor, physical therapist or other providers share information with your coach, Priscilla Claude, CPT, CN, so your training and nutrition plan works with your care, not against it. You choose who, what, and for how long, and you can cancel it at any time.</p>
+
+  <div class="coachbox" id="coachBox">
+    <span class="lab">Send this to a client</span>
+    <span class="sub">They fill it out and sign on their own phone. Add their name so it's ready for them.</span>
+    <div class="q" style="margin:12px 0 0"><input type="text" id="linkName" placeholder="Client's full name"></div>
+    <div class="row">
+      <button type="button" class="btn" id="copyLink">Copy client link</button>
+      <button type="button" class="btn ghost" id="emailLink">Email link</button>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>1. About you</h2>
+    <p class="hint">Providers use this to match you to your records.</p>
+    <div class="q"><label for="fullName" class="req">Full legal name</label><input type="text" id="fullName" name="fullName" autocomplete="name"></div>
+    <div class="grid2">
+      <div class="q"><label for="dob" class="req">Date of birth</label><input type="date" id="dob" name="dob" autocomplete="bday"></div>
+      <div class="q"><label for="phone" class="req">Phone</label><input type="tel" id="phone" name="phone" autocomplete="tel"></div>
+    </div>
+    <div class="q"><label for="email">Email</label><input type="email" id="email" name="email" autocomplete="email"></div>
+    <div class="q"><label for="otherNames">Other names your records may be under</label><span class="sub">Maiden or previous name, optional</span><input type="text" id="otherNames" name="otherNames"></div>
+  </div>
+
+  <div class="sec">
+    <h2>2. Your care team</h2>
+    <p class="hint">List each provider who may share with your coach.</p>
+    <div id="providers"></div>
+    <button type="button" class="btn ghost" id="addProv">+ Add another provider</button>
+  </div>
+
+  <div class="sec">
+    <h2>3. What may be shared</h2>
+    <p class="hint">Only check what's useful for your training and nutrition.</p>
+    <div id="infoTypes"></div>
+    <div class="q" id="otherInfoQ" hidden><label for="otherInfo">Other information</label><input type="text" id="otherInfo" name="otherInfo"></div>
+
+    <span class="lab" style="margin-top:12px">Specially protected records</span>
+    <span class="sub" style="margin-bottom:6px">These are <b>not</b> shared unless you initial them. Leave blank to exclude.</span>
+    <div class="sens" id="sensitive"></div>
+    <p class="hint">Psychotherapy notes (a therapist's private session notes) are never included in this authorization.</p>
+  </div>
+
+  <div class="sec">
+    <h2>4. Which direction</h2>
+    <label class="check"><input type="checkbox" name="dirIn" checked><span>My providers may share the information above <b>with Reform Athletics</b>.</span></label>
+    <label class="check"><input type="checkbox" name="dirOut" checked><span>Reform Athletics may share <b>with my providers</b> my training program, progress, measurements, check-in notes, and any concerns about my health during training.</span></label>
+    <label class="check"><input type="checkbox" name="dirTalk" checked><span>Reform Athletics and my providers may talk with each other by phone, video, email or fax about my care.</span></label>
+  </div>
+
+  <div class="sec">
+    <h2>5. Purpose and timeframe</h2>
+    <div class="q"><span class="lab">Purpose</span>
+      <label class="check"><input type="checkbox" name="purpose" checked disabled><span>At my request, to coordinate safe exercise and nutrition coaching with my care team.</span></label>
+      <label class="check"><input type="checkbox" name="purposeOther"><span>Another purpose</span></label>
+      <input type="text" id="purposeText" name="purposeText" placeholder="Describe" hidden>
+    </div>
+    <div class="q"><span class="lab req">This authorization ends</span>
+      <label class="check"><input type="radio" name="expType" value="end" checked style="width:20px;height:20px;accent-color:var(--accent)"><span>When I stop training with Reform Athletics, or one year from today, whichever comes first</span></label>
+      <label class="check"><input type="radio" name="expType" value="date" style="width:20px;height:20px;accent-color:var(--accent)"><span>On a date I choose</span></label>
+      <input type="date" id="expDate" name="expDate" hidden>
+    </div>
+  </div>
+
+  <div class="sec doc" id="rights">
+    <h2>6. Your rights</h2>
+    <h3>You can cancel this anytime</h3>
+    <p>You may revoke this authorization at any time by giving written notice to each provider listed and to Reform Athletics at <b>priscilla@reformathletics.net</b> or 6688 Nolensville Rd, Ste 108 #2214, Brentwood, TN 37027. Revoking stops future sharing. It does not undo anything already shared while this authorization was in effect.</p>
+    <h3>Signing is your choice</h3>
+    <p>Your providers cannot make your treatment, payment, insurance enrollment or eligibility for benefits depend on whether you sign this form.</p>
+    <h3>How your information is protected once shared</h3>
+    <p>Reform Athletics is a fitness and nutrition coaching business, not a health care provider or health plan. Once your information is shared with Reform Athletics, federal privacy law (HIPAA) may no longer protect it, and it could in principle be shared again. Reform Athletics commits to the following: your information is used only to plan and coach your training and nutrition; it is never sold or used for marketing; it is shared only with the providers you list here, unless the law requires otherwise or in an emergency; it is stored in private, access-controlled systems; and it is deleted 12 months after you stop training, unless you ask for it to be deleted sooner.</p>
+    <h3>Your copy</h3>
+    <p>You are entitled to a copy of this signed authorization. You can download one after signing.</p>
+  </div>
+
+  <div class="sign">
+    <h2>7. Signature</h2>
+    <label class="check" style="margin-top:6px"><input type="checkbox" id="isRep" name="isRep"><span>I am signing for someone else as their personal representative<small>For example a parent of a minor, a legal guardian, or someone with health care power of attorney</small></span></label>
+    <div id="repFields" hidden>
+      <div class="grid2">
+        <div class="q"><label for="repName" class="req">Your full name</label><input type="text" id="repName" name="repName"></div>
+        <div class="q"><label for="repAuthority" class="req">Your authority</label><select id="repAuthority" name="repAuthority"><option value="">Select</option><option>Parent of a minor</option><option>Legal guardian</option><option>Health care power of attorney</option><option>Conservator</option><option>Other legal authority</option></select></div>
+      </div>
+      <p class="hint">Providers may ask for a copy of the document that gives you this authority.</p>
+    </div>
+    <div class="q"><label for="sigName" class="req" id="sigNameLab">Type your full name</label><input type="text" id="sigName" name="sigName"></div>
+    <div class="pad"><canvas id="pad"></canvas><span class="ph" id="ph">Sign here</span></div>
+    <div class="pad-row"><span id="stamp">Not signed</span><button type="button" class="linkbtn" id="clearSig">Clear</button></div>
+    <label class="check" style="margin-top:16px"><input type="checkbox" id="agree" name="agree"><span>I have read this form, I understand it, and I am signing it voluntarily. My electronic signature has the same effect as a handwritten one.</span></label>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn" id="submitBtn">Submit</button>
+    <button type="button" class="btn ghost" id="dlAll">Download signed copy</button>
+  </div>
+  <p class="missing" id="missing" hidden></p>
+  <div id="perProv" hidden>
+    <p class="hint" style="margin-top:20px">One copy per provider, to send to their office:</p>
+    <div class="actions" id="perProvBtns"></div>
+  </div>
+  <div class="note" id="doneMsg" hidden></div>
+  <p style="margin-top:28px" id="resetWrap"><button type="button" class="linkbtn" id="resetBtn">Start a new form</button></p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+const CONFIG={
+  clientBase:"https://reformathletics.net/medical-release/",
+  webhook:""   // n8n webhook for submissions, e.g. "https://<your-n8n-host>/webhook/medical-release"
+};
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P=new URLSearchParams(location.search);
+const CLIENT=P.has("c")||/(^|\.)reformathletics\.net$/.test(location.hostname);
+
+const INFO=[
+ ["dx","Diagnoses, conditions and treatment plans"],
+ ["clear","Exercise clearance, restrictions and precautions"],
+ ["meds","Current medications"],
+ ["surg","Surgical history and recent procedures"],
+ ["labs","Lab results and vitals (blood pressure, glucose, cholesterol, thyroid and similar)"],
+ ["img","Imaging reports (X-ray, MRI, scans)"],
+ ["pt","Physical therapy or rehab notes and home exercise programs"],
+ ["preg","Pregnancy and postpartum status and restrictions"],
+ ["diet","Dietary needs, food allergies and nutrition recommendations"],
+ ["other","Other"]
+];
+const SENS=[
+ ["mh","Mental health records (not psychotherapy notes)"],
+ ["sud","Alcohol or drug use treatment records"],
+ ["hiv","HIV and sexually transmitted infection test results"],
+ ["gen","Genetic testing results"]
+];
+const TYPES=["Primary care","Physical therapy","Orthopedics","Chiropractic","OB/GYN or midwife","Cardiology","Endocrinology","Registered dietitian","Mental health","Other"];
+
+$("#infoTypes").innerHTML=INFO.map(([k,l])=>`<label class="check"><input type="checkbox" name="info" value="${k}"${["dx","clear","meds"].includes(k)?" checked":""}><span>${esc(l)}</span></label>`).join("");
+$("#sensitive").innerHTML=SENS.map(([k,l])=>`<div class="row"><p>${esc(l)}</p><input type="text" class="ini" maxlength="4" data-sens="${k}" aria-label="Initials to include ${esc(l)}" placeholder="Initials"></div>`).join("");
+
+/* providers */
+let provs=[{}];
+function provHTML(p,i){
+  return `<div class="card" data-i="${i}"><div class="card-head"><b>Provider ${i+1}</b>${provs.length>1?`<button type="button" class="linkbtn" data-rm="${i}">Remove</button>`:""}</div>
+  <div class="grid2">
+    <div class="q"><label class="req">Provider or practice name</label><input type="text" data-p="name" value="${esc(p.name)}"></div>
+    <div class="q"><label>Type</label><select data-p="type"><option value="">Select</option>${TYPES.map(t=>`<option${p.type===t?" selected":""}>${t}</option>`).join("")}</select></div>
+    <div class="q"><label class="req">Phone</label><input type="tel" data-p="phone" value="${esc(p.phone)}"></div>
+    <div class="q"><label>Fax or email</label><input type="text" data-p="fax" value="${esc(p.fax)}"></div>
+  </div>
+  <div class="q"><label>Address</label><input type="text" data-p="addr" value="${esc(p.addr)}"></div></div>`;
+}
+function drawProvs(){ $("#providers").innerHTML=provs.map(provHTML).join(""); }
+$("#providers").addEventListener("input",e=>{ const c=e.target.closest(".card"); if(c&&e.target.dataset.p){ provs[+c.dataset.i][e.target.dataset.p]=e.target.value; save(); }});
+$("#providers").addEventListener("change",e=>{ const c=e.target.closest(".card"); if(c&&e.target.dataset.p){ provs[+c.dataset.i][e.target.dataset.p]=e.target.value; save(); }});
+$("#providers").addEventListener("click",e=>{ if(e.target.dataset.rm!==undefined){ provs.splice(+e.target.dataset.rm,1); drawProvs(); save(); }});
+$("#addProv").addEventListener("click",()=>{ provs.push({}); drawProvs(); save(); });
+
+/* toggles */
+function sync(){
+  $("#otherInfoQ").hidden=!$('input[name=info][value=other]').checked;
+  $("#purposeText").hidden=!$('input[name=purposeOther]').checked;
+  $("#expDate").hidden=$('input[name=expType]:checked').value!=="date";
+  const rep=$("#isRep").checked; $("#repFields").hidden=!rep;
+  $("#sigNameLab").textContent=rep?"Type your full name (representative)":"Type your full name";
+  $$(".ini").forEach(i=>i.classList.toggle("ok",i.value.trim().length>=2));
+}
+document.addEventListener("input",e=>{ if(e.target.classList.contains("ini")) e.target.value=e.target.value.toUpperCase(); sync(); save(); });
+document.addEventListener("change",()=>{ sync(); save(); });
+
+/* signature */
+let SIG=null, STAMP=null;
+const c=$("#pad"), ctx=c.getContext("2d"); let drawing=false,last=null;
+function size(){ const r=c.getBoundingClientRect(); if(!r.width) return; c.width=r.width*devicePixelRatio; c.height=r.height*devicePixelRatio;
+  ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); ctx.lineWidth=2.2; ctx.lineCap="round"; ctx.lineJoin="round"; ctx.strokeStyle="#1a1a1c";
+  if(SIG){ const im=new Image(); im.onload=()=>ctx.drawImage(im,0,0,r.width,r.height); im.src=SIG; $("#ph").hidden=true; } }
+new ResizeObserver(size).observe(c);
+const pos=e=>{ const r=c.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; };
+c.addEventListener("pointerdown",e=>{ e.preventDefault(); c.setPointerCapture(e.pointerId); drawing=true; last=pos(e); $("#ph").hidden=true; });
+c.addEventListener("pointermove",e=>{ if(!drawing) return; const p=pos(e); ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke(); last=p; });
+const end=()=>{ if(!drawing) return; drawing=false; const r=c.getBoundingClientRect(), o=document.createElement("canvas"); o.width=480; o.height=Math.round(480*r.height/r.width); o.getContext("2d").drawImage(c,0,0,o.width,o.height);
+  SIG=o.toDataURL("image/png"); STAMP=new Date().toISOString(); stampText(); save(); };
+c.addEventListener("pointerup",end); c.addEventListener("pointercancel",end); c.addEventListener("pointerleave",end);
+function stampText(){ $("#stamp").textContent=STAMP?"Signed "+new Date(STAMP).toLocaleString("en-US",{dateStyle:"medium",timeStyle:"short"}):"Not signed"; }
+$("#clearSig").addEventListener("click",()=>{ const r=c.getBoundingClientRect(); ctx.clearRect(0,0,r.width,r.height); SIG=null; STAMP=null; $("#ph").hidden=false; stampText(); save(); });
+
+/* state */
+function collect(){
+  const v=n=>{ const el=$(`[name="${n}"]`); return el?el.value.trim():""; };
+  const sens={}; $$(".ini").forEach(i=>{ if(i.value.trim()) sens[i.dataset.sens]=i.value.trim(); });
+  return {fullName:v("fullName"),dob:v("dob"),phone:v("phone"),email:v("email"),otherNames:v("otherNames"),
+    providers:provs.filter(p=>(p.name||"").trim()),
+    info:$$('input[name=info]:checked').map(i=>i.value),otherInfo:v("otherInfo"),sens,
+    dirIn:$('[name=dirIn]').checked,dirOut:$('[name=dirOut]').checked,dirTalk:$('[name=dirTalk]').checked,
+    purposeOther:$('[name=purposeOther]').checked?v("purposeText"):"",
+    expType:$('input[name=expType]:checked').value,expDate:v("expDate"),
+    isRep:$("#isRep").checked,repName:v("repName"),repAuthority:v("repAuthority"),sigName:v("sigName"),agree:$("#agree").checked};
+}
+function missing(){
+  const d=collect(), m=[];
+  if(!d.fullName) m.push("your name"); if(!d.dob) m.push("date of birth"); if(!d.phone) m.push("phone");
+  if(!d.providers.length) m.push("at least one provider");
+  if(d.providers.some(p=>!(p.phone||"").trim())) m.push("each provider's phone");
+  if(!d.info.length&&!Object.keys(d.sens).length) m.push("what may be shared");
+  if(d.info.includes("other")&&!d.otherInfo) m.push("the “other” information");
+  if(!d.dirIn&&!d.dirOut&&!d.dirTalk) m.push("at least one direction");
+  if(d.expType==="date"&&!d.expDate) m.push("an end date");
+  if(d.isRep&&(!d.repName||!d.repAuthority)) m.push("representative name and authority");
+  if(!d.sigName) m.push("typed name"); if(!SIG) m.push("signature"); if(!d.agree) m.push("the agreement checkbox");
+  return m;
+}
+function save(){ try{ localStorage.setItem("ra_release_draft",JSON.stringify({provs,SIG,STAMP,form:Object.fromEntries($$("#form [name], .ini").map(el=>[el.name||("ini_"+el.dataset.sens),el.type==="checkbox"?el.checked:el.type==="radio"?(el.checked?el.value:undefined):el.value]).filter(([k,v])=>v!==undefined))})); }catch{} }
+function restore(){
+  try{ const d=JSON.parse(localStorage.getItem("ra_release_draft")||"null"); if(!d) return;
+    provs=d.provs&&d.provs.length?d.provs:[{}]; SIG=d.SIG; STAMP=d.STAMP; stampText();
+    Object.entries(d.form||{}).forEach(([k,v])=>{
+      if(k.startsWith("ini_")){ const i=$(`.ini[data-sens="${k.slice(4)}"]`); if(i) i.value=v; return; }
+      $$(`[name="${k}"]`).forEach(el=>{ if(el.type==="checkbox"&&el.name!=="info") el.checked=v; else if(el.type==="radio") el.checked=(el.value===v); else if(el.type!=="checkbox") el.value=v; });
+    });
+    if(d.form&&"info" in d.form){} // info checkboxes share a name; re-read below
+  }catch{}
+}
+/* info checkboxes share a name, so store them separately */
+const _save=save; save=function(){ _save(); try{ const d=JSON.parse(localStorage.getItem("ra_release_draft")); d.infoSel=$$('input[name=info]:checked').map(i=>i.value); localStorage.setItem("ra_release_draft",JSON.stringify(d)); }catch{} };
+restore();
+try{ const d=JSON.parse(localStorage.getItem("ra_release_draft")||"null"); if(d&&d.infoSel) $$('input[name=info]').forEach(i=>i.checked=d.infoSel.includes(i.value)); }catch{}
+if(P.get("n")&&!$("#fullName").value) $("#fullName").value=P.get("n");
+drawProvs(); sync();
+
+/* signed document */
+const fmt=d=>{ if(!d) return ""; const [y,m,dd]=d.split("-").map(Number); return new Date(y,m-1,dd).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}); };
+function docHTML(only){
+  const d=collect(), list=only?[only]:d.providers;
+  const infoL=d.info.filter(k=>k!=="other").map(k=>INFO.find(x=>x[0]===k)[1]); if(d.info.includes("other")&&d.otherInfo) infoL.push(d.otherInfo);
+  const sensL=SENS.map(([k,l])=>`<li>${esc(l)}: ${d.sens[k]?`<b>INCLUDED</b>, initialed ${esc(d.sens[k])}`:"excluded"}</li>`).join("");
+  const dirs=[d.dirIn&&"The provider(s) listed may disclose the information below to Reform Athletics LLC.",
+    d.dirOut&&"Reform Athletics LLC may disclose to the provider(s) listed my training program, progress, measurements, check-in notes and any health concerns observed during training.",
+    d.dirTalk&&"Reform Athletics LLC and the provider(s) listed may communicate with each other about my care by phone, video, email or fax."].filter(Boolean);
+  const exp=d.expType==="date"?fmt(d.expDate):"When I stop training with Reform Athletics, or one year from the date signed, whichever comes first";
+  const signed=STAMP?new Date(STAMP).toLocaleString("en-US",{dateStyle:"long",timeStyle:"short"}):"";
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Authorization: ${esc(d.fullName)}</title>
+<style>body{font:14.5px/1.55 Georgia,serif;color:#1a1a1c;max-width:720px;margin:36px auto;padding:0 20px}h1{font-weight:400;font-size:22px;margin:0 0 2px}h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;border-top:1px solid #9c7463;padding-top:12px;margin:22px 0 8px}.sub{color:#66605c;margin:0 0 18px;font-size:13px}table{width:100%;border-collapse:collapse}td{padding:4px 0;vertical-align:top}td:first-child{color:#66605c;width:38%}ul{margin:4px 0 8px;padding-left:20px}.sig img{height:80px;display:block}.sig{border-top:1px solid #1a1a1c;margin-top:16px;padding-top:6px;max-width:360px}p{margin:0 0 8px}</style></head><body>
+<h1>Authorization to Use and Disclose Health Information</h1>
+<p class="sub">Reform Athletics LLC · Priscilla Claude, CPT, CN · 6688 Nolensville Rd, Ste 108 #2214, Brentwood, TN 37027 · (615) 905-6358 · priscilla@reformathletics.net</p>
+<h2>Client</h2><table><tr><td>Name</td><td>${esc(d.fullName)}</td></tr><tr><td>Date of birth</td><td>${esc(fmt(d.dob))}</td></tr><tr><td>Phone</td><td>${esc(d.phone)}</td></tr>${d.email?`<tr><td>Email</td><td>${esc(d.email)}</td></tr>`:""}${d.otherNames?`<tr><td>Other names</td><td>${esc(d.otherNames)}</td></tr>`:""}</table>
+<h2>Provider${list.length>1?"s":""} disclosing and receiving</h2>${list.map(p=>`<p><b>${esc(p.name)}</b>${p.type?` (${esc(p.type)})`:""}<br>${[p.phone,p.fax,p.addr].filter(Boolean).map(esc).join(" · ")}</p>`).join("")}
+<h2>Recipient</h2><p>Reform Athletics LLC, attention Priscilla Claude, CPT, CN, at the contact details above.</p>
+<h2>Authorized sharing</h2><ul>${dirs.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+<h2>Information that may be disclosed</h2><ul>${infoL.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+<p>Specially protected records:</p><ul>${sensL}<li>Psychotherapy notes: excluded</li></ul>
+<h2>Purpose</h2><p>At my request, to coordinate safe exercise and nutrition coaching with my care team.${d.purposeOther?" Also: "+esc(d.purposeOther):""}</p>
+<h2>Expiration</h2><p>${esc(exp)}.</p>
+<h2>My rights</h2>
+<p>I may revoke this authorization at any time by written notice to the provider(s) listed and to Reform Athletics LLC. Revocation does not affect any disclosure made before it was received.</p>
+<p>My treatment, payment, enrollment in a health plan, or eligibility for benefits may not be conditioned on whether I sign this authorization.</p>
+<p>Reform Athletics LLC is not a health care provider or health plan covered by HIPAA. Information disclosed under this authorization may be subject to redisclosure by the recipient and may no longer be protected by federal privacy rules. Reform Athletics LLC agrees to use it only to plan and coach my training and nutrition, never to sell it or use it for marketing, to share it only with the provider(s) listed unless required by law or in an emergency, to store it securely, and to delete it 12 months after I stop training.</p>
+<p>${d.sens.sud?"Records of substance use disorder treatment are protected by 42 CFR Part 2, which prohibits further disclosure without my written consent unless permitted by that regulation. ":""}I am entitled to a copy of this signed authorization.</p>
+<h2>Signature</h2>
+<div class="sig">${SIG?`<img src="${SIG}" alt="Signature">`:""}<div>${esc(d.sigName)}</div><div style="color:#66605c;font-size:13px">Signed electronically ${esc(signed)}</div></div>
+${d.isRep?`<p style="margin-top:12px">Signed by personal representative <b>${esc(d.repName)}</b>, authority: ${esc(d.repAuthority)}, on behalf of ${esc(d.fullName)}.</p>`:""}
+</body></html>`;
+}
+const slug=s=>(s||"client").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+async function offer(name,data){
+  const dl=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
+  if(dl){ try{ await dl.save({filename:name,data}); toast("Saved "+name); }catch(e){ if(!e||e.code!=="declined") toast("Download isn't available here"); } return; }
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([data],{type:"text/html"})); a.download=name; document.body.appendChild(a); a.click(); a.remove();
+}
+function check(){ const m=missing(); $("#missing").hidden=!m.length; $("#missing").textContent=m.length?"Still needed: "+m.join(", "):""; return !m.length; }
+$("#dlAll").addEventListener("click",()=>{ if(!check()) return; offer(`${slug(collect().fullName)}-care-team-authorization.html`,docHTML()); showPerProv(); });
+function showPerProv(){
+  const d=collect(); if(CLIENT||d.providers.length<2) return;
+  $("#perProv").hidden=false;
+  $("#perProvBtns").innerHTML=d.providers.map((p,i)=>`<button type="button" class="btn ghost" data-pp="${i}">${esc(p.name)}</button>`).join("");
+}
+$("#perProvBtns").addEventListener("click",e=>{ const i=e.target.dataset.pp; if(i===undefined) return; const d=collect(), p=d.providers[+i]; offer(`${slug(d.fullName)}-authorization-${slug(p.name)}.html`,docHTML(p)); });
+
+$("#submitBtn").addEventListener("click",async()=>{
+  if(!check()) return;
+  const d=collect(), msg=$("#doneMsg");
+  if(!CONFIG.webhook){
+    msg.hidden=false;
+    msg.innerHTML=CLIENT?`Please tap <b>Download signed copy</b> and email it to <a href="mailto:priscilla@reformathletics.net">priscilla@reformathletics.net</a>.`:"Signed. Download the copy below for the client's folder and to send to each provider.";
+    showPerProv(); return;
+  }
+  const b=$("#submitBtn"); b.disabled=true; b.textContent="Submitting…";
+  try{
+    const r=await fetch(CONFIG.webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({submittedAt:new Date().toISOString(),name:d.fullName,email:d.email,phone:d.phone,providers:d.providers,signedHtml:docHTML(),perProvider:d.providers.map(p=>({name:p.name,html:docHTML(p)}))})});
+    if(!r.ok) throw 0;
+    b.textContent="Submitted"; msg.hidden=false; msg.textContent="Thank you. Your authorization is in. Download a copy for your records below.";
+  }catch{ b.disabled=false; b.textContent="Submit"; msg.hidden=false; msg.innerHTML=`It couldn't be sent. Please tap <b>Download signed copy</b> and email it to <a href="mailto:priscilla@reformathletics.net">priscilla@reformathletics.net</a>.`; }
+});
+
+/* coach tools */
+if(CLIENT){ $("#coachBox").hidden=true; $("#resetWrap").hidden=true; }
+const link=()=>CONFIG.clientBase+($("#linkName").value.trim()?"?n="+encodeURIComponent($("#linkName").value.trim()):"");
+$("#copyLink").addEventListener("click",async()=>{ try{ await navigator.clipboard.writeText(link()); toast("Client link copied"); }catch{ prompt("Copy this link:",link()); } });
+$("#emailLink").addEventListener("click",()=>{
+  const first=$("#linkName").value.trim().split(" ")[0];
+  const body=`Hi${first?" "+first:""},\n\nSo I can work alongside your doctor and the rest of your care team, here's a short authorization form. You choose which providers and what they can share, and you can cancel it anytime:\n\n${link()}\n\nIt takes about 5 minutes and you can sign right on your phone.\n\nPriscilla\nReform Athletics`;
+  location.href=`mailto:?subject=${encodeURIComponent("Care team authorization")}&body=${encodeURIComponent(body)}`;
+});
+$("#resetBtn").addEventListener("click",()=>{ if(!confirm("Clear this form and start a new one?")) return; try{ localStorage.removeItem("ra_release_draft"); }catch{} location.reload(); });
+
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),3000); }
+})();
+</script>
+</body>
+</html>
