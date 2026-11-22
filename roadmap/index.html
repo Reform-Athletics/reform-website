@@ -135,7 +135,8 @@ input::placeholder{color:#6f6964}
 .phase dd{margin:0;font-weight:300;color:#e7e1dc}
 .phase .win{margin:0 18px 18px;padding:12px 14px;border-left:2px solid var(--rose);background:rgba(192,138,120,.07);font-size:14.5px}
 .phase .win b{font-weight:500;color:var(--rose)}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.day span{overflow-wrap:anywhere;hyphens:auto}
 .day{border:1px solid var(--hair);padding:10px 4px 12px;text-align:center;min-height:96px;display:flex;flex-direction:column;gap:6px;background:var(--panel2)}
 .day b{font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:500}
 .day span{font-size:12px;line-height:1.25;color:#e7e1dc}
@@ -269,6 +270,10 @@ footer a{color:var(--muted)}
 .pp .cov li{position:relative;padding-left:24px;font-weight:300;color:#e7e1dc;font-size:15px;line-height:1.5;animation:liIn .45s ease both;animation-delay:var(--d)}
 .pp .cov li:before{content:"";position:absolute;left:3px;top:8px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
 @keyframes liIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.hml{display:grid;gap:0;margin:0 0 20px;border-top:1px solid var(--hair)}
+.hml-row{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair);animation:liIn .45s ease both;animation-delay:var(--d)}
+.hml-row span{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--rose);line-height:1.3}
+.hml-row p{margin:0;font-weight:300;color:#e7e1dc;font-size:15px;line-height:1.5}
 .pp-win{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin:0 0 20px}
 .pp-win span{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose)}
 .pp-win p{margin:0;font-size:15px;color:#f0ebe6}
@@ -296,7 +301,7 @@ footer a{color:var(--muted)}
 .rv.in{opacity:1;transform:none}
 .rm-head > *{animation:in .7s ease both}
 .rm-head > *:nth-child(2){animation-delay:.08s}.rm-head > *:nth-child(3){animation-delay:.16s}.rm-head > *:nth-child(4){animation-delay:.24s}.rm-head > *:nth-child(5){animation-delay:.32s}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.r-lane,.m-ring,.seal-badge,.r-glow,.pp,.pp .cov li,.rm-head > *{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.r-lane,.m-ring,.seal-badge,.r-glow,.pp,.pp .cov li,.hml-row,.rm-head > *{animation:none!important}}
 @media (max-width:370px){.m-lab strong{font-size:19px}.m-lab{max-width:120px}.seal{grid-template-columns:64px 1fr}.seal-badge{width:64px;height:64px}}
 @media print{.rv{opacity:1;transform:none}}
 @media print{.leg-body{display:block!important}.leg-more{display:none}.road:before,.road:after{display:none}.leg-card,.guar{background:#fff!important;border-color:#ccc!important}.feel,.cov li,.guar p,.leg-tag,.focus2{color:#222!important}}
@@ -341,7 +346,8 @@ footer a{color:var(--muted)}
       <li><b>01</b><span>Your 12 weeks in three phases, with what changes and when</span></li>
       <li><b>02</b><span>A training week that fits the days you actually have</span></li>
       <li><b>03</b><span>A plan for the exact things that have stopped you before</span></li>
-      <li><b>04</b><span>Your best-fit way to train: in-home, in the gym, online or hybrid</span></li>
+      <li><b>04</b><span>The habits, mindset and lifestyle side, not just workouts and food</span></li>
+      <li><b>05</b><span>Your best-fit way to train: in-home, in the gym, online or hybrid</span></li>
     </ul>
     <button class="btn" id="start" type="button">Build my roadmap</button>
     <p class="by">Certified Personal Trainer · Certified Nutritionist · Army officer · Mom</p>

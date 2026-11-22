@@ -28,8 +28,8 @@
       ['stuck', 'Training, but not seeing results', 'Putting in work, body isn’t changing'],
       ['consistent', 'Consistent and ready for the next level', 'I want structure and a coach']
     ] },
-    { id: 'days', q: 'How many days a week can you realistically train?', hint: 'Choose what you can keep on a busy week, not a perfect one.', options: [
-      ['2', '2 days'], ['3', '3 days'], ['4', '4 days'], ['5', '5 or more days']
+    { id: 'days', q: 'How many days a week can you realistically train?', hint: 'Between 3 and 6. Choose what you can keep on a busy week, not a perfect one.', options: [
+      ['3', '3 days'], ['4', '4 days'], ['5', '5 days'], ['6', '6 days']
     ] },
     { id: 'blockers', q: 'What has held you back before?', hint: 'Choose up to two.', multi: 2, options: [
       ['time', 'Not enough time'],
@@ -113,10 +113,10 @@
     consistent: 'You already show up. Now we add structure, progressive overload and coaching to break through.'
   };
   var SPLITS = {
-    '2': { days: [0, 3], names: ['Full body A', 'Full body B'] },
     '3': { days: [0, 2, 4], names: ['Lower body', 'Upper body', 'Full body'] },
     '4': { days: [0, 1, 3, 4], names: ['Lower body', 'Upper body', 'Lower body', 'Upper body'] },
-    '5': { days: [0, 1, 2, 4, 5], names: ['Lower body', 'Upper body', 'Conditioning + core', 'Lower body', 'Upper body'] }
+    '5': { days: [0, 1, 2, 4, 5], names: ['Lower body', 'Upper body', 'Cardio + core', 'Lower body', 'Upper body'] },
+    '6': { days: [0, 1, 2, 3, 4, 5], names: ['Lower body', 'Upper body', 'Cardio + core', 'Lower body', 'Upper body', 'Full body'] }
   };
   var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   var BLOCKERS = {
@@ -168,7 +168,7 @@
 
   function build(a) {
     var g = GOALS[a.goal] || GOALS.consistent;
-    var split = SPLITS[a.days] || SPLITS['3'];
+    var split = SPLITS[a.days] || SPLITS[+a.days < 3 ? '3' : '6'] || SPLITS['3'];
     var bl = (a.blockers || []).slice(0, 2);
     var style = pickStyle(a);
     var mindset1 = bl.indexOf('mindset') > -1 ? 'Write down why this matters to you, and set one non-negotiable for your hardest day.'
@@ -177,7 +177,7 @@
     var phases = [
       { name: 'Foundation', weeks: 'Weeks 1–4', focus: g.p1, training: START[a.start] || START.new,
         fuel: (FUEL1[a.nutrition] || FUEL1.none), mind: mindset1,
-        win: 'You’ve trained ' + a.days + (a.days === '5' ? '+' : '') + ' days a week for four weeks straight, and you know your plan cold.' },
+        win: 'You’ve trained ' + (SPLITS[a.days] ? a.days : split.days.length) + ' days a week for four weeks straight, and you know your plan cold.' },
       { name: 'Build', weeks: 'Weeks 5–8', focus: g.p2,
         training: 'Your program updates. Weights, reps or tempo progress every week so your body keeps adapting.',
         fuel: 'Dial in your numbers for ' + g.fuel + '.',
@@ -193,7 +193,7 @@
         win: 'Day 90: you’re ' + ({ fat: 'leaner and in control of your nutrition', muscle: 'stronger and visibly more shaped', recomp: 'leaner, stronger and more defined', strength: 'stronger, fitter and full of energy', consistent: 'consistent, confident and fully back in your rhythm' }[a.goal] || 'consistent and confident') + ', with a plan for what comes next.' }
     ];
     // What's covered, how it feels, and the phase guarantee (shown when a phase is opened)
-    var daysTxt = a.days === '5' ? '5 or more days' : a.days + ' days';
+    var daysTxt = split.days.length + ' days';
     var blockLine = {
       time: 'Sessions built for the time you actually have, with a 20-minute version for the crazy days',
       know: 'Every session written for you, so you never walk in wondering what to do',
@@ -247,6 +247,31 @@
     phases[2].guarantee = { title: 'The No-Restart Guarantee',
       text: 'Finish your 12 weeks and your next 90-day plan is built and ready before day 90, so you never start from zero.',
       fine: 'Applies to clients active through week 12. The plan is delivered by your final check-in of the 12 weeks. Coaching after week 12 continues at your current rate.' };
+
+    // Beyond the workouts: habits, mindset and lifestyle for each phase
+    var LIFE1 = {
+      parent: 'Your sessions fit around school runs and family time, and we map your week every Sunday so you’re not squeezing yourself in last.',
+      workdays: 'Training goes on your calendar like a meeting that doesn’t get cancelled, with a 20-minute version for the late days.',
+      travel: 'Your trips go on the plan before you pack, with hotel-gym and no-equipment versions ready.',
+      shift: 'Your plan follows your rotation, not a Monday-to-Friday template, with sleep and recovery planned around your shifts.',
+      flexible: 'We give your flexible days a structure: set training times, so “I’ll find time” becomes “it’s done.”'
+    };
+    var habit1 = 'Three anchor habits: protein at every meal, a daily water target and a set bedtime. Small, daily and tracked.';
+    phases[0].beyond = [
+      ['Habits', habit1],
+      ['Mindset', bl.indexOf('mindset') > -1 ? 'We name the stress and self-talk that have stopped you before and write down why this matters to you, so they stop running the show.' : bl.indexOf('consistency') > -1 ? 'Never miss twice. A missed day isn’t failure, it’s a cue for your 20-minute minimum the next day. We don’t restart, we resume.' : 'Get clear on why this matters to you, and set your worst-day minimum: the smallest version of your plan you’ll do no matter what.'],
+      ['Lifestyle', LIFE1[a.life] || LIFE1.flexible]
+    ];
+    phases[1].beyond = [
+      ['Habits', 'On top of your anchor habits: a daily movement goal and a weekly meal-prep rhythm that takes the guesswork out of busy days.'],
+      ['Mindset', 'Progress isn’t a straight line. We coach you through the slow weeks so a plateau never turns into quitting.' + (bl.indexOf('mindset') > -1 ? ' This is where your mindset work pays off most.' : '')],
+      ['Lifestyle', 'A plan for dining out, weekends, holidays and social events, so life doesn’t have to pause for your goals.' + (a.life === 'travel' || bl.indexOf('travel') > -1 ? ' Travel weeks get their own version.' : '')]
+    ];
+    phases[2].beyond = [
+      ['Habits', 'Your habits run on autopilot. We review what’s sticking, drop what isn’t and lock in the routine that carries you forward.'],
+      ['Mindset', 'You stop seeing yourself as someone “trying to get fit” and start seeing yourself as someone who trains. That identity is what makes results last.'],
+      ['Lifestyle', 'A rhythm that works in every season: busy months, holidays and time off, without ever starting over.']
+    ];
 
     var week = DAYS.map(function (d, i) {
       var k = split.days.indexOf(i);
@@ -427,6 +452,7 @@
       '<p class="pp-tag">' + esc(ph.tagline) + '</p>' +
       '<blockquote class="feel">' + esc(ph.feel) + '</blockquote>' +
       '<p class="lbl">What’s covered</p><ul class="cov">' + ph.covered.map(function (c, k) { return '<li style="--d:' + (k * 70 + 120) + 'ms">' + esc(c) + '</li>'; }).join('') + '</ul>' +
+      '<p class="lbl">Habits, mindset and lifestyle</p><div class="hml">' + ph.beyond.map(function (b, k) { return '<div class="hml-row" style="--d:' + (k * 90 + 300) + 'ms"><span>' + esc(b[0]) + '</span><p>' + esc(b[1]) + '</p></div>'; }).join('') + '</div>' +
       '<div class="pp-win"><span>Milestone</span><p>' + esc(ph.win) + '</p></div>' +
       '<div class="seal"><svg class="seal-badge" viewBox="0 0 80 80" aria-hidden="true"><defs><path id="sc' + i + '" d="M40,40 m-29,0 a29,29 0 1,1 58,0 a29,29 0 1,1 -58,0"/></defs>' +
         '<circle cx="40" cy="40" r="38" fill="none" stroke="#c08a78" stroke-width="1.2"/><circle cx="40" cy="40" r="21" fill="none" stroke="#c08a78" stroke-width=".8"/>' +
@@ -589,7 +615,9 @@
           doc.setFont('Jost', 'light'); doc.setFontSize(10.5); doc.setTextColor(TEXT[0], TEXT[1], TEXT[2]);
           doc.text(ls, M + 14, y + 11); y += ls.length * 15 + 3;
         });
-        y += 6;
+        y += 8;
+        ph.beyond.forEach(function (b) { eyebrow(b[0]); text(b[1], { style: 'light', size: 10.5, after: 6 }); });
+        y += 4;
         need(40);
         var winLines = doc.splitTextToSize('Milestone: ' + ph.win, CW - 20);
         var bh = winLines.length * 15 + 16;
