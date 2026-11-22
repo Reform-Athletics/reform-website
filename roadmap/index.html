@@ -216,9 +216,53 @@ footer a{color:var(--muted)}
 .guar .g-fine{font-size:11.5px;line-height:1.5;color:var(--muted);margin:8px 0 0;padding-top:8px;border-top:1px solid var(--hair)}
 .g-all{font-size:11.5px;color:#8a837e;margin:14px 0 0 60px;line-height:1.5}
 
+
+/* you are here */
+.road-sec{margin-top:30px}
+.here{border:1px solid rgba(192,138,120,.5);background:linear-gradient(180deg,#1d1918,#141313);padding:18px 18px 16px;position:relative}
+.here-k{display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--rose);font-weight:500}
+.here-dot{width:9px;height:9px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 0 rgba(192,138,120,.6);animation:dotp 2s infinite}
+@keyframes dotp{70%{box-shadow:0 0 0 9px rgba(192,138,120,0)}100%{box-shadow:0 0 0 0 rgba(192,138,120,0)}}
+.here h2{font-size:26px;line-height:1.12;margin:0 0 12px}
+.here-l{margin:0 0 8px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.pains{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pains li{font-size:13.5px;padding:7px 12px;border:1px solid var(--hair2);border-radius:100px;color:#ece6e1;background:rgba(243,242,240,.03)}
+.here .btn{min-height:52px}
+.map-hint{text-align:center;font-size:13px;color:var(--muted);margin:64px 0 0;font-weight:300}
+.m-start .m-lab{left:26px}
+.m-start .m-lab b{margin-bottom:1px}
+
+/* phase sheet over the map */
+.sheet-wrap{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
+.sheet-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,6,7,.1) 0%,rgba(6,6,7,.45) 30%,rgba(6,6,7,.7) 100%);opacity:0;transition:opacity .35s}
+.sheet{position:relative;width:100%;max-width:560px;max-height:70vh;max-height:70dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  background:#151313;border:1px solid rgba(192,138,120,.45);border-bottom:0;border-radius:18px 18px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.6);
+  transform:translateY(105%);transition:transform .45s cubic-bezier(.2,.8,.2,1);outline:none;padding-bottom:env(safe-area-inset-bottom)}
+.sheet-wrap.open{pointer-events:auto}
+.sheet-wrap.open .sheet-bg{opacity:1}
+.sheet-wrap.open .sheet{transform:translateY(0)}
+.sheet-top{position:sticky;top:0;z-index:2;height:44px;display:flex;align-items:center;justify-content:center;background:linear-gradient(#151313 70%,rgba(21,19,19,0));touch-action:none}
+.sheet-grab{width:44px;height:4px;border-radius:4px;background:rgba(243,242,240,.25)}
+.sheet-x{position:absolute;right:8px;top:4px;width:40px;height:40px;border-radius:50%;border:1px solid var(--hair2);background:var(--ink);color:var(--ivory);font-size:24px;line-height:1;cursor:pointer}
+.sheet-x:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
+.sheet .pp{border:0;background:none;padding:0 18px 20px;animation:ppIn .4s ease both}
+.sheet .pp:before{display:none}
+html.sheet-lock,html.sheet-lock body{overflow:hidden}
+@media (min-width:700px){.sheet-wrap{align-items:center}.sheet{border-radius:14px;border-bottom:1px solid rgba(192,138,120,.45);max-height:86vh}}
+
+/* VSL */
+.vsl{position:relative;aspect-ratio:16/9;margin:0 0 22px;background:#141416;border:1px solid var(--hair);overflow:hidden}
+.vsl video,.vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;object-fit:cover}
+.vsl.stand-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%;opacity:.45;filter:grayscale(.2)}
+.vsl.stand-in:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(11,11,12,.1),rgba(11,11,12,.75))}
+.vsl-play{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-62%);width:66px;height:66px;border-radius:50%;background:var(--gold);display:grid;place-items:center;box-shadow:0 0 0 10px rgba(192,138,120,.18)}
+.vsl-play:after{content:"";margin-left:5px;border-left:18px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.vsl-cap{position:absolute;z-index:1;left:0;right:0;bottom:14px;text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ivory)}
+.vsl-cap small{display:block;letter-spacing:.1em;text-transform:none;color:var(--muted);font-size:12px;margin-top:4px}
+
 /* ===== the winding road map ===== */
 .sec > .eyebrow{margin-bottom:10px}
-.map{position:relative;width:100%;max-width:420px;margin:8px auto 0;aspect-ratio:340/500}
+.map{position:relative;width:100%;max-width:400px;margin:22px auto 0;aspect-ratio:340/420}
 .map svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .r-edge{fill:none;stroke:#2c2c31;stroke-width:30;stroke-linecap:round}
 .r-bed{fill:none;stroke:#18181b;stroke-width:26;stroke-linecap:round}
@@ -302,7 +346,7 @@ footer a{color:var(--muted)}
 .rv.in{opacity:1;transform:none}
 .rm-head > *{animation:in .7s ease both}
 .rm-head > *:nth-child(2){animation-delay:.08s}.rm-head > *:nth-child(3){animation-delay:.16s}.rm-head > *:nth-child(4){animation-delay:.24s}.rm-head > *:nth-child(5){animation-delay:.32s}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.r-lane,.m-ring,.seal-badge,.r-glow,.pp,.pp .cov li,.hml-row,.rm-head > *{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.sheet,.sheet-bg{transition:none}.here-dot{animation:none}.rv{opacity:1;transform:none;transition:none}.r-lane,.m-ring,.seal-badge,.r-glow,.pp,.pp .cov li,.hml-row,.rm-head > *{animation:none!important}}
 @media (max-width:370px){.m-lab strong{font-size:19px}.m-lab{max-width:120px}.seal{grid-template-columns:64px 1fr}.seal-badge{width:64px;height:64px}}
 @media print{.rv{opacity:1;transform:none}}
 @media print{.leg-body{display:block!important}.leg-more{display:none}.road:before,.road:after{display:none}.leg-card,.guar{background:#fff!important;border-color:#ccc!important}.feel,.cov li,.guar p,.leg-tag,.focus2{color:#222!important}}
@@ -341,16 +385,17 @@ footer a{color:var(--muted)}
     <div class="resume hidden" id="resume"><span>Welcome back. Your roadmap is saved on this device.</span><a href="#" id="resume-link">View it</a></div>
     <p class="eyebrow">Free · Personalized · 2 minutes</p>
     <h1>Your next 90 days, <em>mapped out.</em></h1>
+    <!-- VSL: put the video in data-src (an .mp4 path like /roadmap/media/vsl.mp4, or a YouTube/Vimeo link). Empty = stand-in frame. -->
+    <div class="vsl" id="vsl" data-src="" data-poster="/assets/priscilla-gym.webp"></div>
     <p class="lede">Answer a few quick questions and get a personal 90-day roadmap to the body, strength and consistency you want, built around your real schedule and what's held you back before.</p>
-    <div class="photo"><img src="/assets/priscilla-gym.webp" alt="Priscilla Claude coaching in the gym" width="900" height="1599"><span>Priscilla Claude, CPT, CN</span></div>
-    <ul class="get">
+    <button class="btn" id="start" type="button">Build my roadmap</button>
+    <ul class="get" style="margin-top:28px">
       <li><b>01</b><span>Your 12 weeks in three phases, with what changes and when</span></li>
       <li><b>02</b><span>A training week that fits the days you actually have</span></li>
       <li><b>03</b><span>A plan for the exact things that have stopped you before</span></li>
       <li><b>04</b><span>The habits, mindset and lifestyle side, not just workouts and food</span></li>
       <li><b>05</b><span>Your best-fit way to train: in-home, in the gym, online or hybrid</span></li>
     </ul>
-    <button class="btn" id="start" type="button">Build my roadmap</button>
     <p class="by">Certified Personal Trainer · Certified Nutritionist · Army officer · Mom</p>
   </section>
 
