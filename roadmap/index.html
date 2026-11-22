@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Free 90-Day Roadmap | Reform Athletics</title>
+<meta name="description" content="Answer a few quick questions and get a free, personalized 90-day training, nutrition and mindset roadmap from Priscilla Claude, CPT, CN.">
+<link rel="canonical" href="https://reformathletics.net/roadmap/">
+<meta property="og:title" content="Your Free 90-Day Roadmap">
+<meta property="og:description" content="Two minutes. A 90-day plan built around your goal, your schedule and what's held you back.">
+<meta property="og:url" content="https://reformathletics.net/roadmap/">
+<meta property="og:image" content="https://reformathletics.net/assets/priscilla-gym.webp">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preload" href="/roadmap/lib/BodoniModa_500Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/roadmap/lib/Jost_400Regular.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+@font-face{font-family:'Bodoni Moda';src:url(/roadmap/lib/BodoniModa_500Medium.ttf) format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url(/roadmap/lib/BodoniModa_400Regular_Italic.ttf) format('truetype');font-weight:400 500;font-style:italic;font-display:swap}
+@font-face{font-family:'Jost';src:url(/roadmap/lib/Jost_300Light.ttf) format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Jost';src:url(/roadmap/lib/Jost_400Regular.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Jost';src:url(/roadmap/lib/Jost_500Medium.ttf) format('truetype');font-weight:500 600;font-display:swap}
+:root{
+  --ink:#0b0b0c;--charcoal:#1a1a1c;--panel2:#141416;--rose:#c08a78;--rose-deep:#9c7463;--ivory:#f3f2f0;
+  --muted:#b3aca6;--hair:rgba(243,242,240,.12);--hair2:rgba(243,242,240,.22);
+  --gold:linear-gradient(135deg,#d9a996 0%,#c08a78 45%,#9c7463 100%);
+  --serif:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;--sans:'Jost',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--ivory);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
+a{color:var(--rose)}
+button{font:inherit;color:inherit}
+.hidden,[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;padding-top:max(16px,env(safe-area-inset-top));max-width:720px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ivory);font-size:12px;letter-spacing:.32em;font-weight:500}
+.brand img{width:30px;height:30px;object-fit:contain}
+.back{background:none;border:0;color:var(--muted);font-size:14px;padding:10px 4px;cursor:pointer;min-height:44px}
+.back:hover{color:var(--ivory)}
+.wrap{max-width:640px;margin:0 auto;padding:8px 20px 48px;padding-bottom:max(48px,env(safe-area-inset-bottom))}
+
+/* type */
+.eyebrow{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);font-weight:500;margin:0 0 14px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.005em}
+h1{font-size:clamp(38px,10.5vw,60px);line-height:1.02;margin-bottom:18px}
+h1 em,h2 em{font-style:italic;font-weight:400;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:17px;font-weight:300;color:#dcd7d2;margin:0 0 28px}
+.rule{height:1px;border:0;margin:28px 0;background:linear-gradient(90deg,transparent,var(--rose-deep),transparent)}
+
+/* buttons */
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;padding:0 24px;border:0;border-radius:2px;background:var(--gold);color:var(--ink);
+  font-weight:500;font-size:14px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:filter .15s}
+.btn:hover{filter:brightness(1.06)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn.ghost{background:transparent;color:var(--ivory);border:1px solid var(--hair2)}
+.btn.ghost:hover{border-color:var(--rose);color:var(--rose)}
+.btn:focus-visible,.opt:focus-visible,.back:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.fine{font-size:12.5px;color:var(--muted);margin:14px 0 0;line-height:1.55}
+
+/* intro */
+.intro{padding-top:12px}
+.photo{position:relative;margin:0 0 26px;aspect-ratio:1/1;overflow:hidden;border-radius:2px;background:var(--charcoal)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:62% 44%;filter:saturate(.9)}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0) 45%,rgba(11,11,12,.85) 100%)}
+.photo span{position:absolute;left:16px;bottom:14px;z-index:1;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ivory)}
+.get{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:14px}
+.get li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline}
+.get b{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--rose);line-height:1}
+.get span{color:#dcd7d2;font-weight:300}
+.by{font-size:13px;color:var(--muted);text-align:center;margin:18px 0 0}
+.resume{margin:0 0 18px;padding:14px 16px;border:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.resume a{color:var(--rose);white-space:nowrap}
+
+/* quiz */
+.progress{height:2px;background:var(--hair);margin:4px 0 26px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--gold);transition:width .35s ease}
+.count{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.q{font-size:clamp(28px,7.6vw,40px);line-height:1.12;margin:0 0 10px}
+.hint{color:var(--muted);font-size:14.5px;margin:0 0 22px;font-weight:300}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;min-height:58px;padding:14px 16px;background:var(--charcoal);border:1px solid var(--hair);border-radius:2px;cursor:pointer;
+  font-size:16px;font-weight:400;color:var(--ivory);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--hair2)}
+.opt .mark{flex:0 0 20px;height:20px;border:1px solid var(--hair2);border-radius:50%;display:grid;place-items:center}
+.opt.multi .mark{border-radius:2px}
+.opt .txt{flex:1}
+.opt small{display:block;color:var(--muted);font-size:13px;font-weight:300;margin-top:2px}
+.opt[aria-pressed=true]{border-color:var(--rose);background:#221c1a}
+.opt[aria-pressed=true] .mark{border-color:var(--rose);background:var(--rose)}
+.opt[aria-pressed=true] .mark:after{content:"";width:8px;height:8px;background:var(--ink);border-radius:inherit}
+.next{margin-top:22px}
+.screen{animation:in .35s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen{animation:none}.progress i{transition:none}}
+
+/* gate */
+.ready{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.ready .dot{flex:0 0 10px;margin-left:6px;width:10px;height:10px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 6px rgba(192,138,120,.15)}
+.preview{border:1px solid var(--hair);padding:18px;margin:0 0 24px;position:relative;overflow:hidden}
+.preview p{margin:0 0 6px;font-size:14px;color:var(--muted)}
+.preview strong{font-family:var(--serif);font-weight:500;font-size:22px;display:block;margin-bottom:8px}
+.preview .blur{filter:blur(5px);user-select:none;color:#cfc8c2;font-size:14px}
+form{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:13px;font-weight:500;letter-spacing:.04em;margin:0 0 6px}
+input[type=text],input[type=email],input[type=tel]{width:100%;min-height:52px;padding:12px 14px;background:var(--panel2);border:1px solid var(--hair2);border-radius:2px;color:var(--ivory);font:inherit;font-size:16px}
+input::placeholder{color:#6f6964}
+.check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;margin-top:4px}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--rose)}
+.check label{font-weight:300;font-size:13.5px;letter-spacing:0;color:var(--muted);margin:0;line-height:1.5}
+.check label b{color:var(--ivory);font-weight:500}
+.err{color:#e8a08c;font-size:14px;margin:0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* roadmap */
+.rm-head{padding-top:8px}
+.rm-head h1{font-size:clamp(36px,10vw,56px)}
+.rm-sub{font-size:18px;font-weight:300;color:#dcd7d2;margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.chip{font-size:12px;letter-spacing:.08em;padding:7px 12px;border:1px solid var(--hair2);color:#dcd7d2;border-radius:100px}
+.actions{display:grid;gap:10px;margin:26px 0 6px}
+.sec{margin:38px 0 0}
+.sec > h2{font-size:clamp(26px,7vw,34px);line-height:1.12;margin:0 0 6px}
+.sec > .k{margin:0 0 18px;color:var(--muted);font-size:14.5px;font-weight:300}
+.phase{border:1px solid var(--hair);background:var(--charcoal);margin:0 0 14px}
+.phase header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:18px 18px 14px;border-bottom:1px solid var(--hair)}
+.phase header h3{font-size:26px;line-height:1.1}
+.phase header span{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);white-space:nowrap}
+.phase .focus{padding:14px 18px 4px;margin:0;font-style:italic;font-family:var(--serif);font-size:18px;color:#e7e1dc}
+.phase dl{margin:0;padding:6px 18px 18px;display:grid;gap:14px}
+.phase dt{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0 0 3px}
+.phase dd{margin:0;font-weight:300;color:#e7e1dc}
+.phase .win{margin:0 18px 18px;padding:12px 14px;border-left:2px solid var(--rose);background:rgba(192,138,120,.07);font-size:14.5px}
+.phase .win b{font-weight:500;color:var(--rose)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.day{border:1px solid var(--hair);padding:10px 4px 12px;text-align:center;min-height:96px;display:flex;flex-direction:column;gap:6px;background:var(--panel2)}
+.day b{font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:500}
+.day span{font-size:12px;line-height:1.25;color:#e7e1dc}
+.day.on{border-color:rgba(192,138,120,.55);background:#1f1a18}
+.day.on b{color:var(--rose)}
+.weeknote{font-size:13.5px;color:var(--muted);margin:12px 0 0;font-weight:300}
+.blocks{display:grid;gap:12px}
+.block{border:1px solid var(--hair);padding:16px 18px}
+.block h3{font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:.02em;margin:0 0 6px;color:var(--ivory)}
+.block p{margin:0;font-weight:300;color:#dcd7d2;font-size:15px}
+.fit{border:1px solid rgba(192,138,120,.5);padding:20px 18px;background:linear-gradient(180deg,#1f1a18,#151313)}
+.fit .tag{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);margin:0 0 8px}
+.fit h3{font-size:26px;line-height:1.15;margin:0 0 10px}
+.fit p{margin:0 0 8px;font-weight:300;color:#e7e1dc}
+.proof{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.35;text-align:center;margin:34px 0 0;color:#e7e1dc}
+.proof small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.04em}
+.cta{margin:40px 0 0;padding:26px 20px;background:var(--ivory);color:var(--ink)}
+.cta .eyebrow{color:var(--rose-deep)}
+.cta h2{font-size:clamp(28px,8vw,38px);line-height:1.08;margin:0 0 12px;color:var(--ink)}
+.cta h2 em{background:none;color:var(--rose-deep);-webkit-text-fill-color:var(--rose-deep)}
+.cta p{margin:0 0 14px;color:#3b3734;font-weight:400}
+.cta ul{margin:0 0 20px;padding-left:18px;color:#3b3734;display:grid;gap:6px}
+.cta .btn.ghost{color:var(--ink);border-color:#cbbfb8;margin-top:10px}
+.cta .btn.ghost:hover{border-color:var(--ink);color:var(--ink)}
+.sign{margin:30px 0 0;display:flex;gap:14px;align-items:center}
+.sign img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.sign p{margin:0;font-size:14px;color:var(--muted)}
+.sign b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ivory)}
+.disc{font-size:12px;color:#8a837e;margin:30px 0 0;line-height:1.55}
+footer{text-align:center;padding:24px 20px 40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--hair);max-width:720px;margin:0 auto}
+footer .tag{font-family:var(--serif);font-style:italic;font-size:17px;color:#dcd7d2;margin:0 0 6px}
+footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ivory);color:var(--ink);padding:12px 18px;font-size:14px;border-radius:2px;z-index:9;box-shadow:0 6px 24px rgba(0,0,0,.4)}
+
+@media print{
+  body{background:#fff;color:#111}
+  .top,footer,.actions,.cta .btn,.toast{display:none!important}
+  .phase,.block,.day,.fit{background:#fff!important;border-color:#ccc!important;color:#111}
+  .phase dd,.phase .focus,.block p,.fit p,.day span,.rm-sub{color:#222!important}
+  h1 em,h2 em{-webkit-text-fill-color:#9c7463;color:#9c7463}
+  .phase{break-inside:avoid}
+}
+@media (min-width:600px){
+  .wrap{padding-top:20px}
+  .actions{grid-template-columns:1fr 1fr}
+  .cta{padding:34px 32px}
+  .day span{font-size:13px}
+}
+@media (max-width:370px){
+  .row{grid-template-columns:1fr}
+  .week{gap:4px}
+  .day span{font-size:11px}
+}
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="6d8d4a5a-0c23-4961-a37e-c6823e80f648"></script>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Reform Athletics home"><img src="/assets/ra-mark.png" alt="">REFORM ATHLETICS</a>
+  <button class="back hidden" id="back" type="button">&larr; Back</button>
+</header>
+
+<main class="wrap" id="app" tabindex="-1">
+  <!-- Intro -->
+  <section class="intro screen" id="intro">
+    <div class="resume hidden" id="resume"><span>Welcome back. Your roadmap is saved on this device.</span><a href="#" id="resume-link">View it</a></div>
+    <p class="eyebrow">Free · Personalized · 2 minutes</p>
+    <h1>Your next 90 days, <em>mapped out.</em></h1>
+    <p class="lede">Answer a few quick questions and get a personal 90-day roadmap to the body, strength and consistency you want, built around your real schedule and what's held you back before.</p>
+    <div class="photo"><img src="/assets/priscilla-gym.webp" alt="Priscilla Claude coaching in the gym" width="900" height="1599"><span>Priscilla Claude, CPT, CN</span></div>
+    <ul class="get">
+      <li><b>01</b><span>Your 12 weeks in three phases, with what changes and when</span></li>
+      <li><b>02</b><span>A training week that fits the days you actually have</span></li>
+      <li><b>03</b><span>A plan for the exact things that have stopped you before</span></li>
+      <li><b>04</b><span>Your best-fit way to train: in-home, in the gym, online or hybrid</span></li>
+    </ul>
+    <button class="btn" id="start" type="button">Build my roadmap</button>
+    <p class="by">Certified Personal Trainer · Certified Nutritionist · Army officer · Mom</p>
+  </section>
+
+  <!-- Quiz -->
+  <section class="hidden" id="quiz" aria-live="polite">
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <div id="qbox"></div>
+  </section>
+
+  <!-- Gate -->
+  <section class="hidden screen" id="gate">
+    <div class="progress" aria-hidden="true"><i style="width:100%"></i></div>
+    <div class="ready"><span class="dot"></span><p class="eyebrow" style="margin:0">Your roadmap is ready</p></div>
+    <h2 class="q" id="gate-title">Last step: who’s this roadmap for?</h2>
+    <p class="hint">Your roadmap opens on the next screen, and you can download it right away.</p>
+    <div class="preview" aria-hidden="true">
+      <p>Your 90-day roadmap</p>
+      <strong id="gate-preview">Phase 1 · Foundation</strong>
+      <div class="blur">Weeks 1 to 4: your training week, nutrition standard, mindset standard and the first milestone you'll hit.</div>
+    </div>
+    <form id="lead" novalidate>
+      <div class="hp" aria-hidden="true"><label for="company">Leave empty</label><input id="company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="row">
+        <div><label for="first">First name</label><input id="first" type="text" autocomplete="given-name" required></div>
+        <div><label for="last">Last name</label><input id="last" type="text" autocomplete="family-name" required></div>
+      </div>
+      <div><label for="email">Email</label><input id="email" type="email" autocomplete="email" inputmode="email" required></div>
+      <div><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="(555) 555-5555"></div>
+      <div class="check">
+        <input id="edit" type="checkbox" value="yes">
+        <label for="edit"><b>Also send me The Edit</b>, my every-other-Sunday newsletter on training, nutrition and the mindset behind both. You'll get one email to confirm. Unsubscribe anytime.</label>
+      </div>
+      <p class="err hidden" id="err" role="alert" tabindex="-1"></p>
+      <button class="btn" id="submit" type="submit">Show my roadmap</button>
+      <p class="fine">By continuing, you agree that Priscilla at Reform Athletics may contact you by email or phone about your roadmap. No spam, and your details are never sold. See the <a href="/privacy.html">Privacy Policy</a>.</p>
+    </form>
+  </section>
+
+  <!-- Roadmap (filled by roadmap.js) -->
+  <section class="hidden screen" id="roadmap"></section>
+</main>
+
+<footer>
+  <p class="tag">Every Rep. Every Choice. Reformed.</p>
+  <p>Reform Athletics LLC · Spring Hill, Franklin, Brentwood and online · <a href="mailto:support@reformathletics.net">support@reformathletics.net</a></p>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</footer>
+
+<script src="/roadmap/roadmap.js"></script>
+</body>
+</html>
