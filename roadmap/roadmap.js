@@ -192,6 +192,62 @@
         mind: 'Set your next standard. You fall to your standard, so we raise it before day 90.',
         win: 'Day 90: you’re ' + ({ fat: 'leaner and in control of your nutrition', muscle: 'stronger and visibly more shaped', recomp: 'leaner, stronger and more defined', strength: 'stronger, fitter and full of energy', consistent: 'consistent, confident and fully back in your rhythm' }[a.goal] || 'consistent and confident') + ', with a plan for what comes next.' }
     ];
+    // What's covered, how it feels, and the phase guarantee (shown when a phase is opened)
+    var daysTxt = a.days === '5' ? '5 or more days' : a.days + ' days';
+    var blockLine = {
+      time: 'Sessions built for the time you actually have, with a 20-minute version for the crazy days',
+      know: 'Every session written for you, so you never walk in wondering what to do',
+      consistency: 'A plan for missed days, so one off day never turns into starting over',
+      nutrition: 'Simple nutrition standards you can keep, not a diet you have to survive',
+      mindset: 'Coaching on the mental side: stress, self-talk and the habits that quietly stall you',
+      pain: 'Training built around what your body needs, cleared with your doctor where needed',
+      travel: 'Hotel-gym and no-equipment versions of your plan, ready before you pack'
+    };
+    var feel2 = {
+      fat: 'This is when it gets real. Your clothes fit differently, the scale and the mirror start agreeing, and you catch yourself trusting your own word again.',
+      recomp: 'This is when it gets real. Your clothes fit differently, you see shape where there wasn’t any, and the mirror starts telling a better story than the scale.',
+      muscle: 'This is when it gets real. Weights that felt heavy feel easy, you see shape in the mirror, and you start to look like you train.',
+      strength: 'This is when it gets real. Stairs, kids, long days: everything feels lighter, and you have energy left at the end of the day.',
+      consistent: 'This is when it gets real. You stop needing motivation because the habit carries you, and you start trusting yourself again.'
+    };
+    phases[0].tagline = 'Stop guessing. Start keeping promises to yourself.';
+    phases[0].feel = 'The relief of finally knowing exactly what to do. No more Monday restarts, no more piecing together plans from the internet. Just a plan that fits your real life and a coach in your corner.';
+    phases[0].covered = [
+      'A movement assessment, so your plan fits how your body moves today',
+      'Your custom program for ' + daysTxt + ' a week, every session written for you',
+      'Your first nutrition standards: ' + (FUEL1[a.nutrition] || FUEL1.none).replace(/\.$/, '').toLowerCase().replace(/^start with three standards: /, ''),
+      bl[0] ? blockLine[bl[0]] : 'Your worst-day minimum, so busy weeks never turn into zero weeks',
+      'Coaching check-ins, so you always know it’s working'
+    ];
+    phases[0].guarantee = { title: 'The Fit Guarantee',
+      text: 'If your plan doesn’t fit your real life in the first two weeks, I rebuild it around your schedule at no extra cost.',
+      fine: 'Applies to active Reform Athletics coaching clients. Request the rebuild by the end of week 2. Covers program changes only, not refunds or session credits.' };
+
+    phases[1].tagline = 'Where the work starts showing.';
+    phases[1].feel = feel2[a.goal] || feel2.consistent;
+    phases[1].covered = [
+      'Your program progresses as you get stronger, so your body keeps changing',
+      'Nutrition dialed in for ' + g.fuel,
+      'Progress tracked beyond the scale: measurements, photos and strength',
+      bl[1] ? blockLine[bl[1]] : 'A plan for your hardest weeks: travel, a sick kid, a deadline',
+      'The mental side too: the stress, stories and habits that usually stall people here'
+    ];
+    phases[1].guarantee = { title: 'The Progress Guarantee',
+      text: 'Follow the plan and you’ll see measurable progress by week 8. If not, I change your program and add extra check-ins at no extra cost until you do.',
+      fine: 'Measurable progress means improvement in at least one of: body measurements, progress photos, strength numbers or body-weight trend toward your goal. Requires completing at least 80% of scheduled sessions, logging workouts and nutrition as assigned, and attending check-ins. Extra check-ins run up to 4 additional weeks. No refunds; specific results are not guaranteed.' };
+
+    phases[2].tagline = 'Become the person who doesn’t restart.';
+    phases[2].feel = 'You’re not chasing motivation anymore. You set a standard and you keep it, on the good weeks and the hard ones. That’s the version of you that lasts past day 90.';
+    phases[2].covered = [
+      'Your strongest training block, then a test week to see how far you’ve come',
+      'Nutrition that works on a normal day, a busy day and a day out',
+      'Your 90-day review: side-by-side progress and what changed',
+      'Your next 90-day plan, so day 91 is a step forward, not a restart'
+    ];
+    phases[2].guarantee = { title: 'The No-Restart Guarantee',
+      text: 'Finish your 12 weeks and your next 90-day plan is built and ready before day 90, so you never start from zero.',
+      fine: 'Applies to clients active through week 12. The plan is delivered by your final check-in of the 12 weeks. Coaching after week 12 continues at your current rate.' };
+
     var week = DAYS.map(function (d, i) {
       var k = split.days.indexOf(i);
       return { day: d, on: k > -1, what: k > -1 ? split.names[k] : (i === 6 ? 'Rest + reset' : 'Walk + recover') };
@@ -306,16 +362,27 @@
     h += '<div class="chips"><span class="chip">' + esc(r.goal.short) + '</span><span class="chip">' + esc(label('days', a.days)) + ' a week</span><span class="chip">' + esc(r.styleInfo[0]) + '</span></div>';
     h += '<div class="actions"><a class="btn" href="' + esc(bookingUrl(p)) + '" id="book-top">Book my free consult</a><button class="btn ghost" type="button" id="dl">Download my roadmap</button></div></div>';
 
-    h += '<section class="sec"><h2>Your three phases</h2><p class="k">Twelve weeks, each block building on the last.</p>';
+    h += '<section class="sec"><h2>Your road to day 90</h2><p class="k">Three phases. Tap each one to see what’s covered and what I guarantee.</p><ol class="road">';
+    h += '<li class="stop start"><span class="pin" aria-hidden="true"></span><div><b>Today</b><span>' + esc(START[a.start] ? label('start', a.start) : 'Your starting point') + '</span></div></li>';
     r.phases.forEach(function (ph, i) {
-      h += '<article class="phase"><header><h3>' + (i + 1) + '. ' + esc(ph.name) + '</h3><span>' + esc(ph.weeks) + '</span></header>' +
-        '<p class="focus">' + esc(ph.focus) + '</p><dl>' +
-        '<div><dt>Training</dt><dd>' + esc(ph.training) + '</dd></div>' +
-        '<div><dt>Nutrition</dt><dd>' + esc(ph.fuel) + '</dd></div>' +
-        '<div><dt>Mindset</dt><dd>' + esc(ph.mind) + '</dd></div></dl>' +
-        '<p class="win"><b>Milestone ·</b> ' + esc(ph.win) + '</p></article>';
+      var id = 'ph' + i;
+      h += '<li class="leg"><span class="pin num" aria-hidden="true">0' + (i + 1) + '</span><div class="leg-card">' +
+        '<button type="button" class="leg-btn" aria-expanded="false" aria-controls="' + id + '">' +
+          '<span class="leg-wk">Phase ' + (i + 1) + ' · ' + esc(ph.weeks) + '</span>' +
+          '<span class="leg-name">' + esc(ph.name) + '</span>' +
+          '<span class="leg-tag">' + esc(ph.tagline) + '</span>' +
+          '<span class="leg-more"><span class="open-t">See what’s covered</span><span class="close-t">Close</span><i aria-hidden="true"></i></span>' +
+        '</button>' +
+        '<div class="leg-body" id="' + id + '" hidden>' +
+          '<p class="feel">' + esc(ph.feel) + '</p>' +
+          '<p class="lbl">What’s covered</p><ul class="cov">' + ph.covered.map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('') + '</ul>' +
+          '<p class="lbl">Your focus</p><p class="focus2">' + esc(ph.focus) + '</p>' +
+          '<p class="win"><b>Milestone ·</b> ' + esc(ph.win) + '</p>' +
+          '<div class="guar"><p class="g-t"><span aria-hidden="true">✦</span> ' + esc(ph.guarantee.title) + '</p><p>' + esc(ph.guarantee.text) + '</p><p class="g-fine">' + esc(ph.guarantee.fine) + '</p></div>' +
+        '</div></div></li>';
     });
-    h += '</section>';
+    h += '<li class="stop end"><span class="pin flag" aria-hidden="true"></span><div><b>Day 90</b><span>' + esc(r.phases[2].win.replace(/^Day 90: you’re/, 'You’re')) + '</span></div></li></ol>';
+    h += '<p class="g-all">Guarantees apply to paid Reform Athletics coaching programs, not this free roadmap, and are set out in full in your service agreement. Results vary with starting point, consistency and individual factors.</p></section>';
 
     h += '<section class="sec"><h2>Your training week</h2><p class="k">' + esc(label('days', a.days)) + ', 45 to 60 minutes each. Your exact sessions are written for you once we’ve assessed how you move.</p><div class="week">';
     r.week.forEach(function (d) { h += '<div class="day' + (d.on ? ' on' : '') + '"><b>' + d.day.toUpperCase() + '</b><span>' + esc(d.what) + '</span></div>'; });
@@ -344,6 +411,13 @@
     h += '<p class="disc">This roadmap is general guidance based on your answers, not medical advice. Talk with your doctor before starting a new exercise or nutrition program, especially if you have an injury, a health condition or are pregnant.</p>';
 
     var el = $('roadmap'); el.innerHTML = h; show('roadmap');
+    Array.prototype.forEach.call(el.querySelectorAll('.leg-btn'), function (b) {
+      b.addEventListener('click', function () {
+        var open = b.getAttribute('aria-expanded') !== 'true', body = document.getElementById(b.getAttribute('aria-controls'));
+        b.setAttribute('aria-expanded', open); body.hidden = !open; b.closest('.leg').classList.toggle('open', open);
+        if (open) track('roadmap-phase-' + b.getAttribute('aria-controls'));
+      });
+    });
     $('dl').addEventListener('click', function () { downloadPdf(a, p, r); });
     $('dl2').addEventListener('click', function () { downloadPdf(a, p, r); });
     ['book', 'book-top'].forEach(function (id) { $(id).addEventListener('click', function () { track('roadmap-book'); }); });
@@ -440,10 +514,16 @@
         doc.setFont('Jost', 'bold'); doc.setFontSize(8); doc.setTextColor(DEEP[0], DEEP[1], DEEP[2]);
         doc.text(ph.weeks.toUpperCase().replace('–', ' TO '), W - M, y + 16, { align: 'right', charSpace: 1.4 });
         y += 28;
-        text(ph.focus, { font: 'Bodoni', style: 'italic', size: 12, color: TEXT, after: 8 });
-        [['Training', ph.training], ['Nutrition', ph.fuel], ['Mindset', ph.mind]].forEach(function (row) {
-          eyebrow(row[0]); text(row[1], { style: 'light', size: 10.5, after: 8 });
+        text(ph.tagline, { font: 'Bodoni', style: 'italic', size: 12.5, color: DEEP, after: 6 });
+        text(ph.feel, { style: 'light', size: 10.5, color: TEXT, after: 10 });
+        eyebrow('What’s covered');
+        ph.covered.forEach(function (c) {
+          var ls = doc.splitTextToSize(c, CW - 16); need(ls.length * 15 + 4);
+          doc.setFillColor(ROSE[0], ROSE[1], ROSE[2]); doc.rect(M + 2, y + 6, 4, 4, 'F');
+          doc.setFont('Jost', 'light'); doc.setFontSize(10.5); doc.setTextColor(TEXT[0], TEXT[1], TEXT[2]);
+          doc.text(ls, M + 14, y + 11); y += ls.length * 15 + 3;
         });
+        y += 6;
         need(40);
         var winLines = doc.splitTextToSize('Milestone: ' + ph.win, CW - 20);
         var bh = winLines.length * 15 + 16;
@@ -451,7 +531,18 @@
         doc.setFillColor(236, 225, 219); doc.rect(M, y, CW, bh, 'F');
         doc.setFillColor(ROSE[0], ROSE[1], ROSE[2]); doc.rect(M, y, 2.5, bh, 'F');
         doc.setFont('Jost', 'normal'); doc.setFontSize(10.5); doc.setTextColor(INK[0], INK[1], INK[2]);
-        doc.text(winLines, M + 14, y + 19); y += bh + 22;
+        doc.text(winLines, M + 14, y + 19); y += bh + 10;
+        var gT = doc.splitTextToSize(ph.guarantee.text, CW - 28), gF;
+        doc.setFontSize(7.5); gF = doc.splitTextToSize(ph.guarantee.fine, CW - 28);
+        var gh = 30 + gT.length * 14 + 6 + gF.length * 10 + 12; need(gh);
+        doc.setDrawColor(ROSE[0], ROSE[1], ROSE[2]); doc.setLineWidth(0.8); doc.rect(M, y, CW, gh, 'S');
+        doc.setFont('Bodoni', 'normal'); doc.setFontSize(13); doc.setTextColor(INK[0], INK[1], INK[2]);
+        doc.text(ph.guarantee.title, M + 14, y + 20);
+        doc.setFont('Jost', 'normal'); doc.setFontSize(10); doc.setTextColor(TEXT[0], TEXT[1], TEXT[2]);
+        doc.text(gT, M + 14, y + 38);
+        doc.setFont('Jost', 'light'); doc.setFontSize(7.5); doc.setTextColor(GREY[0], GREY[1], GREY[2]);
+        doc.text(gF, M + 14, y + 38 + gT.length * 14 + 4);
+        y += gh + 24;
       });
 
       // Week
@@ -498,6 +589,7 @@
       doc.textWithLink('Book at book.reformathletics.net/priss/free-consultation', M + 20, top + 112, { url: BOOKING_URL + '?utm_source=roadmap-pdf' });
       y = top + 150;
 
+      text('Guarantees apply to paid Reform Athletics coaching programs, not this free roadmap, and are set out in full in your service agreement. Results vary with starting point, consistency and individual factors.', { style: 'light', size: 8, color: GREY, after: 8 });
       text('Priscilla Claude, CPT, CN · Certified Personal Trainer and Nutritionist · Army officer · Mom · (615) 905-6358 · priscilla@reformathletics.net', { size: 9, color: GREY, after: 8 });
       text('This roadmap is general guidance based on your answers, not medical advice. Talk with your doctor before starting a new exercise or nutrition program.', { style: 'light', size: 8.5, color: GREY });
 
