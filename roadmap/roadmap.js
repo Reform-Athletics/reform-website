@@ -362,38 +362,38 @@
     h += '<div class="chips"><span class="chip">' + esc(r.goal.short) + '</span><span class="chip">' + esc(label('days', a.days)) + ' a week</span><span class="chip">' + esc(r.styleInfo[0]) + '</span></div>';
     h += '<div class="actions"><a class="btn" href="' + esc(bookingUrl(p)) + '" id="book-top">Book my free consult</a><button class="btn ghost" type="button" id="dl">Download my roadmap</button></div></div>';
 
-    h += '<section class="sec"><h2>Your road to day 90</h2><p class="k">Three phases. Tap each one to see what’s covered and what I guarantee.</p><ol class="road">';
-    h += '<li class="stop start"><span class="pin" aria-hidden="true"></span><div><b>Today</b><span>' + esc(START[a.start] ? label('start', a.start) : 'Your starting point') + '</span></div></li>';
+    // ---- The road: a winding path with three tappable phase stops; the chosen phase opens below ----
+    var NODES = [[60, 26], [272, 138], [68, 262], [272, 378], [160, 468]];
+    var ROAD = 'M60,26 C60,96 272,70 272,138 C272,206 68,192 68,262 C68,330 272,312 272,378 C272,440 160,420 160,468';
+    h += '<section class="sec rv"><p class="eyebrow">Your road to day 90</p><h2>Three phases. <em>One you, reformed.</em></h2><p class="k">Tap a phase to see what’s covered, how it feels and what I guarantee.</p>';
+    h += '<div class="map" id="map"><svg viewBox="0 0 340 500" aria-hidden="true" focusable="false"><defs>' +
+      '<linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2b4a2"/><stop offset=".5" stop-color="#c08a78"/><stop offset="1" stop-color="#9c7463"/></linearGradient>' +
+      '<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter></defs>' +
+      '<path class="r-edge" d="' + ROAD + '"/><path class="r-bed" d="' + ROAD + '"/><path class="r-lane" d="' + ROAD + '"/>' +
+      '<path class="r-done" id="rdone" d="' + ROAD + '"/>' +
+      '<circle class="r-glow" id="rglow" r="13" filter="url(#glow)"/><circle class="r-dot" id="rdot" r="6"/></svg>';
+    function pos(n) { return 'left:' + (NODES[n][0] / 340 * 100) + '%;top:' + (NODES[n][1] / 500 * 100) + '%'; }
+    h += '<div class="m-end m-start" style="' + pos(0) + '"><span class="m-pin"></span><span class="m-lab r"><b>Today</b>' + esc(label('start', a.start)) + '</span></div>';
     r.phases.forEach(function (ph, i) {
-      var id = 'ph' + i;
-      h += '<li class="leg"><span class="pin num" aria-hidden="true">0' + (i + 1) + '</span><div class="leg-card">' +
-        '<button type="button" class="leg-btn" aria-expanded="false" aria-controls="' + id + '">' +
-          '<span class="leg-wk">Phase ' + (i + 1) + ' · ' + esc(ph.weeks) + '</span>' +
-          '<span class="leg-name">' + esc(ph.name) + '</span>' +
-          '<span class="leg-tag">' + esc(ph.tagline) + '</span>' +
-          '<span class="leg-more"><span class="open-t">See what’s covered</span><span class="close-t">Close</span><i aria-hidden="true"></i></span>' +
-        '</button>' +
-        '<div class="leg-body" id="' + id + '" hidden>' +
-          '<p class="feel">' + esc(ph.feel) + '</p>' +
-          '<p class="lbl">What’s covered</p><ul class="cov">' + ph.covered.map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('') + '</ul>' +
-          '<p class="lbl">Your focus</p><p class="focus2">' + esc(ph.focus) + '</p>' +
-          '<p class="win"><b>Milestone ·</b> ' + esc(ph.win) + '</p>' +
-          '<div class="guar"><p class="g-t"><span aria-hidden="true">✦</span> ' + esc(ph.guarantee.title) + '</p><p>' + esc(ph.guarantee.text) + '</p><p class="g-fine">' + esc(ph.guarantee.fine) + '</p></div>' +
-        '</div></div></li>';
+      var side = NODES[i + 1][0] > 170 ? 'l' : 'r';
+      h += '<button type="button" class="m-stop" data-i="' + i + '" style="' + pos(i + 1) + '" aria-controls="phase-panel" aria-pressed="false">' +
+        '<span class="m-ring"></span><span class="m-num">0' + (i + 1) + '</span>' +
+        '<span class="m-lab ' + side + '"><b>' + esc(ph.weeks) + '</b><strong>' + esc(ph.name) + '</strong></span></button>';
     });
-    h += '<li class="stop end"><span class="pin flag" aria-hidden="true"></span><div><b>Day 90</b><span>' + esc(r.phases[2].win.replace(/^Day 90: you’re/, 'You’re')) + '</span></div></li></ol>';
+    h += '<div class="m-end m-finish" style="' + pos(4) + '"><span class="m-pin"></span><span class="m-lab c"><b>Day 90</b>' + esc(r.goal.short) + ', reformed</span></div></div>';
+    h += '<div class="panel" id="phase-panel" aria-live="polite"></div>';
     h += '<p class="g-all">Guarantees apply to paid Reform Athletics coaching programs, not this free roadmap, and are set out in full in your service agreement. Results vary with starting point, consistency and individual factors.</p></section>';
 
-    h += '<section class="sec"><h2>Your training week</h2><p class="k">' + esc(label('days', a.days)) + ', 45 to 60 minutes each. Your exact sessions are written for you once we’ve assessed how you move.</p><div class="week">';
+    h += '<section class="sec rv"><h2>Your training week</h2><p class="k">' + esc(label('days', a.days)) + ', 45 to 60 minutes each. Your exact sessions are written for you once we’ve assessed how you move.</p><div class="week">';
     r.week.forEach(function (d) { h += '<div class="day' + (d.on ? ' on' : '') + '"><b>' + d.day.toUpperCase() + '</b><span>' + esc(d.what) + '</span></div>'; });
     h += '</div><p class="weeknote">Days can move to fit your week. What matters is the number you keep.</p></section>';
 
-    h += '<section class="sec"><h2>What stopped you before, handled</h2><p class="k">The plan is built around these from day one.</p><div class="blocks">';
+    h += '<section class="sec rv"><h2>What stopped you before, handled</h2><p class="k">The plan is built around these from day one.</p><div class="blocks">';
     r.blockers.forEach(function (b) { h += '<div class="block"><h3>' + esc(b[0]) + '</h3><p>' + esc(b[1]) + '</p></div>'; });
     if (r.life) h += '<div class="block"><h3>Built for your life</h3><p>' + esc(r.life) + '</p></div>';
     h += '</div></section>';
 
-    h += '<section class="sec"><h2>Your best fit</h2><p class="k">How you’ll train to make this happen.</p><div class="fit"><p class="tag">' + (a.style === 'unsure' || r.style.why ? 'My recommendation' : 'Your choice') + '</p>' +
+    h += '<section class="sec rv"><h2>Your best fit</h2><p class="k">How you’ll train to make this happen.</p><div class="fit"><p class="tag">' + (a.style === 'unsure' || r.style.why ? 'My recommendation' : 'Your choice') + '</p>' +
       '<h3>' + esc(r.styleInfo[0]) + '</h3><p>' + esc(r.styleInfo[1]) + '</p>' + (r.style.why ? '<p>' + esc(r.style.why) + '</p>' : '') + '</div></section>';
 
     if (a.goal === 'fat' || a.goal === 'recomp') {
@@ -401,7 +401,7 @@
     }
 
     var ctaHead = r.tier === 'Exploring' ? 'When you’re ready, <em>we build it together.</em>' : 'Let’s turn this into <em>your plan.</em>';
-    h += '<section class="cta"><p class="eyebrow">Your next step</p><h2>' + ctaHead + '</h2>' +
+    h += '<section class="cta rv"><p class="eyebrow">Your next step</p><h2>' + ctaHead + '</h2>' +
       '<p>This roadmap is the outline. On a free consult, we turn it into your actual plan, together:</p>' +
       '<ul><li>Your training days and the sessions that go in them</li><li>Your nutrition targets, set for your goal and your life</li><li>Your first four weeks, mapped out before you start</li></ul>' +
       '<a class="btn" href="' + esc(bookingUrl(p)) + '" id="book">Book my free consult</a>' +
@@ -411,17 +411,83 @@
     h += '<p class="disc">This roadmap is general guidance based on your answers, not medical advice. Talk with your doctor before starting a new exercise or nutrition program, especially if you have an injury, a health condition or are pregnant.</p>';
 
     var el = $('roadmap'); el.innerHTML = h; show('roadmap');
-    Array.prototype.forEach.call(el.querySelectorAll('.leg-btn'), function (b) {
-      b.addEventListener('click', function () {
-        var open = b.getAttribute('aria-expanded') !== 'true', body = document.getElementById(b.getAttribute('aria-controls'));
-        b.setAttribute('aria-expanded', open); body.hidden = !open; b.closest('.leg').classList.toggle('open', open);
-        if (open) track('roadmap-phase-' + b.getAttribute('aria-controls'));
-      });
-    });
+    setupMap(el, r, NODES);
+    reveal(el);
     $('dl').addEventListener('click', function () { downloadPdf(a, p, r); });
     $('dl2').addEventListener('click', function () { downloadPdf(a, p, r); });
     ['book', 'book-top'].forEach(function (id) { $(id).addEventListener('click', function () { track('roadmap-book'); }); });
     try { $('app').focus({ preventScroll: true }); } catch (e) {}
+  }
+
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function phasePanel(ph, i) {
+    return '<div class="pp" data-i="' + i + '">' +
+      '<div class="pp-head"><span class="pp-n">0' + (i + 1) + '</span><div><p class="pp-wk">Phase ' + (i + 1) + ' of 3 · ' + esc(ph.weeks) + '</p><h3>' + esc(ph.name) + '</h3></div></div>' +
+      '<p class="pp-tag">' + esc(ph.tagline) + '</p>' +
+      '<blockquote class="feel">' + esc(ph.feel) + '</blockquote>' +
+      '<p class="lbl">What’s covered</p><ul class="cov">' + ph.covered.map(function (c, k) { return '<li style="--d:' + (k * 70 + 120) + 'ms">' + esc(c) + '</li>'; }).join('') + '</ul>' +
+      '<div class="pp-win"><span>Milestone</span><p>' + esc(ph.win) + '</p></div>' +
+      '<div class="seal"><svg class="seal-badge" viewBox="0 0 80 80" aria-hidden="true"><defs><path id="sc' + i + '" d="M40,40 m-29,0 a29,29 0 1,1 58,0 a29,29 0 1,1 -58,0"/></defs>' +
+        '<circle cx="40" cy="40" r="38" fill="none" stroke="#c08a78" stroke-width="1.2"/><circle cx="40" cy="40" r="21" fill="none" stroke="#c08a78" stroke-width=".8"/>' +
+        '<text><textPath href="#sc' + i + '" startOffset="0" textLength="180" lengthAdjust="spacing">GUARANTEED · REFORM ATHLETICS · </textPath></text>' +
+        '<text x="40" y="46" text-anchor="middle" class="seal-n">0' + (i + 1) + '</text></svg>' +
+        '<div><p class="seal-k">Your guarantee</p><h4>' + esc(ph.guarantee.title) + '</h4><p>' + esc(ph.guarantee.text) + '</p></div>' +
+        '<details class="fine-d"><summary>Fine print</summary><p>' + esc(ph.guarantee.fine) + '</p></details></div>' +
+      '<div class="pp-nav">' + (i > 0 ? '<button type="button" class="pp-go" data-go="' + (i - 1) + '">&larr; ' + 'Phase ' + i + '</button>' : '<span></span>') +
+        (i < 2 ? '<button type="button" class="pp-go pp-next" data-go="' + (i + 1) + '">Phase ' + (i + 2) + ' &rarr;</button>' : '<a class="pp-go pp-next" href="#book">Start at Phase 1 &rarr;</a>') + '</div></div>';
+  }
+
+  function setupMap(root, r, NODES) {
+    var map = root.querySelector('#map'), path = root.querySelector('#rdone'), dot = root.querySelector('#rdot'), glow = root.querySelector('#rglow');
+    var panel = root.querySelector('#phase-panel'), stops = root.querySelectorAll('.m-stop');
+    var L = path.getTotalLength(), at = [], cur = 0, anim;
+    // length along the road for each stop
+    NODES.forEach(function (n) {
+      var best = 0, bd = 1e9;
+      for (var t = 0; t <= L; t += 2) { var pt = path.getPointAtLength(t), d = (pt.x - n[0]) * (pt.x - n[0]) + (pt.y - n[1]) * (pt.y - n[1]); if (d < bd) { bd = d; best = t; } }
+      at.push(best);
+    });
+    path.style.strokeDasharray = L; path.style.strokeDashoffset = L;
+    function place(len) {
+      var pt = path.getPointAtLength(len);
+      dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y); glow.setAttribute('cx', pt.x); glow.setAttribute('cy', pt.y);
+      path.style.strokeDashoffset = L - len; cur = len;
+    }
+    function travel(to, ms) {
+      cancelAnimationFrame(anim);
+      if (REDUCED || !ms) { place(to); return; }
+      var from = cur, t0 = null;
+      (function step(ts) {
+        if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / ms), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+        place(from + (to - from) * e); if (k < 1) anim = requestAnimationFrame(step);
+      })(performance.now());
+    }
+    function select(i, scroll) {
+      Array.prototype.forEach.call(stops, function (b) { var on = +b.getAttribute('data-i') <= i; b.classList.toggle('reached', on); b.classList.toggle('current', +b.getAttribute('data-i') === i); b.setAttribute('aria-pressed', +b.getAttribute('data-i') === i); });
+      map.classList.add('touched');
+      travel(at[i + 1], 900);
+      panel.innerHTML = phasePanel(r.phases[i], i);
+      Array.prototype.forEach.call(panel.querySelectorAll('.pp-go[data-go]'), function (g) { g.addEventListener('click', function () { select(+g.getAttribute('data-go'), true); }); });
+      if (scroll) { var y = map.getBoundingClientRect().top + window.pageYOffset - 70; window.scrollTo({ top: y, behavior: REDUCED ? 'auto' : 'smooth' }); }
+      track('roadmap-phase-' + (i + 1));
+    }
+    Array.prototype.forEach.call(stops, function (b) { b.addEventListener('click', function () { select(+b.getAttribute('data-i')); }); });
+    place(0);
+    // When the map scrolls into view: draw the road to Phase 1 and open it
+    var started = false;
+    function start() { if (started) return; started = true; map.classList.add('drawn'); setTimeout(function () { select(0); map.classList.remove('touched'); }, REDUCED ? 0 : 500); }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { start(); io.disconnect(); } }, { threshold: .35 });
+      io.observe(map);
+    } else start();
+  }
+
+  function reveal(root) {
+    var els = root.querySelectorAll('.rv');
+    if (REDUCED || !('IntersectionObserver' in window)) { Array.prototype.forEach.call(els, function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { threshold: .12 });
+    Array.prototype.forEach.call(els, function (e) { io.observe(e); });
   }
 
   function track(name) { try { if (window.umami) window.umami.track(name); } catch (e) {} }
